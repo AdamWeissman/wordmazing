@@ -1,4 +1,5 @@
 class Letter < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :words
+  has_many :wordletters
+  has_many :words through :wordletters
 end
