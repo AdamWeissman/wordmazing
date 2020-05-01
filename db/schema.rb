@@ -20,11 +20,9 @@ ActiveRecord::Schema.define(version: 2020_05_01_034401) do
     t.integer "the_letter_score"
     t.boolean "cycle_now", default: true
     t.bigint "user_id"
-    t.bigint "word_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_letters_on_user_id"
-    t.index ["word_id"], name: "index_letters_on_word_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,9 +33,11 @@ ActiveRecord::Schema.define(version: 2020_05_01_034401) do
 
   create_table "wordletters", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "word_id"
     t.bigint "letter_id"
     t.index ["letter_id"], name: "index_wordletters_on_letter_id"
     t.index ["user_id"], name: "index_wordletters_on_user_id"
+    t.index ["word_id"], name: "index_wordletters_on_word_id"
   end
 
   create_table "words", force: :cascade do |t|
@@ -46,10 +46,8 @@ ActiveRecord::Schema.define(version: 2020_05_01_034401) do
     t.integer "the_word_score"
     t.boolean "cycle_now", default: false
     t.bigint "user_id"
-    t.bigint "letter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["letter_id"], name: "index_words_on_letter_id"
     t.index ["user_id"], name: "index_words_on_user_id"
   end
 

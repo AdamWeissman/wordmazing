@@ -6,7 +6,6 @@ class CreateLetters < ActiveRecord::Migration[6.0]
       t.boolean :cycle_now, default: true
       
       t.references :user
-      t.references :word
 
       t.timestamps
     end
