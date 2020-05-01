@@ -4,6 +4,9 @@ class CreateLetters < ActiveRecord::Migration[6.0]
       t.string :the_letter
       t.integer :the_letter_score
       t.boolean :cycle_now, default: true
+      
+      t.references :user
+      t.references :word
 
       t.timestamps
     end
