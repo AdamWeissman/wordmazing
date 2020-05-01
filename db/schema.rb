@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_130033) do
     t.string "letter"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["word"], name: "index_readymades_on_word", unique: true
   end
 
   create_table "spokenmessages", force: :cascade do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_130033) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_name"], name: "index_users_on_admin_name", unique: true
   end
 
   create_table "wordletters", force: :cascade do |t|

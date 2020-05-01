@@ -6,5 +6,6 @@ class CreateReadymades < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :readymades, :word, :unique => true
   end
 end
