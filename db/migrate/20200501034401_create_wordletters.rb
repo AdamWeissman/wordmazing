@@ -4,8 +4,6 @@ class CreateWordletters < ActiveRecord::Migration[6.0]
       t.references :user
       t.references :word
       t.references :letter
-
-    
     end
   end
 end
