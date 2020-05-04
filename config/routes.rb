@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:create, :destroy] do
+      resources :users, only: [:create, :index, :destroy] do
         resources :words, only: [:create, :update]
         resources :letters, only: [:update] #no create, because letters are created same time as the words
         #resources :wordletters, only: [:create, :update] <-there will be no front end json that alters this... this is all backend stuff
