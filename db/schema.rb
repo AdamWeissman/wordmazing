@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_130033) do
   end
 
   create_table "wordletters", force: :cascade do |t|
+    t.string "the_letter"
     t.bigint "user_id"
     t.bigint "word_id"
     t.bigint "letter_id"
