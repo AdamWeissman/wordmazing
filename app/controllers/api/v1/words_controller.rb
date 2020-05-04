@@ -2,11 +2,17 @@ class WordsController < Api::V1::MasterController
 
   def create
     word = Words.new(word_params)
+    if word.save
+      render json: word, status: accepted
+    else
+      render json: {errors: word.errors.full_messages}, status: :unprocessible_entity
+    end
   end
 
   def update
     word = Word.find(word_params)
     word.save
+    render json: word
   end
 
   private
