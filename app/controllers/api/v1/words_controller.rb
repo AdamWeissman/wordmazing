@@ -1,4 +1,4 @@
-class WordsController < Api::V1::MasterController
+class Api::V1::WordsController < ApplicationController
 
   def create
     word = Words.new(word_params)

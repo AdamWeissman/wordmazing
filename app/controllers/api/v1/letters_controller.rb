@@ -1,4 +1,4 @@
-class LettersController < Api::V1::MasterController
+class Api::V1::LettersController < ApplicationController
 
   def update
     letter = Letter.find(letter_params)
