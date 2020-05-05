@@ -1,6 +1,6 @@
 class Word < ApplicationRecord
   belongs_to :user
-  has_many :wordletters
+  has_many :wordletters, dependent: :destroy
   has_many :letters, through: :wordletters
 
   def make_letters
