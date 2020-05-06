@@ -1,9 +1,18 @@
 
 //USER POST THIS IS WHAT I'M TESTING NOW
-
+console.log("here i am")
 const sw01 = document.getElementById('switchboard01')
 const userName = document.querySelector('#sw01name')
 const formData = {};
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const endPoint = 'http://localhost:3000/api/v1/users';
+  fetch(endPoint)
+    .then(res => res.json())
+    .then(json => console.log(json));
+});
+
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -11,12 +20,6 @@ sw01.addEventListener('submit', (e) => {
   formData['name'] = userName.value
   console.log(formData['name'])
 })
-
-
-
-
-
-
 
 
 //NOT YET WORKING BELOW THIS COMMENT
