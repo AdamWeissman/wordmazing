@@ -15,12 +15,12 @@ sw01.addEventListener('submit', (e) => {
 const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
-  //preventDefault();
-  const endPoint = 'http://localhost:3000/api/v1/users';
-  sw02Data = fetch(endPoint)
-    .then(result => result.json())
-    .then(json => console.log(json));
-};
+  fetch('http://localhost:3000/api/v1/users')
+    .then((response) => {response.json()
+      .then((data) => {console.log(data)});
+  });
+}
+      
 
 //NOT YET WORKING BELOW THIS COMMENT
 // NOT YET BELOW THIS LINE
