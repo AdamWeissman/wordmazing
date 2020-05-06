@@ -1,14 +1,25 @@
 
-//USER POST
-const userName = document.querySelector('#sw01name')
-const sw01 = document.getElementById('switchboard01')
+//USER POST THIS IS WHAT I'M TESTING NOW
 
-sw01.addEventListener('submit', function(someEvent){
-  someEvent.preventDefault();
+const sw01 = document.getElementById('switchboard01')
+const userName = document.querySelector('#sw01name')
+const formData = {};
+
+sw01.addEventListener('submit', (e) => {
+  e.preventDefault();
   alert(userName.value + ' submitted the form');
+  formData['name'] = userName.value
+  console.log(formData['name'])
 })
 
-//USER RETURN FIRST
+
+
+
+
+
+
+
+//NOT YET WORKING BELOW THIS COMMENT
 const sw02 = document.getElementById('switchboard02')
 sw02.onclick = function () {
   alert("Return User Name")
