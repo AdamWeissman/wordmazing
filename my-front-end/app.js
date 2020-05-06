@@ -1,32 +1,30 @@
 
 //USER POST THIS IS WHAT I'M TESTING NOW
-console.log("here i am")
-const sw01 = document.getElementById('switchboard01')
-const userName = document.querySelector('#sw01name')
+const sw01 = document.getElementById('switchboard01');
+const userName = document.querySelector('#sw01name');
 const formData = {};
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const endPoint = 'http://localhost:3000/api/v1/users';
-  fetch(endPoint)
-    .then(res => res.json())
-    .then(json => console.log(json));
-});
-
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
   alert(userName.value + ' submitted the form');
   formData['name'] = userName.value
   console.log(formData['name'])
-})
+});
 
+//GET DATA
+const sw02 = document.getElementById('switchboard02');
+
+sw02.onclick = () => {
+  //preventDefault();
+  const endPoint = 'http://localhost:3000/api/v1/users';
+  sw02Data = fetch(endPoint)
+    .then(result => result.json())
+    .then(json => console.log(json));
+};
 
 //NOT YET WORKING BELOW THIS COMMENT
-const sw02 = document.getElementById('switchboard02')
-sw02.onclick = function () {
-  alert("Return User Name")
-}
+// NOT YET BELOW THIS LINE
+
 
 const sw03 = document.getElementById('switchboard03')
 sw03.onclick = function () {
