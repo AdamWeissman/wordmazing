@@ -2,7 +2,10 @@ h1 {
   color: palegoldenrod;
 }
 
-
+intput [type="password"] {
+  height: 50px;
+  width: 100px;
+}
 
 #switchboard01 { 
 
