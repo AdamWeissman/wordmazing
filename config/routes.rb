@@ -10,7 +10,6 @@ Rails.application.routes.draw do
         resources :sessions, only: [:create, :destroy] #this is only for admin
         resources :readymades, only: [:index, :create, :update, :destroy] #this is only for admin 
         resources :spokenmessages, only: [:index, :create, :update, :destroy] #this is only for admin
-        end
       end      
     end
   end
