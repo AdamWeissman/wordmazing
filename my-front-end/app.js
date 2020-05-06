@@ -1,28 +1,20 @@
-const colors = [
-	'red',
-	'orange',
-	'yellow',
-	'green',
-	'blue',
-	'purple',
-	'indigo',
-	'violet'
-];
-const h1 = document.querySelector('h1');
-const changeColor = function(evt) {
-	console.log(evt); //CONTAINS INFORMATION ON THE CLICK EVENT!
-	h1.style.color = this.style.backgroundColor;
-};
-const container = document.querySelector('#boxes');
-
-for (let color of colors) {
-	const box = document.createElement('div');
-	box.style.backgroundColor = color;
-	box.classList.add('box');
-	container.appendChild(box);
-	box.addEventListener('click', changeColor);
-}
-
-document.body.addEventListener('keypress', function(e) {
-	console.log(e); //CONTAINS INFORMATION ON THE KEYPRESS EVENT
-});
+const sw01 = document.getElementById('switchboard01')
+const sw02 = document.getElementById('switchboard02')
+const sw03 = document.getElementById('switchboard03')
+const sw04 = document.getElementById('switchboard04')
+const sw05 = document.getElementById('switchboard05')
+const sw06 = document.getElementById('switchboard06')
+const sw07 = document.getElementById('switchboard07')
+const sw08 = document.getElementById('switchboard08')
+const sw09 = document.getElementById('switchboard09')
+const sw10 = document.getElementById('switchboard10')
+const sw11 = document.getElementById('switchboard11')
+const sw12 = document.getElementById('switchboard12')
+const sw13 = document.getElementById('switchboard13')
+const sw14 = document.getElementById('switchboard14')
+const sw15 = document.getElementById('switchboard15')
+const sw16 = document.getElementById('switchboard16')
+const sw17 = document.getElementById('switchboard17')
+const sw18 = document.getElementById('switchboard18')
+const sw19 = document.getElementById('switchboard19')
+const sw20 = document.getElementById('switchboard20')
