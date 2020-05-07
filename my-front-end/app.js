@@ -39,11 +39,22 @@ sw02.onclick = () => {
 const sw02a = document.getElementById('switchboard02a');
 
 sw02a.onclick = () => {
-  fetch(USERS_URL)
-    .then((response) => {
-      response.json()
-    .then((data) => {alert("Destroyed user id " + data[((data.length) - 1)].id)});
-  });
+  fetch(USERS_URL, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json", 
+      "Accept": "application/json"},
+    body: JSON.stringify({
+      "name": theFormData['name']
+      })
+    })
+
+  // fetch(USERS_URL, {
+  // method: "DELETE",});
+  //   .then((response) => {
+  //     response.json()
+  //   .then((data) => {alert("Destroyed user id " + data[((data.length) - 1)].id)});
+  // });
 }
 
 
