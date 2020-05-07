@@ -1,7 +1,7 @@
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
 
-//NEED TO GET THE BACKEND CONNECTED TO THE FRONT END
+//CREATE A USER
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');
 const theFormData = {};
@@ -11,23 +11,20 @@ sw01.addEventListener('submit', (e) => {
   alert(userName.value + ' submitted the form');
   theFormData['name'] = userName.value
   console.log(theFormData['name'])
-
-  // $.ajax({
-  //   type : "POST",
-  //   url : USERS_URL,
-  //   data: JSON.stringify(theFormData),
-  //   contentType: "application/json; charset=utf-8",
-  // })
-  //https://www.youtube.com/watch?v=SkfcGWWve6A& <-this will help!
-  // fetch(USERS_URL, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json", "Accept": "application/json"},
-  //   body: {"name": theFormData['name'],}
-  // });
+  fetch(USERS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", 
+      "Accept": "application/json"},
+    body: JSON.stringify({
+      "name": theFormData['name']
+      })
+    })
+  .then(response=>response.json())
+  .then(data=>console.log(data))
 });
-
-//GET DATA (THE FRONT END IS CONNECTED TO THE BACK END)
+  
+//RETURN A RANDOM USER
 const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
@@ -38,6 +35,17 @@ sw02.onclick = () => {
   });
 }
       
+//DESTROY THE LAST USER
+const sw02a = document.getElementById('switchboard02a');
+
+sw02a.onclick = () => {
+  fetch(USERS_URL)
+    .then((response) => {
+      response.json()
+    .then((data) => {alert("Destroyed user id " + data[((data.length) - 1)].id)});
+  });
+}
+
 
 //NOT YET WORKING BELOW THIS COMMENT
 // NOT YET BELOW THIS LINE

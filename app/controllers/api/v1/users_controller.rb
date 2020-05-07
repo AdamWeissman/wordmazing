@@ -1,23 +1,22 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user_params, except: [:index]
+  before_action :set_user_params, except: [:index, :create]
 
   def index
     @users = User.all
     render json: @users
   end
   
-
   def create
     @user = User.new(user_params)
     if @user.save
-      render json: @user, status: accepted
+      render json: @user
     else
       render json: {errors: user.errors.full_messages}, status: :unprocessible_entity
     end
   end
 
   def destroy
-    @user = User.find(User.last.id)
+    @user = User.last
     @user.destroy
   end
 
