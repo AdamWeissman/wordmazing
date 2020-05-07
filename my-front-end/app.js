@@ -1,23 +1,27 @@
+const fakeSession = 0
+
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
+const WORDS_URL = `${USERS_URL}/${fakeSession}/words`
+
 
 //CREATE A USER
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');
-const theFormData = {};
+const theUserData = {};
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
   alert(userName.value + ' submitted the form');
-  theFormData['name'] = userName.value
-  console.log(theFormData['name'])
+  theUserData['name'] = userName.value
+  console.log(theUserData['name'])
   fetch(USERS_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 
       "Accept": "application/json"},
     body: JSON.stringify({
-      "name": theFormData['name']
+      "name": theUserData['name']
       })
     })
   .then(response=>response.json())
@@ -50,15 +54,30 @@ sw02a.onclick = () => {
   })
 }
 
-//YOU ARE WORKING ON THIS ONE, NOW!
+//YOU ARE WORKING ON THIS ONE!
 
 
 const sw03 = document.getElementById('switchboard03')
 const word = document.querySelector('#sw03word');
+const theWordData = {};
 
-sw03.onclick = function () {
-  prompt("Enter a Word")
-}
+sw03.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert(word.value + ' has been submitted');
+  theWordData['the_word'] = word.value
+  console.log(theWordData['the_word'])
+  fetch(WORDS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", 
+      "Accept": "application/json"},
+    body: JSON.stringify({
+      "the_word": theWordData['the_word']
+      })
+    })
+  .then(response=>response.json())
+  .then(data=>console.log(data))
+});
 
 
 
