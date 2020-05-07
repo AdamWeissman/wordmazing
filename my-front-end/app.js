@@ -1,11 +1,11 @@
-const fakeSession = 0
+const currentUser = 0
 
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
-const WORDS_URL = `${USERS_URL}/${fakeSession}/words`
+const WORDS_URL = `${USERS_URL}/${currentUser}/words`
 
 
-//CREATE A USER
+//CREATE A USER -- should also create a session...
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');
 const theUserData = {};
@@ -28,7 +28,7 @@ sw01.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
   
-//RETURN A RANDOM USER
+//RETURN A RANDOM USER ... should also return the current session OR the user with the current session
 const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
@@ -39,7 +39,7 @@ sw02.onclick = () => {
   });
 }
       
-//DESTROY THE LAST USER
+//DESTROY THE LAST USER ... should destroy the session.
 const sw02a = document.getElementById('switchboard02a');
 
 sw02a.onclick = () => {
@@ -54,7 +54,7 @@ sw02a.onclick = () => {
   })
 }
 
-//YOU ARE WORKING ON THIS ONE!
+//THIS IS ON HOLD UNTIL SESSIONS WORKING ABOVE.
 
 
 const sw03 = document.getElementById('switchboard03')
