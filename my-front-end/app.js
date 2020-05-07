@@ -16,8 +16,9 @@ const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
   fetch('http://localhost:3000/api/v1/users')
-    .then((response) => {response.json()
-      .then((data) => {console.log(data)});
+    .then((response) => {
+      response.json()
+    .then((data) => {alert(data[Math.floor(Math.random() * data.length)].name)});
   });
 }
       
