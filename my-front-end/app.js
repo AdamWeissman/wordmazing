@@ -1,21 +1,30 @@
+const BASE_URL = "http://localhost:3000"
+const USERS_URL = `${BASE_URL}/api/v1/users`
 
 //NEED TO GET THE BACKEND CONNECTED TO THE FRONT END
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');
-const formData = {};
+const theFormData = {};
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
   alert(userName.value + ' submitted the form');
-  formData['name'] = userName.value
-  console.log(formData['name'])
+  theFormData['name'] = userName.value
+  console.log(theFormData['name'])
+
+  fetch(USERS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",},
+    body: theFormData['name']
+  });
 });
 
 //GET DATA (THE FRONT END IS CONNECTED TO THE BACK END)
 const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
-  fetch('http://localhost:3000/api/v1/users')
+  fetch(USERS_URL)
     .then((response) => {
       response.json()
     .then((data) => {alert(data[Math.floor(Math.random() * data.length)].name)});
