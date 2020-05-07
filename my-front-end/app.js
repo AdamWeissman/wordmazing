@@ -39,34 +39,32 @@ sw02.onclick = () => {
 const sw02a = document.getElementById('switchboard02a');
 
 sw02a.onclick = () => {
-  fetch(USERS_URL, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json", 
-      "Accept": "application/json"},
-    body: JSON.stringify({
-      "name": theFormData['name']
-      })
-    })
+  fetch(USERS_URL)
+    .then((response) => {
+      response.json()
+    .then((data) => {alert("Destroyed last user " + data[((data.length) - 1)].id)});
+  })
 
-  // fetch(USERS_URL, {
-  // method: "DELETE",});
-  //   .then((response) => {
-  //     response.json()
-  //   .then((data) => {alert("Destroyed user id " + data[((data.length) - 1)].id)});
-  // });
+  fetch(USERS_URL, {
+    method: "DELETE"
+  })
 }
 
-
-//NOT YET WORKING BELOW THIS COMMENT
-// NOT YET BELOW THIS LINE
+//YOU ARE WORKING ON THIS ONE, NOW!
 
 
 const sw03 = document.getElementById('switchboard03')
+const word = document.querySelector('#sw03word');
+
 sw03.onclick = function () {
   prompt("Enter a Word")
 }
 
+
+
+
+//NOT YET WORKING BELOW THIS COMMENT
+// NOT YET BELOW THIS LINE
 const sw04 = document.getElementById('switchboard04')
 sw04.onclick = function () {
   alert("Return a Random Two Letters")

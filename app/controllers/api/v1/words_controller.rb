@@ -3,7 +3,7 @@ class Api::V1::WordsController < ApplicationController
   def create
     word = Words.new(word_params)
     if word.save
-      render json: word, status: accepted
+      render json: word
     else
       render json: {errors: word.errors.full_messages}, status: :unprocessible_entity
     end

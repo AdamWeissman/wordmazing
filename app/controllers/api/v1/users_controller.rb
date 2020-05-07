@@ -1,5 +1,4 @@
 class Api::V1::UsersController < ApplicationController
-  #before_action :set_user_params, except: [:index, :create, :destroy]
 
   def index
     @users = User.all
