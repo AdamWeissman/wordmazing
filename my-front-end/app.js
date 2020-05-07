@@ -12,13 +12,19 @@ sw01.addEventListener('submit', (e) => {
   theFormData['name'] = userName.value
   console.log(theFormData['name'])
 
+  // $.ajax({
+  //   type : "POST",
+  //   url : USERS_URL,
+  //   data: JSON.stringify(theFormData),
+  //   contentType: "application/json; charset=utf-8",
+  // })
   //https://www.youtube.com/watch?v=SkfcGWWve6A& <-this will help!
-  fetch(USERS_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",},
-    body: theFormData['name']
-  });
+  // fetch(USERS_URL, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json", "Accept": "application/json"},
+  //   body: {"name": theFormData['name'],}
+  // });
 });
 
 //GET DATA (THE FRONT END IS CONNECTED TO THE BACK END)
