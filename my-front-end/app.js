@@ -1,5 +1,5 @@
 
-//USER POST THIS IS WHAT I'M TESTING NOW
+//NEED TO GET THE BACKEND CONNECTED TO THE FRONT END
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');
 const formData = {};
@@ -11,7 +11,7 @@ sw01.addEventListener('submit', (e) => {
   console.log(formData['name'])
 });
 
-//GET DATA
+//GET DATA (THE FRONT END IS CONNECTED TO THE BACK END)
 const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
