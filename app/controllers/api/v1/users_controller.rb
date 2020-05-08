@@ -6,9 +6,10 @@ class Api::V1::UsersController < ApplicationController
   end
   
   def create
+    session.clear
     @user = User.new(user_params)
+    session[:user_id] = @user.id
     if @user.save
-      session[:user_id] = @user.id
       render json: @user
     else
       render json: {errors: user.errors.full_messages}, status: :unprocessible_entity
@@ -17,8 +18,18 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     @user = User.last
-    session.clear
-    @user.destroy
+    if session[:user_id] == @user.id
+      session.clear
+      @user.destroy
+    else
+      @user.destroy
+    end
+  end
+
+
+  def the_session
+    @user = User.find_by(session[:user_id])
+    render json: @user
   end
 
   private

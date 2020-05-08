@@ -1,16 +1,16 @@
 
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
-const SESSIONS_URL = `${USERS_URL}/35/sessions`
+const SESSIONS_URL = `${USERS_URL}/active_session`
 // const WORDS_URL = `${USERS_URL}/${currentUser()}/words`
 
-function currentUser() {
-  fetch(USERS_URL)
-    .then((response) => {
-      response.json()
-    .then((data) => {console.log(data[((data.length) - 1)].id)});
-    });
-}
+// function currentUser() {
+//   fetch(USERS_URL)
+//     .then((response) => {
+//       response.json()
+//     .then((data) => {console.log(data[((data.length) - 1)].id)});
+//     });
+// }
 
 
 //CREATE A USER 
@@ -36,31 +36,30 @@ sw01.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
 
-// CREATE A SESSION OF CURRENT USER
-
-const sw01a = document.getElementById('switchboard01a');
-sw01a.onclick = () => {
-  fetch(SESSIONS_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", 
-      "Accept": "application/json"}
-    // body: JSON.stringify({
-    //   "user_id" : currentUser()
-    // })
-  });
-}
-
+// CREATE A SESSION OF CURRENT USER -- THIS MAY BE UNNECCESARY
+// const sw01a = document.getElementById('switchboard01a');
+// sw01a.onclick = () => {
+//   fetch(SESSIONS_URL, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json", 
+//       "Accept": "application/json"}
+//     // body: JSON.stringify({
+//     //   "user_id" : currentUser()
+//     // })
+//   });
+// }
 
 
-//RETURN A RANDOM USER ... should also return the current session OR the user with the current session
+
+//RETURN SESSION
 const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
-  fetch(USERS_URL)
+  fetch(SESSIONS_URL)
     .then((response) => {
       response.json()
-    .then((data) => {alert(data[Math.floor(Math.random() * data.length)].name)});
+    .then((data) => {alert(data["id"])});
   });
 }
       
