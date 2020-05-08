@@ -1,34 +1,40 @@
 class Api::V1::UsersController < ApplicationController
 
+  #note: quintus is just a nonsense word for session, because I was originally testing with user_id and thought maybe that's why something was going wrong
+  
+
+  def destroy
+    @user = User.find_by(session[:quintus])
+    @user.destroy
+  end
+
   def index
     @users = User.all
     render json: @users
   end
   
   def create
-    session.clear
-    @user = User.new(user_params)
-    session[:user_id] = @user.id
-    if @user.save
-      render json: @user
+    
+    if session[:quintus] == nil 
+      @user = User.new(user_params)
+      session[:quintus] = @user.id
+      if @user.save
+        render json: @user
+      else
+        render json: {errors: user.errors.full_messages}, status: :unprocessible_entity
+      end
     else
-      render json: {errors: user.errors.full_messages}, status: :unprocessible_entity
+      @user = User.new(user_params)
+      if @user.save
+        render json: @user
+      else
+        render json: {errors: user.errors.full_messages}, status: :unprocessible_entity
+      end
     end
   end
-
-  def destroy
-    @user = User.last
-    if session[:user_id] == @user.id
-      session.clear
-      @user.destroy
-    else
-      @user.destroy
-    end
-  end
-
 
   def the_session
-    @user = User.find_by(session[:user_id])
+    @user = User.find_by(session[:quintus])
     render json: @user
   end
 

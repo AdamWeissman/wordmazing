@@ -63,14 +63,14 @@ sw02.onclick = () => {
   });
 }
       
-//DESTROY THE LAST USER ... should destroy the session.
+//DESTROY THE SESSION USER ... should destroy the session.
 const sw02a = document.getElementById('switchboard02a');
 
 sw02a.onclick = () => {
-  fetch(USERS_URL)
+  fetch(SESSIONS_URL)
     .then((response) => {
       response.json()
-    .then((data) => {alert("Destroyed last user " + data[((data.length) - 1)].id)});
+    .then((data) => {alert("Destroying user " + data["name"])});
   })
 
   fetch(USERS_URL, {
