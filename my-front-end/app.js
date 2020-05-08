@@ -1,8 +1,16 @@
-const currentUser = 0
 
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
-const WORDS_URL = `${USERS_URL}/${currentUser}/words`
+const SESSIONS_URL = `${USERS_URL}/${currentUser}/sessions`
+// const WORDS_URL = `${USERS_URL}/${currentUser()}/words`
+
+function currentUser() {
+  fetch(USERS_URL)
+    .then((response) => {
+      response.json()
+    .then((data) => {console.log(data[((data.length) - 1)].id)});
+    });
+}
 
 
 //CREATE A USER -- should also create a session...
@@ -28,6 +36,21 @@ sw01.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
   
+const sw01a = document.getElementById('switchboard01a');
+sw01a.onclick = () => {
+  fetch(SESSIONS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", 
+      "Accept": "application/json"},
+    // body: JSON.stringify({
+    //   "user_id" : currentUser()
+    // })
+  })
+}
+
+
+
 //RETURN A RANDOM USER ... should also return the current session OR the user with the current session
 const sw02 = document.getElementById('switchboard02');
 
