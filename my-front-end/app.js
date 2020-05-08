@@ -1,7 +1,7 @@
 
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
-const SESSIONS_URL = `${USERS_URL}/${currentUser}/sessions`
+const SESSIONS_URL = `${USERS_URL}/35/sessions`
 // const WORDS_URL = `${USERS_URL}/${currentUser()}/words`
 
 function currentUser() {
@@ -13,7 +13,7 @@ function currentUser() {
 }
 
 
-//CREATE A USER -- should also create a session...
+//CREATE A USER 
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');
 const theUserData = {};
@@ -35,18 +35,20 @@ sw01.addEventListener('submit', (e) => {
   .then(response=>response.json())
   .then(data=>console.log(data))
 });
-  
+
+// CREATE A SESSION OF CURRENT USER
+
 const sw01a = document.getElementById('switchboard01a');
 sw01a.onclick = () => {
   fetch(SESSIONS_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 
-      "Accept": "application/json"},
+      "Accept": "application/json"}
     // body: JSON.stringify({
     //   "user_id" : currentUser()
     // })
-  })
+  });
 }
 
 
