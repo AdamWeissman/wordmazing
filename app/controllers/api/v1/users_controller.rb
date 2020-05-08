@@ -1,10 +1,11 @@
 class Api::V1::UsersController < ApplicationController
 
   #note: quintus is just a nonsense word for session, because I was originally testing with user_id and thought maybe that's why something was going wrong
-  
+
 
   def destroy
     @user = User.find_by(session[:quintus])
+
     @user.destroy
   end
 
