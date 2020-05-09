@@ -1,12 +1,18 @@
 class Api::V1::UsersController < ApplicationController
 
-  #note: quintus is just a nonsense word for session, because I was originally testing with user_id and thought maybe that's why something was going wrong
 
+  @@fake_session = {}
 
   def destroy
-    @user = User.find_by(session[:quintus])
 
-    @user.destroy
+    #the code below is semi redundant, destroying the user will also destroy the session, but in case I want to split the functionality, both lines of code are included below
+    @@fake_session[:duct_tape] = nil
+    if @user = User.find_by(id: (@@fake_session[:duct_tape]).to_i)
+      @user.destroy
+    else
+      @user = User.last
+      @user.destroy
+    end
   end
 
   def index
@@ -16,10 +22,10 @@ class Api::V1::UsersController < ApplicationController
   
   def create
     
-    if session[:quintus] == nil 
+    if @@fake_session[:duct_tape] == nil 
       @user = User.new(user_params)
-      session[:quintus] = @user.id
       if @user.save
+        @@fake_session[:duct_tape] = @user.id
         render json: @user
       else
         render json: {errors: user.errors.full_messages}, status: :unprocessible_entity
@@ -35,7 +41,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def the_session
-    @user = User.find_by(session[:quintus])
+    @user = User.find_by(id: (@@fake_session[:duct_tape]).to_i)
     render json: @user
   end
 
