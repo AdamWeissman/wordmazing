@@ -27,7 +27,7 @@ sw01.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
 
-//RETURN SESSION
+//RETURN FAKE SESSION
 const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
@@ -53,8 +53,15 @@ sw02a.onclick = () => {
   })
 }
 
-//THIS IS ON HOLD UNTIL FAKE SESSIONS WORKING ABOVE.
+//WORKING ON THIS NOW...
 
+function activeUser () {
+  return fetch(SESSIONS_URL)
+  .then((response) => {
+    response.json()
+  .then((data) => {console.log(data["id"])});
+});
+}
 
 const sw03 = document.getElementById('switchboard03')
 const word = document.querySelector('#sw03word');
@@ -63,9 +70,10 @@ const theWordData = {};
 sw03.addEventListener('submit', (e) => {
   e.preventDefault();
   alert(word.value + ' has been submitted');
-  theWordData['the_word'] = word.value
+  theWordData['the_word'] = word.value.toUpperCase();
+  let x = activeUser()
   console.log(theWordData['the_word'])
-  fetch(WORDS_URL, {
+  fetch(`${USERS_URL}/${x}/words`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 
