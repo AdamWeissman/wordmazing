@@ -56,11 +56,15 @@ sw02a.onclick = () => {
 //WORKING ON THIS NOW...
 
 function activeUser () {
-  return fetch(SESSIONS_URL)
-  .then((response) => {
+  fetch(SESSIONS_URL)
+  .then ((response) => {
     response.json()
-  .then((data) => {console.log(data["id"])});
+  .then ((data) => {alert(data["id"])});
 });
+}
+
+function partTwo () {
+  activeUser().then(result => console.log(result));
 }
 
 const sw03 = document.getElementById('switchboard03')
@@ -71,8 +75,8 @@ sw03.addEventListener('submit', (e) => {
   e.preventDefault();
   alert(word.value + ' has been submitted');
   theWordData['the_word'] = word.value.toUpperCase();
-  let x = activeUser()
   console.log(theWordData['the_word'])
+  let x = activeUser()
   fetch(`${USERS_URL}/${x}/words`, {
     method: "POST",
     headers: {
