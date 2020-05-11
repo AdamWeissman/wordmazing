@@ -55,16 +55,14 @@ sw02a.onclick = () => {
 
 //WORKING ON THIS NOW...
 
-function activeUser () {
-  fetch(SESSIONS_URL)
-  .then ((response) => {
-    response.json()
-  .then ((data) => {alert(data["id"])});
-});
-}
+let activeUserID = []
 
-function partTwo () {
-  activeUser().then(result => console.log(result));
+async function activeUser () {
+  const result = await fetch(SESSIONS_URL);
+  const data = await result.json();
+  //console.log(data["id"]);
+  console.log(data["id"]); // this line is irrelvant, just here for testing
+  return activeUserID.splice(0, 1, (data["id"]));
 }
 
 const sw03 = document.getElementById('switchboard03')
@@ -73,10 +71,11 @@ const theWordData = {};
 
 sw03.addEventListener('submit', (e) => {
   e.preventDefault();
+  activeUser();
+  let x = activeUserID[0]
   alert(word.value + ' has been submitted');
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])
-  let x = activeUser()
   fetch(`${USERS_URL}/${x}/words`, {
     method: "POST",
     headers: {
