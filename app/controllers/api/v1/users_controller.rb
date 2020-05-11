@@ -6,8 +6,8 @@ class Api::V1::UsersController < ApplicationController
   def destroy
 
     #the code below is semi redundant, destroying the user will also destroy the session, but in case I want to split the functionality, both lines of code are included below
-    @@fake_session[:duct_tape] = nil
     if @user = User.find_by(id: (@@fake_session[:duct_tape]).to_i)
+      @@fake_session[:duct_tape] = nil
       @user.destroy
     else
       @user = User.last
