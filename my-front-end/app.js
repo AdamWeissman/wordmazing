@@ -53,7 +53,7 @@ sw02a.onclick = () => {
   })
 }
 
-//WORKING ON THIS NOW...
+//ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER
 
 let activeUserID = []
 
@@ -72,11 +72,11 @@ const theWordData = {};
 sw03.addEventListener('submit', (e) => {
   e.preventDefault();
   activeUser();
-  let x = activeUserID[0]
+  let the_user = activeUserID[0]
   alert(word.value + ' has been submitted');
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])
-  fetch(`${USERS_URL}/${x}/words`, {
+  fetch(`${USERS_URL}/${the_user}/words`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 
@@ -90,7 +90,7 @@ sw03.addEventListener('submit', (e) => {
 });
 
 
-
+//ABOVE THIS LINE IS WORKING
 
 //NOT YET WORKING BELOW THIS COMMENT
 // NOT YET BELOW THIS LINE

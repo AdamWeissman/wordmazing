@@ -1,6 +1,8 @@
 class Api::V1::WordsController < ApplicationController
 
   def create
+    params.permit!
+    #@user = User.find_by ... this line is incomplete
     word = Words.new(word_params)
     if word.save
       render json: word
