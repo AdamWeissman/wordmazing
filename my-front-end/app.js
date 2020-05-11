@@ -2,15 +2,6 @@
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
 const SESSIONS_URL = `${USERS_URL}/active_session`
-// const WORDS_URL = `${USERS_URL}/${currentUser()}/words`
-
-// function currentUser() {
-//   fetch(USERS_URL)
-//     .then((response) => {
-//       response.json()
-//     .then((data) => {console.log(data[((data.length) - 1)].id)});
-//     });
-// }
 
 
 //CREATE A USER 
@@ -35,22 +26,6 @@ sw01.addEventListener('submit', (e) => {
   .then(response=>response.json())
   .then(data=>console.log(data))
 });
-
-// CREATE A SESSION OF CURRENT USER -- THIS MAY BE UNNECCESARY
-// const sw01a = document.getElementById('switchboard01a');
-// sw01a.onclick = () => {
-//   fetch(SESSIONS_URL, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json", 
-//       "Accept": "application/json"}
-//     // body: JSON.stringify({
-//     //   "user_id" : currentUser()
-//     // })
-//   });
-// }
-
-
 
 //RETURN SESSION
 const sw02 = document.getElementById('switchboard02');
@@ -78,7 +53,7 @@ sw02a.onclick = () => {
   })
 }
 
-//THIS IS ON HOLD UNTIL SESSIONS WORKING ABOVE.
+//THIS IS ON HOLD UNTIL FAKE SESSIONS WORKING ABOVE.
 
 
 const sw03 = document.getElementById('switchboard03')

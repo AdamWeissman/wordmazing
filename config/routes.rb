@@ -6,8 +6,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :index] do
         resources :words, only: [:create, :update, :index] # index will have logic to populate only bottom (lowest ranking) two words
         resources :letters, only: [:update, :index] # index will have logic to populate only bottom (lowest ranking) two letters
-        
-        resources :sessions, only: [:create, :destroy] #this is only for admin
+      
         resources :readymades, only: [:index, :create, :update, :destroy] #this is only for admin 
         resources :spokenmessages, only: [:index, :create, :update, :destroy] #this is only for admin
       end      
