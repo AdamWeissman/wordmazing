@@ -54,7 +54,7 @@ sw02a.onclick = () => {
   })
 }
 
-//ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER
+//ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER, LETTERS ARE ALSO GENERATED WITH MAKE_LETTERS METHOD FROM THE WORD MODEL
 
 const sw03 = document.getElementById('switchboard03')
 const word = document.querySelector('#sw03word');
