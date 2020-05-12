@@ -55,6 +55,7 @@ sw02a.onclick = () => {
 
 //ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER
 
+
 let activeUserID = []
 
 async function activeUser () {
@@ -62,7 +63,8 @@ async function activeUser () {
   const data = await result.json();
   //console.log(data["id"]);
   console.log(data["id"]); // this line is irrelvant, just here for testing
-  return activeUserID.splice(0, 1, (data["id"]));
+  activeUserID.splice(0, 1, (data["id"]));
+  return activeUserID[0]
 }
 
 const sw03 = document.getElementById('switchboard03')
@@ -70,13 +72,13 @@ const word = document.querySelector('#sw03word');
 const theWordData = {};
 
 sw03.addEventListener('submit', (e) => {
-  e.preventDefault();
   activeUser();
-  let the_user = activeUserID[0]
+  let special_url = `${USERS_URL}/${activeUserID[0]}/words`
+  e.preventDefault();
   alert(word.value + ' has been submitted');
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])
-  fetch(`${USERS_URL}/${the_user}/words`, {
+  fetch(special_url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 
