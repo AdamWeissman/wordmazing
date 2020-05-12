@@ -60,7 +60,7 @@ const sw03 = document.getElementById('switchboard03')
 const word = document.querySelector('#sw03word');
 const theWordData = {};
 
-let activeUserID = []
+let activeUserID = [];
 
 async function activeUser () {
   const result = await fetch(SESSIONS_URL);
@@ -73,18 +73,17 @@ async function activeUser () {
   //return activeUserID[0]
 }
 
-sw03.onclick = () => {{
-  activeUser();
-  }
 
 sw03.addEventListener('submit', (e) => {
   e.preventDefault();
   
+  activeUser();
+  let x = activeUserID[0];
   alert(word.value + ' has been submitted');
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])
  
-  fetch(`${USERS_URL}/${activeUserID[0]}/words`, {
+  fetch(`${USERS_URL}/${x}/words`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 
@@ -95,7 +94,7 @@ sw03.addEventListener('submit', (e) => {
     })
   .then(response=>response.json())
   .then(data=>console.log(data))
-});}
+});
 
 
 //ABOVE THIS LINE IS WORKING
