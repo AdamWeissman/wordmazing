@@ -42,6 +42,7 @@ sw02.onclick = () => {
 const sw02a = document.getElementById('switchboard02a');
 
 sw02a.onclick = () => {
+  activeUserID = [];
   fetch(SESSIONS_URL)
     .then((response) => {
       response.json()
@@ -55,6 +56,9 @@ sw02a.onclick = () => {
 
 //ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER
 
+const sw03 = document.getElementById('switchboard03')
+const word = document.querySelector('#sw03word');
+const theWordData = {};
 
 let activeUserID = []
 
@@ -63,22 +67,24 @@ async function activeUser () {
   const data = await result.json();
   //console.log(data["id"]);
   console.log(data["id"]); // this line is irrelvant, just here for testing
-  activeUserID.splice(0, 1, (data["id"]));
-  return activeUserID[0]
+  activeUserID = []
+  activeUserID.push(data["id"]);
+  //activeUserID.splice(0, 1, (data["id"]));
+  //return activeUserID[0]
 }
 
-const sw03 = document.getElementById('switchboard03')
-const word = document.querySelector('#sw03word');
-const theWordData = {};
+sw03.onclick = () => {{
+  activeUser();
+  }
 
 sw03.addEventListener('submit', (e) => {
-  activeUser();
-  let special_url = `${USERS_URL}/${activeUserID[0]}/words`
   e.preventDefault();
+  
   alert(word.value + ' has been submitted');
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])
-  fetch(special_url, {
+ 
+  fetch(`${USERS_URL}/${activeUserID[0]}/words`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 
@@ -89,7 +95,7 @@ sw03.addEventListener('submit', (e) => {
     })
   .then(response=>response.json())
   .then(data=>console.log(data))
-});
+});}
 
 
 //ABOVE THIS LINE IS WORKING
