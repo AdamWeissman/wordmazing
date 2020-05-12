@@ -62,7 +62,7 @@ const theWordData = {};
 
 let activeUserID = [];
 
-async function activeUser () {
+const getActiveUser = async function activeUser () {
   const result = await fetch(SESSIONS_URL);
   const data = await result.json();
   //console.log(data["id"]);
@@ -73,15 +73,16 @@ async function activeUser () {
   //return activeUserID[0]
 }
 
+getActiveUser;
 
-sw03.addEventListener('submit', (e) => {
-  e.preventDefault();
+sw03.addEventListener('submit', (e) => {  
+  e.preventDefault(); 
   
-  activeUser();
   let x = activeUserID[0];
   alert(word.value + ' has been submitted');
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])
+  
  
   fetch(`${USERS_URL}/${x}/words`, {
     method: "POST",
