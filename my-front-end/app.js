@@ -59,10 +59,9 @@ sw02a.onclick = () => {
 const sw03 = document.getElementById('switchboard03')
 const word = document.querySelector('#sw03word');
 const theWordData = {};
-
 let activeUserID = [];
 
-const getActiveUser = async function activeUser () {
+async function activeUser () {
   const result = await fetch(SESSIONS_URL);
   const data = await result.json();
   //console.log(data["id"]);
@@ -73,7 +72,9 @@ const getActiveUser = async function activeUser () {
   //return activeUserID[0]
 }
 
-getActiveUser;
+sw03.addEventListener('click', (e) => { //this is such a screwed up fix, but seems to work ... otherwise, the activeUser would not interpolate to the URL unless clicked twice
+  activeUser();
+});
 
 sw03.addEventListener('submit', (e) => {  
   e.preventDefault(); 
