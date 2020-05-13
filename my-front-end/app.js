@@ -98,15 +98,20 @@ sw03.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
 
-
+//
 //ABOVE THIS LINE IS WORKING
+//
+//
+//
 
-//NOT YET WORKING BELOW THIS COMMENT
-// NOT YET BELOW THIS LINE
+//TESTING
+
 const sw04 = document.getElementById('switchboard04')
 sw04.onclick = function () {
-  alert("Return a Random Two Letters")
+  alert("Return Random Two Letters")
 }
+
+// NOT YET TESTING BELOW THIS LINE
 
 const sw05 = document.getElementById('switchboard05')
 sw05.onclick = function () {
