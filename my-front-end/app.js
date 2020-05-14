@@ -108,8 +108,15 @@ sw03.addEventListener('submit', (e) => {
 
 const sw04 = document.getElementById('switchboard04')
 sw04.onclick = function () {
-  alert("Return Random Two Letters")
+  let x = activeUserID[0];
+  alert("Return Random Two Letters");
+  fetch(`${USERS_URL}/${x}/letters`)
+  .then((response) => {
+    response.json()
+  .then((data) => {console.log(data)});
+});
 }
+ 
 
 // NOT YET TESTING BELOW THIS LINE
 
