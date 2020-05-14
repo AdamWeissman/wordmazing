@@ -5,6 +5,8 @@ class Api::V1::WordsController < ApplicationController
     @user = User.find(params[:user_id])
     word = Word.new(word_params)
     word.user_id = @user.id
+    word.the_word_score = 0
+    word.word_activation_switch = word.make_activation_switch(word.the_word)
     if word.save
       word.make_letters
       render json: word

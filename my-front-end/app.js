@@ -109,7 +109,7 @@ sw03.addEventListener('submit', (e) => {
 const sw04 = document.getElementById('switchboard04')
 sw04.onclick = function () {
   let x = activeUserID[0];
-  alert("Return Random Two Letters");
+  alert("Return Random Two Letters With Low Scores");
   fetch(`${USERS_URL}/${x}/letters`)
   .then((response) => {
     response.json()
