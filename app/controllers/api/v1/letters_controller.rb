@@ -1,5 +1,9 @@
 class Api::V1::LettersController < ApplicationController
 
+  def grab_letters
+    #this will render two letters that have scores LESS than X, can use similar code for scoring from phrase ninja
+  end
+
   def update
     letter = Letter.find(letter_params)
     letter.save

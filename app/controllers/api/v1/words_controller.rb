@@ -13,8 +13,8 @@ class Api::V1::WordsController < ApplicationController
     end
   end
 
-  def grab_letters
-    #this will render two letters that have scores LESS than X, can use similar code for scoring from phrase ninja
+  def grab_words
+    #this will render two words that have scores LESS than X, can use similar code for scoring from phrase ninja
   end
 
   def update
