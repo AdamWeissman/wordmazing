@@ -113,7 +113,9 @@ sw04.onclick = function () {
   fetch(`${USERS_URL}/${x}/letters`)
   .then((response) => {
     response.json()
-  .then((data) => {console.log(data)});
+  .then((data) => {data.forEach(element => {
+    alert(element.the_letter);
+  });});
 });
 }
  
