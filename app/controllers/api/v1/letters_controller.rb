@@ -3,8 +3,14 @@ class Api::V1::LettersController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @letters = @user.letters.all
+
+    def under_a_certain_score(the_letters)
+      these_ones = the_letters.map {|i| i if i.the_letter_score < 10}
+      return these_ones.shuffle[0...2]
+    end  
+
+    @letters = under_a_certain_score(@letters)
     render json: @letters
-    #this will render two letters that have scores LESS than X, can use similar code for scoring from phrase ninja
   end
 
   def update
