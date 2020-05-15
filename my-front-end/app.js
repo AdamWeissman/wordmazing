@@ -64,12 +64,9 @@ let activeUserID = [];
 async function activeUser () {
   const result = await fetch(SESSIONS_URL);
   const data = await result.json();
-  //console.log(data["id"]);
   console.log(data["id"]); // this line is irrelvant, just here for testing
   activeUserID = []
   activeUserID.push(data["id"]);
-  //activeUserID.splice(0, 1, (data["id"]));
-  //return activeUserID[0]
 }
 
 sw03.addEventListener('click', (e) => { //this is such a screwed up fix, but seems to work ... otherwise, the activeUser would not interpolate to the URL unless clicked twice
@@ -105,13 +102,29 @@ let random_two_letters = []
 const sw04 = document.getElementById('switchboard04')
 const sw04opt1 = document.getElementById('swb04option1')
 const sw04opt2 = document.getElementById('swb04option2')
+
 sw04.onclick = function () {
-  random_two_letter_func();
-  sw04opt1.innerHTML = "cat"
-  sw04opt2.innerHTML = "dog"
+  //random_two_letter_func();
+  set_random_two_letters();
 }
 
+async function set_random_two_letters () {
+  result = await random_two_letter_func();
+  sw04opt1.innerHTML = `${random_two_letters[0]}`
+  sw04opt2.innerHTML = `${random_two_letters[1]}`
+}
 
+async function random_two_letter_func () {
+  random_two_letters = []
+  let x = activeUserID[0];
+  alert("Return Random Two Letters With Low Scores");
+  const result = await fetch(`${USERS_URL}/${x}/letters`)
+  const data = await result.json()
+  const final_res = await data.forEach(element => {
+    random_two_letters.push(element.the_letter);
+    });
+  return final_res
+};
 
 // all of this has been refactored into the random_two_letter_func
 // sw04.onclick = function () {
@@ -129,17 +142,7 @@ sw04.onclick = function () {
 // }
 
 
-async function random_two_letter_func () {
-  random_two_letters = []
-  let x = activeUserID[0];
-  alert("Return Random Two Letters With Low Scores");
-  const result = await fetch(`${USERS_URL}/${x}/letters`)
-  const data = await result.json()
-  const final_res = await data.forEach(element => {
-    random_two_letters.push(element.the_letter);
-    });
-  return final_res
-};
+
 //
 //ABOVE THIS LINE IS WORKING
 //
