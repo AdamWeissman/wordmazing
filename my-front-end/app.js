@@ -98,22 +98,25 @@ sw03.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
 
+//random two letters in prepartion of score update
 
+let random_two_letters = []
 
 const sw04 = document.getElementById('switchboard04')
 sw04.onclick = function () {
+  random_two_letters = []
   let x = activeUserID[0];
   alert("Return Random Two Letters With Low Scores");
   fetch(`${USERS_URL}/${x}/letters`)
   .then((response) => {
     response.json()
   .then((data) => {data.forEach(element => {
-    alert(element.the_letter);
-  });});
+    random_two_letters.push(element.the_letter);
+    });
+  });
 });
 }
  
-
 
 //
 //ABOVE THIS LINE IS WORKING
@@ -124,7 +127,12 @@ sw04.onclick = function () {
 //TESTING
 
 
-
+//will need to use the variable random_two_letters from above to update the score
+//NEED A FUNCTION TO DETERMINE WHICH IS THE CORRECT LETTER FOR SCORING
+//NEED A FUNCTION TO ASK THE USER, RECEIVE THE INPUT
+//NEED A FUNCTION TO TO CHECK THE INPUT
+//NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE
+//ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP
 const sw05 = document.getElementById('switchboard05')
 sw05.onclick = function () {
   alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
