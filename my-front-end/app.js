@@ -98,13 +98,7 @@ sw03.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
 
-//
-//ABOVE THIS LINE IS WORKING
-//
-//
-//
 
-//TESTING
 
 const sw04 = document.getElementById('switchboard04')
 sw04.onclick = function () {
@@ -120,13 +114,25 @@ sw04.onclick = function () {
 }
  
 
-// NOT YET TESTING BELOW THIS LINE
+
+//
+//ABOVE THIS LINE IS WORKING
+//
+//
+//
+
+//TESTING
+
+
 
 const sw05 = document.getElementById('switchboard05')
 sw05.onclick = function () {
-  alert("Incremeent Score of Random Letter by 9 and Corresponding Word Activation")
+  alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
 }
 
+
+
+// NOT YET TESTING BELOW THIS LINE
 const sw06 = document.getElementById('switchboard06')
 sw06.onclick = function () {
   prompt("Return a Random Two Words if a Word is Activated... or a Random Two Letters")
