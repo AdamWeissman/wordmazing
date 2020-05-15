@@ -103,21 +103,43 @@ sw03.addEventListener('submit', (e) => {
 let random_two_letters = []
 
 const sw04 = document.getElementById('switchboard04')
+const sw04opt1 = document.getElementById('swb04option1')
+const sw04opt2 = document.getElementById('swb04option2')
 sw04.onclick = function () {
+  random_two_letter_func();
+  sw04opt1.innerHTML = "cat"
+  sw04opt2.innerHTML = "dog"
+}
+
+
+
+// all of this has been refactored into the random_two_letter_func
+// sw04.onclick = function () {
+//   random_two_letters = []
+//   let x = activeUserID[0];
+//   alert("Return Random Two Letters With Low Scores");
+//   fetch(`${USERS_URL}/${x}/letters`)
+//   .then((response) => {
+//     response.json()
+//   .then((data) => {data.forEach(element => {
+//     random_two_letters.push(element.the_letter);
+//     });
+//   });
+// });
+// }
+
+
+async function random_two_letter_func () {
   random_two_letters = []
   let x = activeUserID[0];
   alert("Return Random Two Letters With Low Scores");
-  fetch(`${USERS_URL}/${x}/letters`)
-  .then((response) => {
-    response.json()
-  .then((data) => {data.forEach(element => {
+  const result = await fetch(`${USERS_URL}/${x}/letters`)
+  const data = await result.json()
+  const final_res = await data.forEach(element => {
     random_two_letters.push(element.the_letter);
     });
-  });
-});
-}
- 
-
+  return final_res
+};
 //
 //ABOVE THIS LINE IS WORKING
 //
@@ -134,8 +156,11 @@ sw04.onclick = function () {
 //NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE
 //ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP
 const sw05 = document.getElementById('switchboard05')
+
 sw05.onclick = function () {
-  alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
+  random_two_letter_func();
+  //alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
+
 }
 
 

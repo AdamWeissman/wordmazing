@@ -7,6 +7,10 @@ input [type="password"] {
   width: 100px;
 }
 
+table, th, td {
+  border: 1px solid black;
+}
+
 #switchboard01 { 
 
 }
@@ -28,6 +32,14 @@ input [type="password"] {
 }
 
 #switchboard04 { 
+
+}
+
+#swb04option1 { 
+
+}
+
+#swb04option2 { 
 
 }
 
