@@ -151,10 +151,10 @@ async function random_two_letter_func () {
 //TESTING
 
 
-//will need to use the variable random_two_letters from above to update the score
-//NEED A FUNCTION TO DETERMINE WHICH IS THE CORRECT LETTER FOR SCORING
-//NEED A FUNCTION TO ASK THE USER, RECEIVE THE INPUT
-//NEED A FUNCTION TO TO CHECK THE INPUT
+//will need to use the variable random_two_letters from above to update the score [X]
+//NEED A FUNCTION TO DETERMINE WHICH IS THE CORRECT LETTER FOR SCORING [X]
+//NEED A FUNCTION TO ASK THE USER, RECEIVE THE INPUT [X]
+//NEED A FUNCTION TO TO CHECK THE INPUT [X]
 //NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE
 //ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP
 const sw05 = document.getElementById('switchboard05')
@@ -168,7 +168,7 @@ sw05.onclick = function () {
 
 }
 
-//when i delete the function above, make sure to define random_two_letters here
+//when i delete the function on switchboard 4, make sure to define random_two_letters here
 let the_right_answer = []
 
 async function set_random_two_letters_v2 () {
@@ -196,40 +196,46 @@ async function random_two_letter_func_v2 () {
 sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_right_answer[0] === sw05opt1.innerHTML) {
-    alert(userName.value + ' submitted the form');
-    fetch(USERS_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", 
-        "Accept": "application/json"},
-      body: JSON.stringify({
-        "name": theUserData['name']
-        })
-      })
-    .then(response=>response.json())
-    .then(data=>console.log(data))
+    alert("YOU ARE CORRECT");
+    // fetch(USERS_URL, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json", 
+    //     "Accept": "application/json"},
+    //   body: JSON.stringify({
+    //     "name": theUserData['name']
+    //     })
+    //   })
+    // .then(response=>response.json())
+    // .then(data=>console.log(data))
+  }
+  else {
+    alert("YOU ARE WRONG");
+    set_random_two_letters_v2();
   }
 });
 
 sw05opt2.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_right_answer[0] === sw05opt2.innerHTML) {
-    alert(userName.value + ' submitted the form');
-    fetch(USERS_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", 
-        "Accept": "application/json"},
-      body: JSON.stringify({
-        "name": theUserData['name']
-        })
-      })
-    .then(response=>response.json())
-    .then(data=>console.log(data))
+    alert("YOU ARE CORRECT");
+    // fetch(USERS_URL, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json", 
+    //     "Accept": "application/json"},
+    //   body: JSON.stringify({
+    //     "name": theUserData['name']
+    //     })
+    //   })
+    // .then(response=>response.json())
+    // .then(data=>console.log(data))
+  }
+  else {
+    alert("YOU ARE WRONG");
+    set_random_two_letters_v2();
   }
 });
-
-
 
 
 //......................................................................................
