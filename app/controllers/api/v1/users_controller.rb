@@ -21,7 +21,6 @@ class Api::V1::UsersController < ApplicationController
   end
   
   def create
-    
     if @@fake_session[:duct_tape] == nil 
       @user = User.new(user_params)
       if @user.save
