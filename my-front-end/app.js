@@ -184,7 +184,7 @@ async function set_random_two_letters_v2 () {
 async function random_two_letter_func_v2 () {
   random_two_letters = []
   let x = activeUserID[0];
-  alert("Return Random Two Letters With Low Scores");
+  //alert("Return Random Two Letters With Low Scores");
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
   const final_res = await data.forEach(element => {
