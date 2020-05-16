@@ -208,6 +208,7 @@ sw05opt1.addEventListener('click', (e) => {
     //   })
     // .then(response=>response.json())
     // .then(data=>console.log(data))
+    set_random_two_letters_v2();
   }
   else {
     alert("YOU ARE WRONG");
@@ -230,6 +231,7 @@ sw05opt2.addEventListener('click', (e) => {
     //   })
     // .then(response=>response.json())
     // .then(data=>console.log(data))
+    set_random_two_letters_v2();
   }
   else {
     alert("YOU ARE WRONG");
