@@ -9,7 +9,9 @@ input [type="password"] {
 
 table, th, td {
   border: 1px solid black;
+  font-size: 40px;
 }
+
 
 #switchboard01 { 
 

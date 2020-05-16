@@ -97,7 +97,7 @@ sw03.addEventListener('submit', (e) => {
 
 //random two letters in prepartion of score update
 
-let random_two_letters = []
+let random_two_letters = [] //don't delete this... switchboard  uses this too
 
 const sw04 = document.getElementById('switchboard04')
 const sw04opt1 = document.getElementById('swb04option1')
@@ -158,28 +158,30 @@ async function random_two_letter_func () {
 //NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE
 //ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP
 const sw05 = document.getElementById('switchboard05')
+const sw05matchMe = document.getElementById('swb05matchThis')
+const sw05opt1 = document.getElementById('swb05option1')
+const sw05opt2 = document.getElementById('swb05option2')
 
 sw05.onclick = function () {
-  random_two_letter_func();
+  set_random_two_letters_v2();
   //alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
 
 }
 
-const sw04 = document.getElementById('switchboard04')
-const sw04opt1 = document.getElementById('swb04option1')
-const sw04opt2 = document.getElementById('swb04option2')
+//when i delete the function above, make sure to define random_two_letters here
+let the_right_answer = []
 
-sw04.onclick = function () {
-  set_random_two_letters();
+async function set_random_two_letters_v2 () {
+  the_right_answer = []
+  result = await random_two_letter_func_v2();
+  let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
+  the_right_answer.push(randomMatch)
+  sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+  sw05opt1.innerHTML = `${random_two_letters[0]}`
+  sw05opt2.innerHTML = `${random_two_letters[1]}`
 }
 
-async function set_random_two_letters () {
-  result = await random_two_letter_func();
-  sw04opt1.innerHTML = `${random_two_letters[0]}`
-  sw04opt2.innerHTML = `${random_two_letters[1]}`
-}
-
-async function random_two_letter_func () {
+async function random_two_letter_func_v2 () {
   random_two_letters = []
   let x = activeUserID[0];
   alert("Return Random Two Letters With Low Scores");
@@ -191,14 +193,47 @@ async function random_two_letter_func () {
   return final_res
 };
 
+sw05opt1.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (the_right_answer[0] === sw05opt1.innerHTML) {
+    alert(userName.value + ' submitted the form');
+    fetch(USERS_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+        "Accept": "application/json"},
+      body: JSON.stringify({
+        "name": theUserData['name']
+        })
+      })
+    .then(response=>response.json())
+    .then(data=>console.log(data))
+  }
+});
+
+sw05opt2.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (the_right_answer[0] === sw05opt2.innerHTML) {
+    alert(userName.value + ' submitted the form');
+    fetch(USERS_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+        "Accept": "application/json"},
+      body: JSON.stringify({
+        "name": theUserData['name']
+        })
+      })
+    .then(response=>response.json())
+    .then(data=>console.log(data))
+  }
+});
 
 
 
 
-
-
-
-
+//......................................................................................
+//
 // NOT YET TESTING BELOW THIS LINE
 const sw06 = document.getElementById('switchboard06')
 sw06.onclick = function () {
