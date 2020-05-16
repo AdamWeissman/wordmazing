@@ -21,8 +21,14 @@ class Api::V1::LettersController < ApplicationController
     letter = user.letters.find_by_the_letter(params[:id])
     letter.the_letter_score += 1
     letter.save
-    #letter = Letter.find(the correct letter)
-    #update the LETTER score by 1
+    # FROM TESTING IN THE CONSOLE... DO THE FOLLOWING
+    # GRAB THE LETTER
+    # GRAB WORDLETTERS OFF THE LETTER
+    # CREATE AN ARRAY TO STORE THE WORD_IDS OF ALL THE LETTERS FOUND
+    # ITERATE THROUGH THE WORDS TO UPDATE THE LETTERS IN THE ACTIVATION SWITCH
+    #array_of_word_ids = []
+    #some_letter.wordletters.each {|x| array_of_word_ids.append(x.word_id)}
+    #iterate through the array of word ids to find which words need to be updated. 
     #ALSO UPDATE THE ACTIVATION SWITCH ON THE WORD (WILL NEED TO GO THROUGH THE WORDLETTER TABLE)
     #letter.save
     #this update should select the correct 
