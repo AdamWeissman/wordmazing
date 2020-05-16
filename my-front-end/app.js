@@ -205,7 +205,7 @@ sw05opt1.addEventListener('click', (e) => {
         "Content-Type": "application/json", 
         "Accept": "application/json"},
       body: JSON.stringify({
-        "the_letter": `${y}`
+        "the_letter": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       })
     .then(response=>response.json())
@@ -231,7 +231,7 @@ sw05opt2.addEventListener('click', (e) => {
         "Content-Type": "application/json", 
         "Accept": "application/json"},
       body: JSON.stringify({
-        "the_letter": `${y}`
+        "the_letter": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       })
     .then(response=>response.json())

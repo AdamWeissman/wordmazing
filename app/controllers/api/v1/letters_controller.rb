@@ -16,6 +16,7 @@ class Api::V1::LettersController < ApplicationController
 
   def update
     binding.pry
+    params.permit!
     #letter = Letter.find(the correct letter)
     #update the LETTER score by 1
     #ALSO UPDATE THE ACTIVATION SWITCH ON THE WORD (WILL NEED TO GO THROUGH THE WORDLETTER TABLE)
