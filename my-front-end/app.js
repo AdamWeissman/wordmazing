@@ -59,7 +59,7 @@ sw02a.onclick = () => {
 const sw03 = document.getElementById('switchboard03')
 const word = document.querySelector('#sw03word');
 const theWordData = {};
-let activeUserID = [];
+let activeUserID = []; //this is used here and will be used elsewhere
 
 async function activeUser () {
   const result = await fetch(SESSIONS_URL);
@@ -197,17 +197,20 @@ sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_right_answer[0] === sw05opt1.innerHTML) {
     alert("YOU ARE CORRECT");
-    // fetch(USERS_URL, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json", 
-    //     "Accept": "application/json"},
-    //   body: JSON.stringify({
-    //     "name": theUserData['name']
-    //     })
-    //   })
-    // .then(response=>response.json())
-    // .then(data=>console.log(data))
+    let x = activeUserID[0]
+    let y = the_right_answer[0]
+    fetch(`${USERS_URL}/${x}/letters/${y}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json", 
+        "Accept": "application/json"},
+      body: JSON.stringify({
+        "the_letter": `${y}`
+        })
+      })
+    .then(response=>response.json())
+    .then(data=>console.log(data))
+    
     set_random_two_letters_v2();
   }
   else {
@@ -220,17 +223,20 @@ sw05opt2.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_right_answer[0] === sw05opt2.innerHTML) {
     alert("YOU ARE CORRECT");
-    // fetch(USERS_URL, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json", 
-    //     "Accept": "application/json"},
-    //   body: JSON.stringify({
-    //     "name": theUserData['name']
-    //     })
-    //   })
-    // .then(response=>response.json())
-    // .then(data=>console.log(data))
+    let x = activeUserID[0]
+    let y = the_right_answer[0]
+    fetch(`${USERS_URL}/${x}/letters/${y}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json", 
+        "Accept": "application/json"},
+      body: JSON.stringify({
+        "the_letter": `${y}`
+        })
+      })
+    .then(response=>response.json())
+    .then(data=>console.log(data))
+    
     set_random_two_letters_v2();
   }
   else {
