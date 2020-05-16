@@ -104,7 +104,6 @@ const sw04opt1 = document.getElementById('swb04option1')
 const sw04opt2 = document.getElementById('swb04option2')
 
 sw04.onclick = function () {
-  //random_two_letter_func();
   set_random_two_letters();
 }
 
@@ -165,6 +164,38 @@ sw05.onclick = function () {
   //alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
 
 }
+
+const sw04 = document.getElementById('switchboard04')
+const sw04opt1 = document.getElementById('swb04option1')
+const sw04opt2 = document.getElementById('swb04option2')
+
+sw04.onclick = function () {
+  set_random_two_letters();
+}
+
+async function set_random_two_letters () {
+  result = await random_two_letter_func();
+  sw04opt1.innerHTML = `${random_two_letters[0]}`
+  sw04opt2.innerHTML = `${random_two_letters[1]}`
+}
+
+async function random_two_letter_func () {
+  random_two_letters = []
+  let x = activeUserID[0];
+  alert("Return Random Two Letters With Low Scores");
+  const result = await fetch(`${USERS_URL}/${x}/letters`)
+  const data = await result.json()
+  const final_res = await data.forEach(element => {
+    random_two_letters.push(element.the_letter);
+    });
+  return final_res
+};
+
+
+
+
+
+
 
 
 
