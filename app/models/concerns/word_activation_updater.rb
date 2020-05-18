@@ -11,6 +11,7 @@ module WordActivationUpdater
   end
 
   def activation_update(word, activator, letter, letter_score, word_object)
+    binding.pry
     letter_array = word.split("")
     activator_array = activator.split("")
   
@@ -33,6 +34,7 @@ module WordActivationUpdater
     end
   
     activation_key_update = activation_key_update.join.to_s
+    word_object.word_activation_switch = activation_key_update
     word_object.save
   
   end

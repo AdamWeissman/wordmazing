@@ -27,9 +27,8 @@ class Api::V1::LettersController < ApplicationController
     word_ids = temp_array.map {|wordletter| wordletter.word_id}
     word_ids.uniq!
     
-    update_word_activation_scores(word_ids, letter.the_letter, letter.the_letter_score, user )
+    update_word_activation_scores(word_ids, letter.the_letter, letter.the_letter_score, user)
 
-    binding.pry
     # FROM TESTING IN THE CONSOLE... DO THE FOLLOWING
     # GRAB THE LETTER
     # GRAB WORDLETTERS OFF THE LETTER
