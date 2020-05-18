@@ -5,11 +5,12 @@ module WordActivationUpdater
       word_to_change = the_user.words.find_by_id(x)
       reference_word = word_to_change.the_word
       activation_switch = word_to_change.word_activation_switch
-      
+      activation_update(reference_word, activation_switch, that_letter_to_change, that_letter_score.to_s, word_to_change)
+      word_to_change.save
     end
   end
 
-  def activation_update(word, activator, letter, letter_score)
+  def activation_update(word, activator, letter, letter_score, word_object)
     letter_array = word.split("")
     activator_array = activator.split("")
   
@@ -31,7 +32,8 @@ module WordActivationUpdater
       end    
     end
   
-    return [word, activator, letter, letter_score, activation_key_update.join.to_s]
+    activation_key_update = activation_key_update.join.to_s
+    word_object.save
   
   end
 
