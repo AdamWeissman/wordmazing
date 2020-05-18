@@ -5,11 +5,16 @@ class Api::V1::LettersController < ApplicationController
     @user = User.find(params[:user_id])
     @letters = @user.letters.all
 
+
     def under_a_certain_score(the_letters)
       these_ones = the_letters.map {|i| i if i.the_letter_score < 10}
-      return these_ones.shuffle[0...2] #NEED TO ALSO ACCOUNT FOR A SITUATION WHERE THERE IS ONLY 1 LETTER TO CHOOSE FROM
-      #IN OTHER WORDS: IF THERE IS ONLY ONE LETTER, THEN THAT SINGLE CORRECT LETTER WILL KEEP APPEARING ALONG WITH SOME RANDOM THAT'S BEEN SCORED OUT
+      #NEED TO CHECK FOR AN EMPTY ARRAY (if these_ones empty, then cycle words...send to words controller)
+      #NEED TO CHECK FOR ONLY 1 LETTER (if these_ones is only one, then grab a random letter)
+      return these_ones.shuffle[0...2]
     end  
+
+
+    #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word 
 
     @letters = under_a_certain_score(@letters)
     render json: @letters
