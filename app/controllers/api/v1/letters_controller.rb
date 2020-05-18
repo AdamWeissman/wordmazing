@@ -1,4 +1,5 @@
 class Api::V1::LettersController < ApplicationController
+  include WordActivationUpdater
 
   def index
     @user = User.find(params[:user_id])
@@ -15,12 +16,20 @@ class Api::V1::LettersController < ApplicationController
   end
 
   def update
-    binding.pry
     params.permit!
     user = User.find(params[:user_id])
     letter = user.letters.find_by_the_letter(params[:id])
     letter.the_letter_score += 1
     letter.save
+
+    temp_array = []
+    connector = letter.wordletters.where(letter_id: letter.id).each {|x| temp_array << x}
+    word_ids = temp_array.map {|wordletter| wordletter.word_id}
+    word_ids.uniq!
+    
+    update_word_activation_scores(word_ids, letter.the_letter, letter.the_letter_score, user )
+
+    binding.pry
     # FROM TESTING IN THE CONSOLE... DO THE FOLLOWING
     # GRAB THE LETTER
     # GRAB WORDLETTERS OFF THE LETTER
