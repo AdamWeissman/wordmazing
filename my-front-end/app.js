@@ -251,7 +251,7 @@ sw05opt2.addEventListener('click', (e) => {
 // NOT YET TESTING BELOW THIS LINE
 const sw06 = document.getElementById('switchboard06')
 sw06.onclick = function () {
-  prompt("Return a Random Two Words if a Word is Activated... or a Random Two Letters")
+  alert("Return a Random Two Words if a Word is Activated... or Random Two Letters")
 }
 
 const sw07 = document.getElementById('switchboard07')
