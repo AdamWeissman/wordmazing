@@ -207,9 +207,9 @@ sw05opt1.addEventListener('click', (e) => {
       body: JSON.stringify({
         "the_letter": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
-      })
-    .then(response=>response.json())
-    .then(data=>console.log(data))
+      });
+    //.then(response=>response.json())
+    //.then(data=>console.log(data))
     
     set_random_two_letters_v2();
   }
@@ -234,8 +234,8 @@ sw05opt2.addEventListener('click', (e) => {
         "the_letter": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       })
-    .then(response=>response.json())
-    .then(data=>console.log(data))
+    //.then(response=>response.json())
+    //.then(data=>console.log(data))
     
     set_random_two_letters_v2();
   }
