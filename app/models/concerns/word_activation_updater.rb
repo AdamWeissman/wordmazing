@@ -3,7 +3,7 @@ module WordActivationUpdater
     those_word_ids.each do |x|
       word_to_change = the_user.words.find_by_id(x)
       reference_word = word_to_change.the_word
-      #get the indexes for each letter that matches that_letter_to_change
+      #get the indexes for each letter that matches that_letter_to_change ... test on repl
       activation_switch = word_to_change.word_activation_switch
     end
   end
