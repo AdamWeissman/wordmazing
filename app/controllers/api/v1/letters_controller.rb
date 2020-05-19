@@ -8,13 +8,20 @@ class Api::V1::LettersController < ApplicationController
 
     def under_a_certain_score(the_letters)
       these_ones = the_letters.map {|i| i if i.the_letter_score < 10}
-      #NEED TO CHECK FOR AN EMPTY ARRAY (if these_ones empty, then cycle words...send to words controller)
-      #NEED TO CHECK FOR ONLY 1 LETTER (if these_ones is only one, then grab a random letter)
-      return these_ones.shuffle[0...2]
+      if these_ones.size >= 2
+        return these_ones.shuffle[0...2]
+      elsif these_ones.size == 1
+        alphabet = ('A'..'Z').to_a.shuffle
+        a_random_letter = alphabet[0] != these_ones.size[0] ? alphabet[0] : alphabet[1]
+        these_ones << a_random_letter
+        return these_ones.shuffle[0...2]
+      else
+        redirect
     end  
 
 
-    #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word 
+    #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
+    #(need a redirect to words index which will mimic under a certain score) 
 
     @letters = under_a_certain_score(@letters)
     render json: @letters
