@@ -1,12 +1,22 @@
-class WordsController < Api::V1::MasterController
+class Api::V1::WordsController < ApplicationController
 
   def create
-    word = Words.new(word_params)
+    params.permit!
+    @user = User.find(params[:user_id])
+    word = Word.new(word_params)
+    word.user_id = @user.id
+    word.the_word_score = 0
+    word.word_activation_switch = word.make_activation_switch(word.the_word)
     if word.save
-      render json: word, status: accepted
+      word.make_letters
+      render json: word
     else
       render json: {errors: word.errors.full_messages}, status: :unprocessible_entity
     end
+  end
+
+  def grab_words
+    #this will render two words that have scores LESS than X, can use similar code for scoring from phrase ninja
   end
 
   def update
@@ -18,7 +28,7 @@ class WordsController < Api::V1::MasterController
   private
 
   def word_params
-    params.require(:word).permit(:the_word, :word_activation_switch, :the_word_score, :user_id, :cycle_now) 
+    params.require(:word).permit(:the_word, :word_activation_switch, :the_word_score, :cycle_now) 
   end
   
 end

@@ -24,7 +24,10 @@ module Wordmazing
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
-    #line 28 through 33 was added as per these instructions to get CORS working, more info here: https://github.com/learn-co-curriculum/js-rails-as-api-creating-a-rails-api-from-scratch
+    
+
+
+    #lines below added as per these instructions to get CORS working, more info here: https://github.com/learn-co-curriculum/js-rails-as-api-creating-a-rails-api-from-scratch
     config.middleware.insert_before 0, Rack::Cors do
       allow do
           origins '*'
