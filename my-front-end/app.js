@@ -192,6 +192,7 @@ async function random_two_letter_func_v2 () {
       random_two_letters.push(element.the_letter);
       });
   return two_random_letters
+  // need to find the line where this breaks
   // const final_res = await data.forEach(element => {
   //   random_two_letters.push(element.the_letter);
   //   });
