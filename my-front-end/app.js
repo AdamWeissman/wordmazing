@@ -97,33 +97,31 @@ sw03.addEventListener('submit', (e) => {
 
 //random two letters in prepartion of score update
 
-let random_two_letters = [] //don't delete this... switchboard  uses this too
+// const sw04 = document.getElementById('switchboard04')
+// const sw04opt1 = document.getElementById('swb04option1')
+// const sw04opt2 = document.getElementById('swb04option2')
 
-const sw04 = document.getElementById('switchboard04')
-const sw04opt1 = document.getElementById('swb04option1')
-const sw04opt2 = document.getElementById('swb04option2')
+// sw04.onclick = function () {
+//   set_random_two_letters();
+// }
 
-sw04.onclick = function () {
-  set_random_two_letters();
-}
+// async function set_random_two_letters () {
+//   result = await random_two_letter_func();
+//   sw04opt1.innerHTML = `${random_two_letters[0]}`
+//   sw04opt2.innerHTML = `${random_two_letters[1]}`
+// }
 
-async function set_random_two_letters () {
-  result = await random_two_letter_func();
-  sw04opt1.innerHTML = `${random_two_letters[0]}`
-  sw04opt2.innerHTML = `${random_two_letters[1]}`
-}
-
-async function random_two_letter_func () {
-  random_two_letters = []
-  let x = activeUserID[0];
-  alert("Return Random Two Letters With Low Scores");
-  const result = await fetch(`${USERS_URL}/${x}/letters`)
-  const data = await result.json()
-  const final_res = await data.forEach(element => {
-    random_two_letters.push(element.the_letter);
-    });
-  return final_res
-};
+// async function random_two_letter_func () {
+//   random_two_letters = []
+//   let x = activeUserID[0];
+//   alert("Return Random Two Letters With Low Scores");
+//   const result = await fetch(`${USERS_URL}/${x}/letters`)
+//   const data = await result.json()
+//   const final_res = await data.forEach(element => {
+//     random_two_letters.push(element.the_letter);
+//     });
+//   return final_res
+// };
 
 // all of this has been refactored into the random_two_letter_func
 // sw04.onclick = function () {
@@ -157,6 +155,8 @@ async function random_two_letter_func () {
 //NEED A FUNCTION TO TO CHECK THE INPUT [X]
 //NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE
 //ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP
+let random_two_letters = [] //don't delete this... switchboard  uses this too
+
 const sw05 = document.getElementById('switchboard05')
 const sw05matchMe = document.getElementById('swb05matchThis')
 const sw05opt1 = document.getElementById('swb05option1')
@@ -187,10 +187,15 @@ async function random_two_letter_func_v2 () {
   //alert("Return Random Two Letters With Low Scores");
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
-  const final_res = await data.forEach(element => {
-    random_two_letters.push(element.the_letter);
-    });
-  return final_res
+  const step_1 = await data.letters
+  const step_2 = await step_1.forEach(element => {
+      random_two_letters.push(element.the_letter);
+      });
+  return step_2
+  // const final_res = await data.forEach(element => {
+  //   random_two_letters.push(element.the_letter);
+  //   });
+  // return final_res
 };
 
 sw05opt1.addEventListener('click', (e) => {

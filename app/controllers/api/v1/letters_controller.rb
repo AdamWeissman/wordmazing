@@ -4,6 +4,7 @@ class Api::V1::LettersController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @letters = @user.letters.all
+    @words = @user.words.all
 
     # if @letters.size < 2
     #   alphabet = ('A'..'Z').to_a.shuffle
@@ -21,7 +22,11 @@ class Api::V1::LettersController < ApplicationController
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
     #(need a redirect to words index which will mimic under a certain score) 
     @letters = under_a_certain_score(@letters)
-    render json: @letters 
+
+    @everything = {}
+    @everything[:words] = @words
+    @everything[:letters] = @letters
+    render json: @everything
 
   end
 
