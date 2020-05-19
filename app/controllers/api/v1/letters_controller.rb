@@ -13,6 +13,7 @@ class Api::V1::LettersController < ApplicationController
           a_random_letter = alphabet[0] != these_ones.size[0] ? alphabet[0] : alphabet[1]
           random_letter_object = @user.letters.find_or_create_by(user_id: @user.id, the_letter: a_random_letter.to_s, the_letter_score: 9)
           random_letter_object.save
+          binding.pry
           these_ones << random_letter_object
           return these_ones.shuffle[0...2]  
         else  
@@ -37,6 +38,14 @@ class Api::V1::LettersController < ApplicationController
     letter = user.letters.find_by_the_letter(params[:id])
     letter.the_letter_score += 1
     letter.save
+
+    if letter.the_letter_score == 3
+      alphabet = ('A'..'Z').to_a.shuffle
+      a_random_letter = alphabet[0...2] #!= these_ones.size[0] ? alphabet[0] : alphabet[1]
+      random_letter_object = user.letters.find_or_create_by(user_id: user.id, the_letter: a_random_letter.to_s, the_letter_score: 0)
+      random_letter_object.save
+    end
+
 
     temp_array = []
     connector = letter.wordletters.where(letter_id: letter.id).each {|x| temp_array << x}
