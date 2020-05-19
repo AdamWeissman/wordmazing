@@ -3,13 +3,12 @@ class Api::V1::LettersController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @letters = @user.letters.all
+    @those_letters = @user.letters.all
     @words = @user.words.all
 
       def under_a_certain_score(the_letters)
-        binding.pry
         these_ones = the_letters.map {|i| i if i.the_letter_score < 3}
-        if these_ones.size > 2
+        if these_ones.size < 2
           alphabet = ('A'..'Z').to_a.shuffle
           a_random_letter = alphabet[0] != these_ones.size[0] ? alphabet[0] : alphabet[1]
           random_letter_object = @user.letters.find_or_create_by(user_id: @user.id, the_letter: a_random_letter.to_s, the_letter_score: 9)
@@ -23,7 +22,7 @@ class Api::V1::LettersController < ApplicationController
 
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
     #(need a redirect to words index which will mimic under a certain score) 
-    @letters = under_a_certain_score(@letters)
+    @letters = under_a_certain_score(@those_letters)
 
     @everything = {}
     @everything[:words] = @words
