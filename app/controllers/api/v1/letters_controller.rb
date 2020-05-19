@@ -39,11 +39,11 @@ class Api::V1::LettersController < ApplicationController
     letter.the_letter_score += 1
     letter.save
 
-    if letter.the_letter_score == 3
-      alphabet = ('A'..'Z').to_a.shuffle
-      a_random_letter = alphabet[0...2] #!= these_ones.size[0] ? alphabet[0] : alphabet[1]
-      random_letter_object = user.letters.find_or_create_by(user_id: user.id, the_letter: a_random_letter.to_s, the_letter_score: 0)
-      random_letter_object.save
+    if letter.the_letter_score == 2 #this is just to test... when characters are cycled out that's when errors begin
+      nums = ('1'..'9').to_a.shuffle
+      a_random_num = nums[0] != letter.the_letter ? nums[0] : nums[1]
+      random_letter_num_object = user.letters.find_or_create_by(user_id: user.id, the_letter: a_random_letter.to_s, the_letter_score: 0)
+      random_letter_num_object.save
     end
 
 
