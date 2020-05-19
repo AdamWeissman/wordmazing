@@ -17,6 +17,7 @@ class Api::V1::LettersController < ApplicationController
           return these_ones.shuffle[0...2]  
         else  
           return these_ones.shuffle[0...2]
+        end
       end  
 
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
