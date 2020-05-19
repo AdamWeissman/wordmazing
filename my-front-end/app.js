@@ -187,11 +187,11 @@ async function random_two_letter_func_v2 () {
   //alert("Return Random Two Letters With Low Scores");
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
-  const step_1 = await data.letters
-  const step_2 = await step_1.forEach(element => {
+  const the_letters = await data.letters
+  const two_random_letters = await the_letters.forEach(element => {
       random_two_letters.push(element.the_letter);
       });
-  return step_2
+  return two_random_letters
   // const final_res = await data.forEach(element => {
   //   random_two_letters.push(element.the_letter);
   //   });
