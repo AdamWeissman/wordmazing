@@ -7,6 +7,7 @@ class Api::V1::LettersController < ApplicationController
     @words = @user.words.all
 
       def under_a_certain_score(the_letters)
+        binding.pry
         these_ones = the_letters.map {|i| i if i.the_letter_score < 3}
         if these_ones.size < 2
           alphabet = ('A'..'Z').to_a.shuffle
