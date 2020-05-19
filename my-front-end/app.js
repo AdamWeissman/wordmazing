@@ -188,15 +188,15 @@ async function random_two_letter_func_v2 () {
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
   const the_letters = await data.letters
+  if (the_letters.includes(null)) {
+    console.log("OOPS");
+  }
+  else {
   const two_random_letters = await the_letters.forEach(element => {
       random_two_letters.push(element.the_letter);
-      });
-  return two_random_letters
-  // need to find the line where this breaks - stupid github did you break?
-  // const final_res = await data.forEach(element => {
-  //   random_two_letters.push(element.the_letter);
-  //   });
-  // return final_res
+      });}
+  //return two_random_letters
+
 };
 
 sw05opt1.addEventListener('click', (e) => {
