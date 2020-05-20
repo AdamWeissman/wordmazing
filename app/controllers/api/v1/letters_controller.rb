@@ -14,10 +14,6 @@ class Api::V1::LettersController < ApplicationController
     #elsif one word
     #else no words
 
-   
-
-
-
       def under_a_certain_score(the_letters)
         if (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.length >= 2
           these_ones = the_letters.map {|i| i if i.the_letter_score <= 3}
@@ -28,8 +24,9 @@ class Api::V1::LettersController < ApplicationController
           a_random_letter = some_old_letters.shuffle[0]
           these_ones << a_random_letter
           return these_ones.compact.shuffle[0..1]
-        else (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
-          redirect_to "/api/v1/users/'#{@user.id}'/words/"
+        else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
+          binding.pry
+          return "go to words"
         end
       end  
 
@@ -37,15 +34,16 @@ class Api::V1::LettersController < ApplicationController
     #(need a redirect to words index which will mimic under a certain score) 
     
     @letters = under_a_certain_score(@letters)
-
-    @everything = {}
-    @everything[:words] = @words
-    @everything[:letters] = @letters
-
-
-     #if cycle_now (random render... json words OR json letters)
-
-    render json: @everything
+    
+    if @letters = "go to words"
+      redirect_to "/api/v1/users/#{@user.id}/words/"
+    else
+      @everything = {}
+      @everything[:words] = @words
+      @everything[:letters] = @letters
+      #if cycle_now (random render... json words OR json letters)
+      render json: @everything
+    end
 
   end
 
