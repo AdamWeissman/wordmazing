@@ -175,7 +175,7 @@ async function set_random_two_letters_v2 () {
   the_correct_letter = []
   result = await random_two_letter_func_v2();
   let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
-  the_right_answer.push(randomMatch)
+  the_correct_letter.push(randomMatch)
   sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
   sw05opt1.innerHTML = `${random_two_letters[0]}`
   sw05opt2.innerHTML = `${random_two_letters[1]}`

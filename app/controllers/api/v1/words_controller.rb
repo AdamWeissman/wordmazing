@@ -36,7 +36,7 @@ class Api::V1::WordsController < ApplicationController
 
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
     #(need a redirect to words index which will mimic under a certain score) 
-    @words = under_a_certain_score(@letters)
+    @words = under_a_certain_score(@words)
     if @words[0] == "GOTOEND" #destroy user and display congratulations
       redirect_to "/api/v1/users/#{@user.id}/words/"
     else
