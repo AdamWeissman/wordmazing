@@ -7,15 +7,16 @@ class Api::V1::LettersController < ApplicationController
     @words = @user.words.all
 
       def under_a_certain_score(the_letters)
-        these_ones = the_letters.map {|i| i if i.the_letter_score < 3}
-        if these_ones.size >= 2
+        these_ones = the_letters.map {|i| (i.the_letter_score <= 3 ) ? i : next}
+        if these_ones.length >= 2
           return these_ones.shuffle[0...2]
-        elsif these_ones.size == 1
-          some_old_letters = the_letters.map {|i| i if i.the_letter_score >= 3}
-          a_random_letter = some_old_letters[0] != these_ones.size[0] ? some_old_letters[0] : some_old_letters[1]
+        elsif these_ones.length == 1
+          some_old_letters = the_letters.map {|i| (i.the_letter_score > 3 ) ? i : next}
+          a_random_letter = (some_old_letters[0] != these_ones.size[0]) ? some_old_letters[0] : some_old_letters[1]
+          binding.pry
           these_ones << a_random_letter
           return these_ones.shuffle[0...2]
-        else these_ones.size == 0
+        else these_ones.length == 0
           return "WORD TIME"
         end
       end  
