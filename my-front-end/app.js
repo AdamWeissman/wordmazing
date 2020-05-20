@@ -188,7 +188,7 @@ async function random_two_letter_func_v2 () {
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
   const the_letters = await data.letters
-  if (the_letters.includes(null)) {
+  if (await the_letters.includes(null)) {
     console.log("OOPS");
   }
   else {
