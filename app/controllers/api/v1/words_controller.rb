@@ -15,6 +15,12 @@ class Api::V1::WordsController < ApplicationController
     end
   end
 
+  def index
+    @user = User.find(params[:user_id])
+    @words = @user.words.all
+    render json: @words
+  end
+
   def grab_words
     #this will render two words that have scores LESS than X, can use similar code for scoring from phrase ninja
   end

@@ -3,36 +3,48 @@ class Api::V1::LettersController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @those_letters = @user.letters.all
+    @letters = @user.letters.all
     @words = @user.words.all
+
+    #if two or more words
+    #elsif one word
+    #else no words
+
+    #if two or more letters
+    #elsif one word
+    #else no words
+
+   
+
 
 
       def under_a_certain_score(the_letters)
-        the_letters_sub_1 = the_letters #for if
-        the_letters_sub_2 = the_letters #for else
-
-        if (the_letters_sub_1.map {|i| i if i.the_letter_score < 3}).compact.length > 1
-          these_ones = the_letters_sub_1.map {|i| i if i.the_letter_score < 3}
+        if (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.length >= 2
+          these_ones = the_letters.map {|i| i if i.the_letter_score <= 3}
           return these_ones.compact.shuffle[0..1]
-        elsif (the_letters_sub_2.map {|i| i if i.the_letter_score < 3}).compact.length == 1
-          these_ones = (the_letters_sub_1.map {|i| i if i.the_letter_score < 3}).compact  
+        elsif (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.length == 1
+          these_ones = (the_letters.map {|i| i if i.the_letter_score <= 3}).compact  
           some_old_letters = (the_letters.map {|i| i if i.the_letter_score > 3 }).compact
-          a_random_letter = some_old_letters[0]
+          a_random_letter = some_old_letters.shuffle[0]
           these_ones << a_random_letter
           return these_ones.compact.shuffle[0..1]
-        else these_ones.length == 0
-          return the_letters
+        else (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
+          redirect_to "/api/v1/users/'#{@user.id}'/words/"
         end
       end  
 
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
     #(need a redirect to words index which will mimic under a certain score) 
     
-    @letters = under_a_certain_score(@those_letters)
+    @letters = under_a_certain_score(@letters)
 
     @everything = {}
     @everything[:words] = @words
     @everything[:letters] = @letters
+
+
+     #if cycle_now (random render... json words OR json letters)
+
     render json: @everything
 
   end
