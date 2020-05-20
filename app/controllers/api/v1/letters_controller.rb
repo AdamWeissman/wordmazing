@@ -26,16 +26,14 @@ class Api::V1::LettersController < ApplicationController
           return these_ones.compact.shuffle[0..1]
         else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
           binding.pry
-          return "go to words"
+          return ["GOTOWORDS"]
         end
       end  
 
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
     #(need a redirect to words index which will mimic under a certain score) 
-    
     @letters = under_a_certain_score(@letters)
-    
-    if @letters = "go to words"
+    if @letters[0] == "GOTOWORDS"
       redirect_to "/api/v1/users/#{@user.id}/words/"
     else
       @everything = {}

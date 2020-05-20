@@ -169,10 +169,10 @@ sw05.onclick = function () {
 }
 
 //when i delete the function on switchboard 4, make sure to define random_two_letters here
-let the_right_answer = []
+let the_correct_letter = []
 
 async function set_random_two_letters_v2 () {
-  the_right_answer = []
+  the_correct_letter = []
   result = await random_two_letter_func_v2();
   let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
   the_right_answer.push(randomMatch)
@@ -201,10 +201,10 @@ async function random_two_letter_func_v2 () {
 
 sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
-  if (the_right_answer[0] === sw05opt1.innerHTML) {
+  if (the_correct_letter[0] === sw05opt1.innerHTML) {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
-    let y = the_right_answer[0]
+    let y = the_correct_letter[0]
     fetch(`${USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
@@ -227,10 +227,10 @@ sw05opt1.addEventListener('click', (e) => {
 
 sw05opt2.addEventListener('click', (e) => {
   e.preventDefault();
-  if (the_right_answer[0] === sw05opt2.innerHTML) {
+  if (the_correct_letter[0] === sw05opt2.innerHTML) {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
-    let y = the_right_answer[0]
+    let y = the_correct_letter[0]
     fetch(`${USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
