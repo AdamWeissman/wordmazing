@@ -177,17 +177,18 @@ sw05.onclick = function () {
 
 
 async function set_random_two_letters_v2 () { //this function should be renamed since its for letters and words
-  the_correct_letter = [] // this line and the following line are not to "redefine" the variable above, but to clear it prior to use within the function
-  the_correct_word = []
+  // the_correct_letter = [] // this line and the following line are not to "redefine" the variable above, but to clear it prior to use within the function
+  // the_correct_word = []
+  the_correct_choice = []
   try {result = await random_two_letter_func_v2();
     let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
-    the_correct_letter.push(randomMatch)
+    the_correct_choice.push(randomMatch)
     sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
     sw05opt1.innerHTML = `${random_two_letters[0]}`
     sw05opt2.innerHTML = `${random_two_letters[1]}`}
   catch {result = await random_two_words_func();
     let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
-    the_correct_word.push(randomMatch)
+    the_correct_choice.push(randomMatch)
     sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
     sw05opt1.innerHTML = `${random_two_words[0]}`
     sw05opt2.innerHTML = `${random_two_words[1]}`}
@@ -221,10 +222,10 @@ async function random_two_words_func () {
 
 sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
-  if (the_correct_letter[0] === sw05opt1.innerHTML) {
+  if (the_correct_choice[0] === sw05opt1.innerHTML) {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
-    let y = the_correct_letter[0]
+    let y = the_correct_choice[0]
     fetch(`${USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
@@ -247,10 +248,10 @@ sw05opt1.addEventListener('click', (e) => {
 
 sw05opt2.addEventListener('click', (e) => {
   e.preventDefault();
-  if (the_correct_letter[0] === sw05opt2.innerHTML) {
+  if (the_correct_choice[0] === sw05opt2.innerHTML) {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
-    let y = the_correct_letter[0]
+    let y = the_correct_choice[0]
     fetch(`${USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
