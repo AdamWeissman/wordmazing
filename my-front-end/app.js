@@ -182,7 +182,7 @@ async function set_random_two_letters_v2 () {
   sw05opt1.innerHTML = `${random_two_letters[0]}`
   sw05opt2.innerHTML = `${random_two_letters[1]}`}
   catch {
-    console.log("you ruined it all!")
+    console.log("you ruined it all!!!")
   }
 }
 
