@@ -4,7 +4,7 @@ class Api::V1::LettersController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @letters = @user.letters.all
-    @words = @user.words.all
+   # @words = @user.words.all
 
     #if two or more words
     #elsif one word
@@ -36,7 +36,7 @@ class Api::V1::LettersController < ApplicationController
       redirect_to "/api/v1/users/#{@user.id}/words/"
     else
       @everything = {}
-      @everything[:words] = @words
+      #@everything[:words] = @words
       @everything[:letters] = @letters
       #if cycle_now (random render... json words OR json letters)
       render json: @everything

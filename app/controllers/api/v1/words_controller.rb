@@ -38,25 +38,32 @@ class Api::V1::WordsController < ApplicationController
     #(need a redirect to words index which will mimic under a certain score) 
     @words = under_a_certain_score(@words)
     if @words[0] == "END" #destroy user and display congratulations
-      redirect_to "/api/v1/users/#{@user.id}/words/" #redirect to completion page
+      redirect_to "api/v1/users#destroy" #redirect to completion page
     else
       @everything = {}
       @everything[:words] = @words
-      @everything[:letters] = @letters
+      #@everything[:letters] = @letters
       #if cycle_now (random render... json words OR json letters)
       render json: @everything
     end
 
   end
 
-  def grab_words
-    #this will render two words that have scores LESS than X, can use similar code for scoring from phrase ninja
-  end
+  # def grab_words
+  #   #this will render two words that have scores LESS than X, can use similar code for scoring from phrase ninja
+  # end
 
   def update
-    word = Word.find(word_params)
-    word.save
-    render json: word
+    params.permit!
+    user = User.find(params[:user_id])
+    word = user.words.find_by_the_word(params[:id])
+    if word.the_word_score == 4
+      word.the_word_score = word.the_word_score
+      word.save
+    else
+      word.the_word_score += 1
+      word.save
+    end
   end
 
   private
