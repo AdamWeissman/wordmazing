@@ -226,7 +226,8 @@ sw05opt1.addEventListener('click', (e) => {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
     let y = the_correct_choice[0]
-    try {fetch(`${USERS_URL}/${x}/letters/${y}`, {
+    if (the_correct_choice[0].length === 1) {
+    fetch(`${USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -237,10 +238,10 @@ sw05opt1.addEventListener('click', (e) => {
       });
     //.then(response=>response.json())
     //.then(data=>console.log(data))
-    //set_random_two_letters_v2();
-  }
+    set_random_two_letters_v2();}
 
-    catch {fetch(`${USERS_URL}/${x}/words/${y}`, {
+    else {
+      fetch(`${USERS_URL}/${x}/words/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -249,9 +250,9 @@ sw05opt1.addEventListener('click', (e) => {
         "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       });
-    //set_random_two_letters_v2();
-    }
     set_random_two_letters_v2();
+    }
+
   }
   else {
     alert("YOU ARE WRONG");
@@ -265,7 +266,8 @@ sw05opt2.addEventListener('click', (e) => {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
     let y = the_correct_choice[0]
-    try {fetch(`${USERS_URL}/${x}/letters/${y}`, {
+    if (the_correct_choice[0].length === 1) {
+      fetch(`${USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -276,10 +278,9 @@ sw05opt2.addEventListener('click', (e) => {
       })
     //.then(response=>response.json())
     //.then(data=>console.log(data))
-    //set_random_two_letters_v2();
-  }
-
-    catch {fetch(`${USERS_URL}/${x}/words/${y}`, {
+    set_random_two_letters_v2();
+    }
+    else {fetch(`${USERS_URL}/${x}/words/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -288,10 +289,9 @@ sw05opt2.addEventListener('click', (e) => {
         "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       });
-    //set_random_two_letters_v2();
+    set_random_two_letters_v2();
     }
 
-    set_random_two_letters_v2();
   }
   else {
     alert("YOU ARE WRONG");
