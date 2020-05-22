@@ -39,9 +39,7 @@ class Api::V1::WordsController < ApplicationController
     @words = under_a_certain_score(@words)
     if @words[0] == "THEEND" #destroy user and display congratulations
       @user.destroy
-      @everything = {}
-      @everything[:gameover] = "game over"
-      render json: @everything#redirect to completion page
+      #something needs to happen here
     else
       @everything = {}
       @everything[:words] = @words
