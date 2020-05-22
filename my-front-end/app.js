@@ -95,50 +95,6 @@ sw03.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
 });
 
-//random two letters in prepartion of score update
-
-// const sw04 = document.getElementById('switchboard04')
-// const sw04opt1 = document.getElementById('swb04option1')
-// const sw04opt2 = document.getElementById('swb04option2')
-
-// sw04.onclick = function () {
-//   set_random_two_letters();
-// }
-
-// async function set_random_two_letters () {
-//   result = await random_two_letter_func();
-//   sw04opt1.innerHTML = `${random_two_letters[0]}`
-//   sw04opt2.innerHTML = `${random_two_letters[1]}`
-// }
-
-// async function random_two_letter_func () {
-//   random_two_letters = []
-//   let x = activeUserID[0];
-//   alert("Return Random Two Letters With Low Scores");
-//   const result = await fetch(`${USERS_URL}/${x}/letters`)
-//   const data = await result.json()
-//   const final_res = await data.forEach(element => {
-//     random_two_letters.push(element.the_letter);
-//     });
-//   return final_res
-// };
-
-// all of this has been refactored into the random_two_letter_func
-// sw04.onclick = function () {
-//   random_two_letters = []
-//   let x = activeUserID[0];
-//   alert("Return Random Two Letters With Low Scores");
-//   fetch(`${USERS_URL}/${x}/letters`)
-//   .then((response) => {
-//     response.json()
-//   .then((data) => {data.forEach(element => {
-//     random_two_letters.push(element.the_letter);
-//     });
-//   });
-// });
-// }
-
-
 
 //
 //ABOVE THIS LINE IS WORKING
@@ -147,15 +103,6 @@ sw03.addEventListener('submit', (e) => {
 //
 
 //TESTING
-
-
-//will need to use the variable random_two_letters from above to update the score [X]
-//NEED A FUNCTION TO DETERMINE WHICH IS THE CORRECT LETTER FOR SCORING [X]
-//NEED A FUNCTION TO ASK THE USER, RECEIVE THE INPUT [X]
-//NEED A FUNCTION TO TO CHECK THE INPUT [X]
-//NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE [X]
-//ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP[X]
-
 
 const sw05 = document.getElementById('switchboard05')
 const sw05matchMe = document.getElementById('swb05matchThis')
@@ -170,15 +117,7 @@ sw05.onclick = function () {
     set_random_two_letters_v2();
 }
 
-// attempt to refactor the code below:
-// the_correct_letter
-// the_correct_
-//   both should be replaced with the_correct_choice and replaced on the buttons.
-
-
 async function set_random_two_letters_v2 () { //this function should be renamed since its for letters and words
-  // the_correct_letter = [] // this line and the following line are not to "redefine" the variable above, but to clear it prior to use within the function
-  // the_correct_word = []
   the_correct_choice = []
   try {result = await random_two_letter_func_v2();
     let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
@@ -303,25 +242,25 @@ sw05opt2.addEventListener('click', (e) => {
 //......................................................................................
 //
 // NOT YET TESTING BELOW THIS LINE
-const sw06 = document.getElementById('switchboard06')
-sw06.onclick = function () {
-  alert("Return a Random Two Words if a Word is Activated... or Random Two Letters")
-}
+// const sw06 = document.getElementById('switchboard06')
+// sw06.onclick = function () {
+//   alert("Return a Random Two Words if a Word is Activated... or Random Two Letters")
+// }
 
-const sw07 = document.getElementById('switchboard07')
-sw07.onclick = function () {
-  alert("Increment Score of a Random Word by 9")
-}
+// const sw07 = document.getElementById('switchboard07')
+// sw07.onclick = function () {
+//   alert("Increment Score of a Random Word by 9")
+// }
 
-const sw08 = document.getElementById('switchboard08')
-sw08.onclick = function () {
-  alert("If only one letter left, Return Random Letter with Last Letter in DB")
-}
+// const sw08 = document.getElementById('switchboard08')
+// sw08.onclick = function () {
+//   alert("If only one letter left, Return Random Letter with Last Letter in DB")
+// }
 
-const sw09 = document.getElementById('switchboard09')
-sw09.onclick = function () {
-  alert("If all letters scored out, Return a Word")
-}
+// const sw09 = document.getElementById('switchboard09')
+// sw09.onclick = function () {
+//   alert("If all letters scored out, Return a Word")
+// }
 
 const sw10 = document.getElementById('switchboard10')
 sw10.onclick = function () {
