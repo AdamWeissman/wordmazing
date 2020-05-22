@@ -30,15 +30,15 @@ class Api::V1::WordsController < ApplicationController
           these_ones << a_random_word
           return these_ones.compact.shuffle[0..1]
         else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
-          return ["END"]
+          return ["THEEND"]
         end
       end  
 
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
     #(need a redirect to words index which will mimic under a certain score) 
     @words = under_a_certain_score(@words)
-    if @words[0] == "END" #destroy user and display congratulations
-      redirect_to "api/v1/users#destroy" #redirect to completion page
+    if @words[0] == "THEEND" #destroy user and display congratulations
+      redirect_to "api/v1/users"(:action => "delete") #redirect to completion page
     else
       @everything = {}
       @everything[:words] = @words
