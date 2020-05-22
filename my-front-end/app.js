@@ -163,18 +163,8 @@ const sw05opt1 = document.getElementById('swb05option1')
 const sw05opt2 = document.getElementById('swb05option2')
 
 sw05.onclick = function () {
-
-  try { 
     set_random_two_letters_v2();
-  }
-  catch {
-    sw05opt1.innerHTML = "OOPS"
-    sw05opt2.innerHTML = "DOUBLE OOPS"
-  }
-
-
-
-
+  
   
   //alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
 
@@ -185,12 +175,15 @@ let the_correct_letter = []
 
 async function set_random_two_letters_v2 () {
   the_correct_letter = []
-  result = await random_two_letter_func_v2();
+  try {result = await random_two_letter_func_v2();
   let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
   the_correct_letter.push(randomMatch)
   sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
   sw05opt1.innerHTML = `${random_two_letters[0]}`
-  sw05opt2.innerHTML = `${random_two_letters[1]}`
+  sw05opt2.innerHTML = `${random_two_letters[1]}`}
+  catch {
+    console.log("you ruined it all!")
+  }
 }
 
 async function random_two_letter_func_v2 () {
@@ -200,13 +193,9 @@ async function random_two_letter_func_v2 () {
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
   const the_letters = await data.letters
-  if (await the_letters.includes(null)) {
-    console.log("OOPS");
-  }
-  else {
   const two_random_letters = await the_letters.forEach(element => {
       random_two_letters.push(element.the_letter);
-      });}
+      });
   //return two_random_letters
 
 };
