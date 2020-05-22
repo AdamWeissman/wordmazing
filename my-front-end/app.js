@@ -171,19 +171,24 @@ sw05.onclick = function () {
 }
 
 //when i delete the function on switchboard 4, make sure to define random_two_letters here
-let the_correct_letter = []
+let the_correct_letter = [] //this line an the one below are used for the clicking events
+let the_correct_word = []
 
-async function set_random_two_letters_v2 () {
-  the_correct_letter = []
+async function set_random_two_letters_v2 () { //this function should be renamed since its for letters and words
+  the_correct_letter = [] // this line and the following line are not to "redefine" the variable above, but to clear it prior to use within the function
+  the_correct_word = []
   try {result = await random_two_letter_func_v2();
-  let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
-  the_correct_letter.push(randomMatch)
-  sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
-  sw05opt1.innerHTML = `${random_two_letters[0]}`
-  sw05opt2.innerHTML = `${random_two_letters[1]}`}
-  catch {
-    console.log("you ruined it all!!!")
-  }
+    let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
+    the_correct_letter.push(randomMatch)
+    sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+    sw05opt1.innerHTML = `${random_two_letters[0]}`
+    sw05opt2.innerHTML = `${random_two_letters[1]}`}
+  catch {result = await random_two_letter_words();
+    let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
+    the_correct_word.push(randomMatch)
+    sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+    sw05opt1.innerHTML = `${random_two_words[0]}`
+    sw05opt2.innerHTML = `${random_two_words[1]}`}
 }
 
 async function random_two_letter_func_v2 () {
@@ -197,6 +202,20 @@ async function random_two_letter_func_v2 () {
       random_two_letters.push(element.the_letter);
       });
   //return two_random_letters
+
+};
+
+async function random_two_words_func () {
+  random_two_words = []
+  let x = activeUserID[0];
+  //alert("Return Random Two Letters With Low Scores");
+  const result = await fetch(`${USERS_URL}/${x}/words`)
+  const data = await result.json()
+  const the_words = await data.letters
+  const two_random_words = await the_words.forEach(element => {
+      random_two_words.push(element.the_word);
+      });
+  //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
 };
 
