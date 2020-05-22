@@ -237,7 +237,8 @@ sw05opt1.addEventListener('click', (e) => {
       });
     //.then(response=>response.json())
     //.then(data=>console.log(data))
-    set_random_two_letters_v2();}
+    //set_random_two_letters_v2();
+  }
 
     catch {fetch(`${USERS_URL}/${x}/words/${y}`, {
       method: "PATCH",
@@ -248,8 +249,9 @@ sw05opt1.addEventListener('click', (e) => {
         "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       });
-    set_random_two_letters_v2();
+    //set_random_two_letters_v2();
     }
+    set_random_two_letters_v2();
   }
   else {
     alert("YOU ARE WRONG");
@@ -274,7 +276,8 @@ sw05opt2.addEventListener('click', (e) => {
       })
     //.then(response=>response.json())
     //.then(data=>console.log(data))
-    set_random_two_letters_v2();}
+    //set_random_two_letters_v2();
+  }
 
     catch {fetch(`${USERS_URL}/${x}/words/${y}`, {
       method: "PATCH",
@@ -285,8 +288,10 @@ sw05opt2.addEventListener('click', (e) => {
         "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       });
-    set_random_two_letters_v2();
+    //set_random_two_letters_v2();
     }
+
+    set_random_two_letters_v2();
   }
   else {
     alert("YOU ARE WRONG");
