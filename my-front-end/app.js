@@ -153,26 +153,28 @@ sw03.addEventListener('submit', (e) => {
 //NEED A FUNCTION TO DETERMINE WHICH IS THE CORRECT LETTER FOR SCORING [X]
 //NEED A FUNCTION TO ASK THE USER, RECEIVE THE INPUT [X]
 //NEED A FUNCTION TO TO CHECK THE INPUT [X]
-//NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE
-//ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP
-let random_two_letters = [] //don't delete this... switchboard  uses this too
+//NEED LOGIC FOR IF CORRECT UPDATE SCORE, AND IF WRONG JUST AUTOCYCLE [X]
+//ULTIMATELY, THE BUTTON ABOVE AND THIS BUTTON HERE WILL BECOME THE GAME LOOP UNTIL ACTIVATION SWITCHES ARE SCORED UP[X]
+
 
 const sw05 = document.getElementById('switchboard05')
 const sw05matchMe = document.getElementById('swb05matchThis')
 const sw05opt1 = document.getElementById('swb05option1')
 const sw05opt2 = document.getElementById('swb05option2')
 
-sw05.onclick = function () {
-    set_random_two_letters_v2();
-  
-  
-  //alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
-
-}
-
-//when i delete the function on switchboard 4, make sure to define random_two_letters here
+let random_two_letters = [] //dont delete this
 let the_correct_letter = [] //this line an the one below are used for the clicking events
 let the_correct_word = []
+
+sw05.onclick = function () {
+    set_random_two_letters_v2();
+}
+
+// attempt to refactor the code below:
+// the_correct_letter
+// the_correct_
+//   both should be replaced with the_correct_choice and replaced on the buttons.
+
 
 async function set_random_two_letters_v2 () { //this function should be renamed since its for letters and words
   the_correct_letter = [] // this line and the following line are not to "redefine" the variable above, but to clear it prior to use within the function
@@ -201,8 +203,6 @@ async function random_two_letter_func_v2 () {
   const two_random_letters = await the_letters.forEach(element => {
       random_two_letters.push(element.the_letter);
       });
-  //return two_random_letters
-
 };
 
 async function random_two_words_func () {
