@@ -25,7 +25,6 @@ class Api::V1::LettersController < ApplicationController
           these_ones << a_random_letter
           return these_ones.compact.shuffle[0..1]
         else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
-          binding.pry
           return ["GOTOWORDS"]
         end
       end  
@@ -49,8 +48,13 @@ class Api::V1::LettersController < ApplicationController
     params.permit!
     user = User.find(params[:user_id])
     letter = user.letters.find_by_the_letter(params[:id])
-    letter.the_letter_score += 1
-    letter.save
+    if letter.the_letter_score == 4
+      letter.the_letter_score = letter.the_letter_score
+      letter.save
+    else
+      letter.the_letter_score += 1
+      letter.save
+    end
 
     # if letter.the_letter_score == 2 #this is just to test... when characters are cycled out that's when errors begin
     #   #alphabet = ('a'..'z').to_a.shuffle

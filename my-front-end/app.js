@@ -163,7 +163,19 @@ const sw05opt1 = document.getElementById('swb05option1')
 const sw05opt2 = document.getElementById('swb05option2')
 
 sw05.onclick = function () {
-  set_random_two_letters_v2();
+
+  try { 
+    set_random_two_letters_v2();
+  }
+  catch {
+    sw05opt1.innerHTML = "OOPS"
+    sw05opt2.innerHTML = "DOUBLE OOPS"
+  }
+
+
+
+
+  
   //alert("Incremeent Score of Random Letter by 1 and Corresponding Word Activation")
 
 }
