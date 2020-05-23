@@ -171,7 +171,8 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
 
     const will_it_be_words_or_letters = [pickWords, pickLetters]
     let grab_one = will_it_be_words_or_letters[Math.floor(Math.random() * will_it_be_words_or_letters.length)];
-    grab_one();
+    try {grab_one()}
+    catch {set_random_two_letters_or_words_v2 ()}
   }
 
 }
