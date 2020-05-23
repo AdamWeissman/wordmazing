@@ -120,6 +120,14 @@ sw05.onclick = function () {
 
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
+  // the computer should check to see if there are any words that have been unlocked
+  // if a word has been unlocked, then it should enter rotation
+  // but how...?
+  // should check to see what's listed as cycle_now first
+  // should compact down to letters and words uniq
+  // letters index can have it all (for checking)
+  // and then instead of a try catch, could be an if else
+  
   try {result = await random_two_letter_func_v2();
     let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
     the_correct_choice.push(randomMatch)
@@ -269,10 +277,10 @@ sw05opt2.addEventListener('click', (e) => {
 //   alert("If all letters scored out, Return a Word")
 // }
 
-const sw10 = document.getElementById('switchboard10')
-sw10.onclick = function () {
-  alert("If all words scored out... Return Congratulations and delete user")
-}
+// const sw10 = document.getElementById('switchboard10')
+// sw10.onclick = function () {
+//   alert("If all words scored out... Return Congratulations and delete user")
+// }
 
 const sw11 = document.getElementById('switchboard11')
 sw11.onclick = function () {

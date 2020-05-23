@@ -4,15 +4,7 @@ class Api::V1::LettersController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @letters = @user.letters.all
-   # @words = @user.words.all
-
-    #if two or more words
-    #elsif one word
-    #else no words
-
-    #if two or more letters
-    #elsif one word
-    #else no words
+    @words = @user.words.all
 
       def under_a_certain_score(the_letters)
         if (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.length >= 2
@@ -36,7 +28,7 @@ class Api::V1::LettersController < ApplicationController
       redirect_to "/api/v1/users/#{@user.id}/words/"
     else
       @everything = {}
-      #@everything[:words] = @words
+      @everything[:words] = @words
       @everything[:letters] = @letters
       #if cycle_now (random render... json words OR json letters)
       render json: @everything
