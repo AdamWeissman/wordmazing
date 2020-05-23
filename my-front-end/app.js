@@ -183,15 +183,19 @@ async function check_cycle_now_func () {
   const the_words = await data.words
   //const what_is_cycling = 
     try {
-    (the_words.forEach(element => {
-      if (element.cycle_now === true) {words_or_letters.push("words")}
-    })),
+      (the_words.forEach(element => {
+        if (element.cycle_now === true) {words_or_letters.push("words")}
+      })),
 
-    (the_letters.forEach(element => {
-      if (element.cycle_now === true) {words_or_letters.push("letters")}
-    }))
+      (the_letters.forEach(element => {
+        if (element.cycle_now === true) {words_or_letters.push("letters")}
+      }))
     }
+
     catch {
+      (the_words.forEach(element => {
+      if (element.cycle_now === true) {words_or_letters.push("words")}
+      }))
 
     }
     
