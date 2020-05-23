@@ -24,9 +24,14 @@ class Api::V1::WordsController < ApplicationController
           these_ones = the_words.map {|i| i if i.the_word_score <= 3}
           return these_ones.compact.shuffle[0..1]
         elsif (the_words.map {|i| i if i.the_word_score <= 3}).compact.length == 1
-          these_ones = (the_words.map {|i| i if i.the_word_score <= 3}).compact  
-          some_old_words = (the_words.map {|i| i if i.the_word_score > 3 }).compact
-          a_random_word = some_old_words.shuffle[0]
+          these_ones = (the_words.map {|i| i if i.the_word_score <= 3}).compact
+          if (the_words.map {|i| i if i.the_word_score > 3 }).compact.length >= 1
+            some_old_words = (the_words.map {|i| i if i.the_word_score > 3 }).compact
+            a_random_word = some_old_words.shuffle[0]
+          else
+            some_other_words = (the_words.map {|i| i if i.cycle_now == false }).compact
+            a_random_word = some_other_words.shuffle[0]
+          end
           these_ones << a_random_word
           return these_ones.compact.shuffle[0..1]
         else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
