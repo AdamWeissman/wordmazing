@@ -120,9 +120,7 @@ sw05.onclick = function () {
 
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
-  if (check_cycle_now_func() === "letters" ){
-    console.log("whats up doggie")}
-  else {
+  check_cycle_now_func()
 
   // the computer should check to see if there are any words that have been unlocked
   // if a word has been unlocked, then it should enter rotation
@@ -151,7 +149,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
     sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
     sw05opt1.innerHTML = `${random_two_words[0]}`
     sw05opt2.innerHTML = `${random_two_words[1]}`}}
-  }
+
 }
 
 async function random_two_letter_func_v2 () {
@@ -197,7 +195,7 @@ async function check_cycle_now_func () {
       
       x = Array.from(words_and_or_letters)
       console.log(x)
-      return x
+      return x[0]
     }
 
     catch {
@@ -207,7 +205,7 @@ async function check_cycle_now_func () {
       
       x = Array.from(words_and_or_letters)
       console.log(x)
-      return x
+      return x[0]
     }
   
 }
