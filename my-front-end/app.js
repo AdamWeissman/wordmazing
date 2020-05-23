@@ -120,7 +120,11 @@ sw05.onclick = function () {
 
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
+  xxx = []
   check_cycle_now_func()
+  if (xxx[0] === "letters") {
+    console.log ("yo dog")
+  }
 
   // the computer should check to see if there are any words that have been unlocked
   // if a word has been unlocked, then it should enter rotation
@@ -177,7 +181,7 @@ async function random_two_words_func () {
 };
 
 async function check_cycle_now_func () {
-  let words_and_or_letters = new Set()
+  words_and_or_letters = new Set()
   let x = activeUserID[0];
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
@@ -193,9 +197,9 @@ async function check_cycle_now_func () {
         if (element.cycle_now === true) {words_and_or_letters.add("letters")}
       }))
       
-      x = Array.from(words_and_or_letters)
+      xxx = Array.from(words_and_or_letters)
       console.log(x)
-      return x
+      return xxx
     }
 
     catch {
@@ -203,9 +207,9 @@ async function check_cycle_now_func () {
       if (element.cycle_now === true) {words_and_or_letters.add("words")}
       }))
       
-      x = Array.from(words_and_or_letters)
+      xxx = Array.from(words_and_or_letters)
       console.log(x)
-      return x
+      return xxx
     }
   
 }
