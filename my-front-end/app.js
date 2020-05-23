@@ -121,13 +121,12 @@ sw05.onclick = function () {
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
   const check_this = await check_cycle_now_func();
-  if ((check_this + "") === "letters") { // I don't know why this works but it does, I feel like i caught a pokemon 
-    console.log("this is for letters")
+  if (((check_this + "") === "letters") || ((check_this + "") === "words"))  { // I don't know why this works but it does, I feel like i caught a pokemon 
+    console.log("this is for letters or for words")
   }
-  else if ((check_this + "") === "letterswords") { 
-  console.log("this is for letters and words")}
-  else  { 
-  console.log("this is for words")}
+  else if ((check_this + "") === "words,letters") { 
+  console.log("this if for words AND letters")}
+
 
 
   // the computer should check to see if there are any words that have been unlocked
