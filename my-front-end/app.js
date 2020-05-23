@@ -115,6 +115,7 @@ const the_whole_thing = document.body
 // let the_correct_word = []
 
 sw05.onclick = function () {
+    check_cycle_now_func();
     set_random_two_letters_or_words_v2();
 }
 
@@ -181,9 +182,9 @@ async function check_cycle_now_func () {
   const the_letters = await data.letters
   const the_words = await data.words
   const what_is_cycling = await ((the_words.forEach(element => {
-    words_or_letters.push("word" + element.cycle_now.to_s)
+    if (element.cycle_now === true) {words_or_letters.push("words")}
   })), (the_letters.forEach(element => {
-    words_or_letters.push("letter" + element.cycle_now.to_s)
+    if (element.cycle_now === true) {words_or_letters.push("letters")}
   })))
   console.log(words_or_letters)
 }
