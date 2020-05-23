@@ -172,6 +172,21 @@ async function random_two_words_func () {
       random_two_words.push(element.the_word);
       });
 };
+
+async function check_cycle_now_func () {
+  words_or_letters = []
+  let x = activeUserID[0];
+  const result = await fetch(`${USERS_URL}/${x}/letters`)
+  const data = await result.json()
+  const the_letters = await data.letters
+  const the_words = await data.words
+  const what_is_cycling = await ((the_words.forEach(element => {
+    words_or_letters.push("word" + element.cycle_now.to_s)
+  })), (the_letters.forEach(element => {
+    words_or_letters.push("letter" + element.cycle_now.to_s)
+  })))
+  console.log(words_or_letters)
+}
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
 sw05opt1.addEventListener('click', (e) => {
