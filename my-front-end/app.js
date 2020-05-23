@@ -195,8 +195,9 @@ async function check_cycle_now_func () {
         if (element.cycle_now === true) {words_and_or_letters.add("letters")}
       }))
       
-      console.log(words_and_or_letters)
-      return new Array(words_and_or_letters)
+      x = new Array(words_and_or_letters)
+      console.log(x)
+      return x
     }
 
     catch {
@@ -204,8 +205,9 @@ async function check_cycle_now_func () {
       if (element.cycle_now === true) {words_and_or_letters.add("words")}
       }))
       
-      console.log(words_and_or_letters)
-      return new Array(words_and_or_letters)
+      x = new Array(words_and_or_letters)
+      console.log(x)
+      return x
     }
   
 }
