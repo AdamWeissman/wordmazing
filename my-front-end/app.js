@@ -123,39 +123,56 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
   const check_this = await check_cycle_now_func();
   if (((check_this + "") === "letters") || ((check_this + "") === "words"))  { // I don't know why this works but it does, I feel like i caught a pokemon 
     console.log("this is for letters or for words")
+  
+    try {result = await random_two_letter_func_v2();
+      let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
+      the_correct_choice.push(randomMatch)
+      sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+      sw05opt1.innerHTML = `${random_two_letters[0]}`
+      sw05opt2.innerHTML = `${random_two_letters[1]}`}
+    catch {result = await random_two_words_func();
+      let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
+      the_correct_choice.push(randomMatch)
+      if (randomMatch === "RESET!!!") {
+        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+        fetch(USERS_URL, {
+          method: "DELETE"
+        })
+      }
+      else {
+      sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+      sw05opt1.innerHTML = `${random_two_words[0]}`
+      sw05opt2.innerHTML = `${random_two_words[1]}`}}
   }
   else if ((check_this + "") === "words,letters") { 
-  console.log("this if for words AND letters")}
+  console.log("this if for words AND letters")
+    async function pickLetters () {
+      await random_two_letter_func_v2();{
+      let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
+      the_correct_choice.push(randomMatch)
+      sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+      sw05opt1.innerHTML = `${random_two_letters[0]}`
+      sw05opt2.innerHTML = `${random_two_letters[1]}`}}
+    
+    async function pickWords () {
+      await random_two_words_func();{
+      let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
+      the_correct_choice.push(randomMatch)
+      if (randomMatch === "RESET!!!") {
+        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+        fetch(USERS_URL, {
+          method: "DELETE"
+        })
+      }
+      else {
+      sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+      sw05opt1.innerHTML = `${random_two_words[0]}`
+      sw05opt2.innerHTML = `${random_two_words[1]}`}}}
 
-
-
-  // the computer should check to see if there are any words that have been unlocked
-  // if a word has been unlocked, then it should enter rotation
-  // but how...?
-  // should check to see what's listed as cycle_now first
-  // should compact down to letters and words uniq
-  // letters index can have it all (for checking)
-  // and then instead of a try catch, could be an if else
-  
-  try {result = await random_two_letter_func_v2();
-    let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
-    the_correct_choice.push(randomMatch)
-    sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
-    sw05opt1.innerHTML = `${random_two_letters[0]}`
-    sw05opt2.innerHTML = `${random_two_letters[1]}`}
-  catch {result = await random_two_words_func();
-    let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
-    the_correct_choice.push(randomMatch)
-    if (randomMatch === "RESET!!!") {
-      the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-      fetch(USERS_URL, {
-        method: "DELETE"
-      })
-    }
-    else {
-    sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
-    sw05opt1.innerHTML = `${random_two_words[0]}`
-    sw05opt2.innerHTML = `${random_two_words[1]}`}}
+    const will_it_be_words_or_letters = [pickWords, pickLetters]
+    let grab_one = will_it_be_words_or_letters[Math.floor(Math.random() * will_it_be_words_or_letters.length)];
+    grab_one();
+  }
 
 }
 
