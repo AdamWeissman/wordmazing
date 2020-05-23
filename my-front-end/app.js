@@ -195,7 +195,7 @@ async function check_cycle_now_func () {
       
       x = Array.from(words_and_or_letters)
       console.log(x)
-      return x[0]
+      return x
     }
 
     catch {
@@ -205,7 +205,7 @@ async function check_cycle_now_func () {
       
       x = Array.from(words_and_or_letters)
       console.log(x)
-      return x[0]
+      return x
     }
   
 }
