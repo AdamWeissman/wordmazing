@@ -121,7 +121,13 @@ sw05.onclick = function () {
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
   check_cycle_now_func();
-  
+  // the computer should check to see if there are any words that have been unlocked
+  // if a word has been unlocked, then it should enter rotation
+  // but how...?
+  // should check to see what's listed as cycle_now first
+  // should compact down to letters and words uniq
+  // letters index can have it all (for checking)
+  // and then instead of a try catch, could be an if else
   
   try {result = await random_two_letter_func_v2();
     let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
@@ -175,12 +181,20 @@ async function check_cycle_now_func () {
   const data = await result.json()
   const the_letters = await data.letters
   const the_words = await data.words
-  const what_is_cycling = ((the_words.forEach(element => {
-    if (element.cycle_now === true) {words_or_letters.push("words")}
-  })), (the_letters.forEach(element => {
-    try {(element.cycle_now === true), words_or_letters.push("letters")}
-    catch { console.log ("you've been caught")}
-  })))
+  //const what_is_cycling = 
+    try {
+    (the_words.forEach(element => {
+      if (element.cycle_now === true) {words_or_letters.push("words")}
+    })),
+
+    (the_letters.forEach(element => {
+      if (element.cycle_now === true) {words_or_letters.push("letters")}
+    }))
+    }
+    catch {
+
+    }
+    
   console.log(words_or_letters)
 }
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
