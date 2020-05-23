@@ -49,8 +49,15 @@ class Api::V1::WordsController < ApplicationController
     else
       @everything = {}
       @everything[:words] = @words
-      #@everything[:letters] = @letters
-      #if cycle_now (random render... json words OR json letters)
+      
+      #
+      #
+      #   THIS IS WHERE THE PROBLEM IS COMING FROM.  RESET!!!, RESET!!! IS IN THE JSON
+      #   AND FOR WHATEVER REASON IT DOESN'T ALTER THE BODY OF THE DOM AS IT SHOULD
+      #   WILL PROBABLY BE A NIGHTMARE TO DEBUG.
+      #
+      #
+
       render json: @everything
     end
 
