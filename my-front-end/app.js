@@ -120,7 +120,7 @@ sw05.onclick = function () {
 
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
-  //check_cycle_now_func();
+  check_cycle_now_func();
   // the computer should check to see if there are any words that have been unlocked
   // if a word has been unlocked, then it should enter rotation
   // but how...?
