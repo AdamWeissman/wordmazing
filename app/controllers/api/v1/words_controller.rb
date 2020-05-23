@@ -38,8 +38,9 @@ class Api::V1::WordsController < ApplicationController
     #(need a redirect to words index which will mimic under a certain score) 
     @words = under_a_certain_score(@words)
     if @words[0] == "THEEND" #destroy user and display congratulations
-      @user.destroy
-      #something needs to happen here
+      @everything = {}
+      @everything[:words] = ["RESET!!!"]
+      render json: @everything
     else
       @everything = {}
       @everything[:words] = @words

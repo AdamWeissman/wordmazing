@@ -109,15 +109,15 @@ const sw05matchMe = document.getElementById('swb05matchThis')
 const sw05opt1 = document.getElementById('swb05option1')
 const sw05opt2 = document.getElementById('swb05option2')
 
-let random_two_letters = [] //dont delete this
-let the_correct_letter = [] //this line an the one below are used for the clicking events
-let the_correct_word = []
+// let random_two_letters = [] //dont delete this
+// let the_correct_letter = [] //this line an the one below are used for the clicking events
+// let the_correct_word = []
 
 sw05.onclick = function () {
-    set_random_two_letters_v2();
+    set_random_two_letters_or_words_v2();
 }
 
-async function set_random_two_letters_v2 () { //this function should be renamed since its for letters and words
+async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
   try {result = await random_two_letter_func_v2();
     let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
@@ -152,9 +152,13 @@ async function random_two_words_func () {
   const result = await fetch(`${USERS_URL}/${x}/words`)
   const data = await result.json()
   const the_words = await data.words
-  const two_random_words = await the_words.forEach(element => {
+  try {
+    const two_random_words = await the_words.forEach(element => {
       random_two_words.push(element.the_word);
-      });
+      }); }
+  catch {
+    random_two_words = ["CONGRATULATIONS", "AWESOME"]
+  }
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
 };
@@ -177,7 +181,7 @@ sw05opt1.addEventListener('click', (e) => {
       });
     //.then(response=>response.json())
     //.then(data=>console.log(data))
-    set_random_two_letters_v2();}
+    set_random_two_letters_or_words_v2();}
 
     else {
       fetch(`${USERS_URL}/${x}/words/${y}`, {
@@ -189,13 +193,13 @@ sw05opt1.addEventListener('click', (e) => {
         "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       });
-    set_random_two_letters_v2();
+    set_random_two_letters_or_words_v2();
     }
 
   }
   else {
     alert("YOU ARE WRONG");
-    set_random_two_letters_v2();
+    set_random_two_letters_or_words_v2();
   }
 });
 
@@ -217,7 +221,7 @@ sw05opt2.addEventListener('click', (e) => {
       })
     //.then(response=>response.json())
     //.then(data=>console.log(data))
-    set_random_two_letters_v2();
+    set_random_two_letters_or_words_v2();
     }
     else {fetch(`${USERS_URL}/${x}/words/${y}`, {
       method: "PATCH",
@@ -228,13 +232,13 @@ sw05opt2.addEventListener('click', (e) => {
         "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
         })
       });
-    set_random_two_letters_v2();
+    set_random_two_letters_or_words_v2();
     }
 
   }
   else {
     alert("YOU ARE WRONG");
-    set_random_two_letters_v2();
+    set_random_two_letters_or_words_v2();
   }
 });
 
