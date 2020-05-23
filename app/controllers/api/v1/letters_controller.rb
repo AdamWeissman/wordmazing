@@ -5,6 +5,7 @@ class Api::V1::LettersController < ApplicationController
     @user = User.find(params[:user_id])
     @letters = @user.letters.all
     @words = @user.words.all
+    #may want to rewrite this code so that it will check to see if any word or any letters is marked as cycle now
 
       def under_a_certain_score(the_letters)
         if (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.length >= 2
