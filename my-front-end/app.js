@@ -175,7 +175,7 @@ async function random_two_words_func () {
 };
 
 async function check_cycle_now_func () {
-  words_and_or_letters = []
+  let words_and_or_letters = new Set()
   let x = activeUserID[0];
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
@@ -184,22 +184,22 @@ async function check_cycle_now_func () {
   //const what_is_cycling = 
     try {
       (the_words.forEach(element => {
-        if (element.cycle_now === true) {words_and_or_letters.push("words")}
+        if (element.cycle_now === true) {words_and_or_letters.add("words")}
       })),
 
       (the_letters.forEach(element => {
-        if (element.cycle_now === true) {words_and_or_letters.push("letters")}
+        if (element.cycle_now === true) {words_and_or_letters.add("letters")}
       }))
+      console.log(words_and_or_letters)
     }
 
     catch {
       (the_words.forEach(element => {
-      if (element.cycle_now === true) {words_and_or_letters.push("words")}
+      if (element.cycle_now === true) {words_and_or_letters.add("words")}
       }))
-
+      console.log(words_and_or_letters)
     }
-    
-  console.log(words_and_or_letters)
+  
 }
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
