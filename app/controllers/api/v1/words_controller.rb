@@ -39,7 +39,7 @@ class Api::V1::WordsController < ApplicationController
     @words = under_a_certain_score(@words)
     if @words[0] == "THEEND" #destroy user and display congratulations
       @everything = {}
-      @everything[:words] = ["RESET!!!"]
+      @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
       render json: @everything
     else
       @everything = {}

@@ -108,6 +108,7 @@ const sw05 = document.getElementById('switchboard05')
 const sw05matchMe = document.getElementById('swb05matchThis')
 const sw05opt1 = document.getElementById('swb05option1')
 const sw05opt2 = document.getElementById('swb05option2')
+const the_whole_thing = document.body
 
 // let random_two_letters = [] //dont delete this
 // let the_correct_letter = [] //this line an the one below are used for the clicking events
@@ -128,9 +129,16 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
   catch {result = await random_two_words_func();
     let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
     the_correct_choice.push(randomMatch)
+    if (randomMatch === "RESET!!!") {
+      the_whole_thing.innerHTML = `<h1>GREAT JOB</h1>`
+      fetch(USERS_URL, {
+        method: "DELETE"
+      })
+    }
+    else {
     sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
     sw05opt1.innerHTML = `${random_two_words[0]}`
-    sw05opt2.innerHTML = `${random_two_words[1]}`}
+    sw05opt2.innerHTML = `${random_two_words[1]}`}}
 }
 
 async function random_two_letter_func_v2 () {
@@ -152,16 +160,11 @@ async function random_two_words_func () {
   const result = await fetch(`${USERS_URL}/${x}/words`)
   const data = await result.json()
   const the_words = await data.words
-  try {
-    const two_random_words = await the_words.forEach(element => {
+  const two_random_words = await the_words.forEach(element => {
       random_two_words.push(element.the_word);
-      }); }
-  catch {
-    random_two_words = ["CONGRATULATIONS", "AWESOME"]
-  }
-  //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
-
+      });
 };
+  //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
 sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
