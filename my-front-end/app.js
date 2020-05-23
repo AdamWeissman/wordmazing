@@ -316,31 +316,7 @@ sw05opt2.addEventListener('click', (e) => {
 
 //......................................................................................
 //
-// NOT YET TESTING BELOW THIS LINE
-// const sw06 = document.getElementById('switchboard06')
-// sw06.onclick = function () {
-//   alert("Return a Random Two Words if a Word is Activated... or Random Two Letters")
-// }
 
-// const sw07 = document.getElementById('switchboard07')
-// sw07.onclick = function () {
-//   alert("Increment Score of a Random Word by 9")
-// }
-
-// const sw08 = document.getElementById('switchboard08')
-// sw08.onclick = function () {
-//   alert("If only one letter left, Return Random Letter with Last Letter in DB")
-// }
-
-// const sw09 = document.getElementById('switchboard09')
-// sw09.onclick = function () {
-//   alert("If all letters scored out, Return a Word")
-// }
-
-// const sw10 = document.getElementById('switchboard10')
-// sw10.onclick = function () {
-//   alert("If all words scored out... Return Congratulations and delete user")
-// }
 
 const sw11 = document.getElementById('switchboard11')
 sw11.onclick = function () {
@@ -391,3 +367,31 @@ const sw20 = document.getElementById('switchboard20')
 sw20.onclick = function () {
   alert("admin deletes a spokenmessage")
 }
+
+
+// ALL THIS CODE IS REDUNDANT, ABOVE SOLUTIONS ENCOMPASSED THESE TESTS
+// NOT YET TESTING BELOW THIS LINE
+// const sw06 = document.getElementById('switchboard06')
+// sw06.onclick = function () {
+//   alert("Return a Random Two Words if a Word is Activated... or Random Two Letters")
+// }
+
+// const sw07 = document.getElementById('switchboard07')
+// sw07.onclick = function () {
+//   alert("Increment Score of a Random Word by 9")
+// }
+
+// const sw08 = document.getElementById('switchboard08')
+// sw08.onclick = function () {
+//   alert("If only one letter left, Return Random Letter with Last Letter in DB")
+// }
+
+// const sw09 = document.getElementById('switchboard09')
+// sw09.onclick = function () {
+//   alert("If all letters scored out, Return a Word")
+// }
+
+// const sw10 = document.getElementById('switchboard10')
+// sw10.onclick = function () {
+//   alert("If all words scored out... Return Congratulations and delete user")
+// }
