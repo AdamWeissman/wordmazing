@@ -178,7 +178,8 @@ async function check_cycle_now_func () {
   const what_is_cycling = ((the_words.forEach(element => {
     if (element.cycle_now === true) {words_or_letters.push("words")}
   })), (the_letters.forEach(element => {
-    if (element.cycle_now === true) {words_or_letters.push("letters")}
+    try {(element.cycle_now === true), words_or_letters.push("letters")}
+    catch { console.log ("you've been caught")}
   })))
   console.log(words_or_letters)
 }
