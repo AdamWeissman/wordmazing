@@ -130,7 +130,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
     let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
     the_correct_choice.push(randomMatch)
     if (randomMatch === "RESET!!!") {
-      the_whole_thing.innerHTML = `<h1>GREAT JOB</h1>`
+      the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
       fetch(USERS_URL, {
         method: "DELETE"
       })
