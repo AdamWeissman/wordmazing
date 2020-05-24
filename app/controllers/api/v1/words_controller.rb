@@ -18,7 +18,7 @@ class Api::V1::WordsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @words_all = @user.words.all
-    @words = @words_all.map {|i| i if i.cycle_now == true}
+    @words_cycling = @words_all.map {|i| i if i.cycle_now == true}.compact
 
       def under_a_certain_score(the_words) #assuming cycle_now is true
         if (the_words.map {|i| i if i.the_word_score <= 3}).compact.length >= 2 #more than 2 words with a score less than 3
@@ -44,7 +44,12 @@ class Api::V1::WordsController < ApplicationController
 
     #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
     #(need a redirect to words index which will mimic under a certain score) 
-    @words = under_a_certain_score(@words)
+    @words = under_a_certain_score(@words_cycling)
+
+    #IT SHOULD NOT EXIT TO "THEEND" UNLESS THERE ARE ALSO NO LETTERS... 
+    #SO BEFORE RETURNING "THEEND" IT SHOULD CHECK IF THERE ARE STILL LETTERS IN ROTATION
+    #IF THER ARE LETTERS STILL IN ROTATION, THEN IT SHOULD SEND LETTERS BACK FROM THIS CONTROLLER
+
     if @words[0] == "THEEND" #destroy user and display congratulations
       @everything = {}
       @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
