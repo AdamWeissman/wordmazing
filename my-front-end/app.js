@@ -145,7 +145,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       sw05opt2.innerHTML = `${random_two_words[1]}`}}
   }
   else if ((check_this + "") === "words,letters") { 
-  console.log("this if for words AND letters")
+  console.log("this is for words AND letters")
     async function pickLetters () {
       await random_two_letter_func_v2();{
       let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
@@ -280,7 +280,7 @@ sw05opt2.addEventListener('click', (e) => {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
     let y = the_correct_choice[0]
-    if (the_correct_choice[0].length === 1) {
+    if (the_correct_choice[0].length === 1) { 
       fetch(`${USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {

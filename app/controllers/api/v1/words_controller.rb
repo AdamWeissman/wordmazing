@@ -71,7 +71,7 @@ class Api::V1::WordsController < ApplicationController
     params.permit!
     user = User.find(params[:user_id])
     word = user.words.find_by_the_word(params[:id])
-    if word.the_word_score == 4
+    if word.the_word_score > 3 
       word.the_word_score = word.the_word_score
       word.save
     else
