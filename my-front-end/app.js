@@ -122,7 +122,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
   the_correct_choice = []
   const check_this = await check_cycle_now_func();
   if (((check_this + "") === "letters") || ((check_this + "") === "words"))  { // I don't know why this works but it does, I feel like i caught a pokemon 
-    console.log("this is for letters or for words")
+    console.log("this is for letters OR for words")
   
     try {result = await random_two_letter_func_v2();
       let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
