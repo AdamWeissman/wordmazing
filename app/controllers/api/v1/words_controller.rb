@@ -32,7 +32,7 @@ class Api::V1::WordsController < ApplicationController
             these_ones << a_random_word
             return these_ones.compact.shuffle[0..1]
           else
-            some_other_words = (the_words.map {|i| i if i.cycle_now == false }).compact
+            some_other_words = (@words_all.map {|i| i if i.cycle_now == false }).compact
             a_random_word = some_other_words.shuffle[0]
             these_ones << a_random_word
             return these_ones.compact.shuffle[0..1]
