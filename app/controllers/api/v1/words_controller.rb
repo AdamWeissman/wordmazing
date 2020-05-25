@@ -57,7 +57,6 @@ class Api::V1::WordsController < ApplicationController
       @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
       render json: @everything
     elsif (@words[0] == "THEEND") && (!@letters_cycling.empty?)#destroy user and display congratulations
-      binding.pry
       redirect_to "/api/v1/users/#{@user.id}/letters/"
     else
       @everything = {}
@@ -75,8 +74,13 @@ class Api::V1::WordsController < ApplicationController
     params.permit!
     user = User.find(params[:user_id])
     word = user.words.find_by_the_word(params[:id])
-    if word.the_word_score > 3 
-      word.the_word_score = word.the_word_score
+    if word.the_word_score == 3 
+      #word.the_word_score = word.the_word_score
+      word.cycle_now = false
+      word.the_word_score +=1
+      word.save
+    elsif word.the_word_score == 4
+      word.the_letter_score = letter.the_letter_score
       word.cycle_now = false
       word.save
     else
