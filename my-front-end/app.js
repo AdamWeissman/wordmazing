@@ -239,7 +239,6 @@ async function check_cycle_now_func () {
       x = Array.from(words_and_or_letters)
       return x
     }
-  
 }
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
@@ -327,55 +326,55 @@ sw05opt2.addEventListener('click', (e) => {
 //
 
 
-const sw11 = document.getElementById('switchboard11')
-sw11.onclick = function () {
-  alert("admin Login for Session...autopopulate for now")
-}
+// const sw11 = document.getElementById('switchboard11')
+// sw11.onclick = function () {
+//   alert("admin Login for Session...autopopulate for now")
+// }
 
-const sw12 = document.getElementById('switchboard12')
-sw12.onclick = function () {
-  alert("admin Logout for Session")
-}
+// const sw12 = document.getElementById('switchboard12')
+// sw12.onclick = function () {
+//   alert("admin Logout for Session")
+// }
 
-const sw13 = document.getElementById('switchboard13')
-sw13.onclick = function () {
-  alert("admin sees readymades index")
-}
+// const sw13 = document.getElementById('switchboard13')
+// sw13.onclick = function () {
+//   alert("admin sees readymades index")
+// }
 
-const sw14 = document.getElementById('switchboard14')
-sw14.onclick = function () {
-  prompt("admin creates a readymade")
-}
+// const sw14 = document.getElementById('switchboard14')
+// sw14.onclick = function () {
+//   prompt("admin creates a readymade")
+// }
 
-const sw15 = document.getElementById('switchboard15')
-sw15.onclick = function () {
-  prompt("admin updates a readymade")
-}
+// const sw15 = document.getElementById('switchboard15')
+// sw15.onclick = function () {
+//   prompt("admin updates a readymade")
+// }
 
-const sw16 = document.getElementById('switchboard16')
-sw16.onclick = function () {
-  alert("admin deletes a readymade")
-}
+// const sw16 = document.getElementById('switchboard16')
+// sw16.onclick = function () {
+//   alert("admin deletes a readymade")
+// }
 
-const sw17 = document.getElementById('switchboard17')
-sw17.onclick = function () {
-  alert("admin sees spokenmessages index")
-}
+// const sw17 = document.getElementById('switchboard17')
+// sw17.onclick = function () {
+//   alert("admin sees spokenmessages index")
+// }
 
-const sw18 = document.getElementById('switchboard18')
-sw18.onclick = function () {
-  alert("admin creates a spokenmessage")
-}
+// const sw18 = document.getElementById('switchboard18')
+// sw18.onclick = function () {
+//   alert("admin creates a spokenmessage")
+// }
 
-const sw19 = document.getElementById('switchboard19')
-sw19.onclick = function () {
-  alert("admin updates a spokenmessage")
-}
+// const sw19 = document.getElementById('switchboard19')
+// sw19.onclick = function () {
+//   alert("admin updates a spokenmessage")
+// }
 
-const sw20 = document.getElementById('switchboard20')
-sw20.onclick = function () {
-  alert("admin deletes a spokenmessage")
-}
+// const sw20 = document.getElementById('switchboard20')
+// sw20.onclick = function () {
+//   alert("admin deletes a spokenmessage")
+// }
 
 
 // ALL THIS CODE IS REDUNDANT, ABOVE SOLUTIONS ENCOMPASSED THESE TESTS
