@@ -42,12 +42,12 @@ class Api::V1::LettersController < ApplicationController
     params.permit!
     user = User.find(params[:user_id])
     letter = user.letters.find_by_the_letter(params[:id])
-    if letter.the_letter_score == 3
+    if letter.the_letter_score == 4
       #letter.the_letter_score = letter.the_letter_score
       letter.cycle_now = false
       letter.the_letter_score += 1
       letter.save
-    elsif letter.the_letter_score == 4
+    elsif letter.the_letter_score == 5
       letter.the_letter_score = letter.the_letter_score
       letter.cycle_now = false
       letter.save
