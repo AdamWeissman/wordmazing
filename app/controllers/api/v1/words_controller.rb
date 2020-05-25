@@ -17,6 +17,8 @@ class Api::V1::WordsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    @letters_all = @user.letters.all
+    @letters_cycling = @letters_all.map {|i| i if i.cycle_now == true}.compact
     @words_all = @user.words.all
     @words_cycling = @words_all.map {|i| i if i.cycle_now == true}.compact
 
@@ -50,22 +52,13 @@ class Api::V1::WordsController < ApplicationController
     #SO BEFORE RETURNING "THEEND" IT SHOULD CHECK IF THERE ARE STILL LETTERS IN ROTATION
     #IF THER ARE LETTERS STILL IN ROTATION, THEN IT SHOULD SEND LETTERS BACK FROM THIS CONTROLLER
 
-    if @words[0] == "THEEND" #destroy user and display congratulations
+    if (@words[0] == "THEEND") && (@letters_cycling.empty?)#destroy user and display congratulations
       @everything = {}
       @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
       render json: @everything
     else
       @everything = {}
       @everything[:words] = @words
-      
-      #
-      #
-      #   THIS IS WHERE THE PROBLEM IS COMING FROM.  RESET!!!, RESET!!! IS IN THE JSON
-      #   AND FOR WHATEVER REASON IT DOESN'T ALTER THE BODY OF THE DOM AS IT SHOULD
-      #   WILL PROBABLY BE A NIGHTMARE TO DEBUG.
-      #
-      #
-
       render json: @everything
     end
 
