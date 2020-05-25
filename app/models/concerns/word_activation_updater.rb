@@ -36,12 +36,16 @@ module WordActivationUpdater
     word_object.word_activation_switch = activation_key_update
     word_object.save
     #binding.pry
-    if word_object.word_activation_switch.match?(/4{#{word_object.word_activation_switch.length.to_i}}/)
-      word_object.cycle_now = true
-      word_object.save
-    else
-      word_object.cycle_now = false
-      word_object.save
+    if word_object.cycle_now = true
+       #do nothing 
+    else 
+      if word_object.word_activation_switch.match?(/4{#{word_object.word_activation_switch.length.to_i}}/)
+        word_object.cycle_now = true
+        word_object.save
+      else
+        word_object.cycle_now = false
+        word_object.save
+      end
     end
   end
 
