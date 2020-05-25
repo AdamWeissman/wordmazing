@@ -17,8 +17,8 @@ class Api::V1::WordsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @letters_all = @user.letters.all
-    @letters_cycling = @letters_all.map {|i| i if i.cycle_now == true}.compact
+    #@letters_all = @user.letters.all
+    #@letters_cycling = @letters_all.map {|i| i if i.cycle_now == true}.compact
     @words_all = @user.words.all
     @words_cycling = @words_all.map {|i| i if i.cycle_now == true}.compact
 
@@ -57,9 +57,7 @@ class Api::V1::WordsController < ApplicationController
       @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
       render json: @everything
     elsif (@words[0] == "THEEND") && (!@letters_cycling.empty?)#destroy user and display congratulations
-      @everything = {}
-      @everything[:letters] = @letters_all
-      render json: @everything
+      redirect_to "/api/v1/users/#{@user.id}/letters/"
     else
       @everything = {}
       @everything[:words] = @words
