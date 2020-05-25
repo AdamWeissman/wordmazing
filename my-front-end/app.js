@@ -200,10 +200,13 @@ async function random_two_words_func () {
   try {await the_words.forEach(element => {
       random_two_words.push(element.the_word);
       });}
-  catch {
+
+// YOU ARE HERE YOU ARE HERE YOU ARE HERE
+
+  catch { 
     const result = await fetch(`${USERS_URL}/${x}/letters`)
-    const letter_data = await result.json()
-    const the_letters = await letter_data.letters
+    const data = await result.json()
+    const the_letters = await data.letters
     await the_letters.forEach(element => {
     random_two_letters.push(element.the_letter);
     });}
