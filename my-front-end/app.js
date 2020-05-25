@@ -214,11 +214,14 @@ async function check_cycle_now_func () {
   words_and_or_letters = new Set()
   let x = activeUserID[0];
   const result = await fetch(`${USERS_URL}/${x}/letters`)
-  const data = await result.json()
-  const the_letters = await data.letters
-  const the_words = await data.words
+  // const data = await result.json()
+  // const the_letters = await data.letters
+  // const the_words = await data.words
   //const what_is_cycling = 
     try {
+      const data = await result.json()
+      const the_letters = await data.letters
+      const the_words = await data.words
       (the_words.forEach(element => {
         if (element.cycle_now === true) {words_and_or_letters.add("words")}
       })),
@@ -231,15 +234,22 @@ async function check_cycle_now_func () {
       return x
     }
 
-    catch {
-      try {(the_words.forEach(element => {
+    catch {      
+      const data = await result.json()
+      
+      
+      try {
+        const the_words = await data.words
+        (the_words.forEach(element => {
       if (element.cycle_now === true) {words_and_or_letters.add("words")}
       }))
       
       x = Array.from(words_and_or_letters)
       return x}
 
-      catch {(the_letters.forEach(element => {
+      catch {
+        const the_letters = await data.letters
+        (the_letters.forEach(element => {
         if (element.cycle_now === true) {words_and_or_letters.add("letters")}
         }))
         
