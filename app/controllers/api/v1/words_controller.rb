@@ -17,8 +17,8 @@ class Api::V1::WordsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    #@letters_all = @user.letters.all
-    #@letters_cycling = @letters_all.map {|i| i if i.cycle_now == true}.compact
+    @letters_all = @user.letters.all
+    @letters_cycling = @letters_all.map {|i| i if i.cycle_now == true}.compact
     @words_all = @user.words.all
     @words_cycling = @words_all.map {|i| i if i.cycle_now == true}.compact
 
