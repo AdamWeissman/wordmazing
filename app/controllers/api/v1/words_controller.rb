@@ -80,7 +80,7 @@ class Api::V1::WordsController < ApplicationController
       word.the_word_score +=1
       word.save
     elsif word.the_word_score == 4
-      word.the_letter_score = letter.the_letter_score
+      word.the_word_score = word.the_word_score
       word.cycle_now = false
       word.save
     else
