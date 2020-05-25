@@ -127,37 +127,24 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
   
     try {result = await random_two_letter_func_v2();
       let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
-      the_correct_choice.push(randomMatch)
-      sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
-      sw05opt1.innerHTML = `${random_two_letters[0]}`
-      sw05opt2.innerHTML = `${random_two_letters[1]}`}
-    catch {result = await random_two_words_func();
-      let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
-      the_correct_choice.push(randomMatch)
-      if (randomMatch === "RESET!!!") {
-        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-        fetch(USERS_URL, {
-          method: "DELETE"
-        })
-      }
+      if (randomMatch !== undefined) {
+        the_correct_choice.push(randomMatch) 
+        sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+        sw05opt1.innerHTML = `${random_two_letters[0]}`
+        sw05opt2.innerHTML = `${random_two_letters[1]}`}
       else {
-      sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
-      sw05opt1.innerHTML = `${random_two_words[0]}`
-      sw05opt2.innerHTML = `${random_two_words[1]}`}}
-  }
-  else if ((check_this + "") === "words,letters") { 
-  console.log("this is for words AND letters")
-    async function pickLetters () {
-      await random_two_letter_func_v2();{
-      let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
-      the_correct_choice.push(randomMatch)
-      sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
-      sw05opt1.innerHTML = `${random_two_letters[0]}`
-      sw05opt2.innerHTML = `${random_two_letters[1]}`}}
-    
-    async function pickWords () {
-      await random_two_words_func();{
-      let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
+        result = await random_two_words_func();
+        let randomMatch = random_two_words[Math.floor(Math.random() * random_two_words.length)];
+        the_correct_choice.push(randomMatch) 
+        sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+        sw05opt1.innerHTML = `${random_two_words[0]}`
+        sw05opt2.innerHTML = `${random_two_words[1]}`}}
+    catch {result = await random_two_words_func();
+      if (result === undefined) {
+        alert("incoming undefined 2")
+      }
+      else
+      {let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
       the_correct_choice.push(randomMatch)
       if (randomMatch === "RESET!!!") {
         the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
@@ -169,7 +156,38 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
       sw05opt1.innerHTML = `${random_two_words[0]}`
       sw05opt2.innerHTML = `${random_two_words[1]}`}}}
-
+  }
+  else if ((check_this + "") === "words,letters") { 
+  console.log("this is for words AND letters")
+    
+    async function pickLetters () {
+      try {await random_two_letter_func_v2();{
+      let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
+      the_correct_choice.push(randomMatch)
+      sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+      sw05opt1.innerHTML = `${random_two_letters[0]}`
+      sw05opt2.innerHTML = `${random_two_letters[1]}`}}
+      catch {
+        pickWords()
+      }}
+    
+    async function pickWords () {
+      try {await random_two_words_func();{
+        let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
+        the_correct_choice.push(randomMatch)
+        if (randomMatch === "RESET!!!") {
+          the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+          fetch(USERS_URL, {
+            method: "DELETE"
+          })
+        }
+        else {
+        sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+        sw05opt1.innerHTML = `${random_two_words[0]}`
+        sw05opt2.innerHTML = `${random_two_words[1]}`}}
+      }
+        catch {pickLetters()}}
+    
     const will_it_be_words_or_letters = [pickWords, pickLetters]
     let grab_one = will_it_be_words_or_letters[Math.floor(Math.random() * will_it_be_words_or_letters.length)];
     try {grab_one()}
@@ -184,7 +202,6 @@ async function random_two_letter_func_v2 () {
   let x = activeUserID[0];
   //alert("Return Random Two Letters With Low Scores");
  
-  
   try {
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
@@ -211,14 +228,14 @@ async function random_two_words_func () {
   try {const result = await fetch(`${USERS_URL}/${x}/words`)
     const data = await result.json()
     const the_words = await data.words
-    await the_words.forEach(element => {
+    the_words.forEach(element => {
     random_two_words.push(element.the_word);
   });}
 
-  catch { const result2 = await fetch(`${USERS_URL}/${x}/letters`)
-    const data2 = await result2.json()
-    const the_letters = await data2.letters
-    await the_letters.forEach(element => {
+  catch { const result = await fetch(`${USERS_URL}/${x}/letters`)
+    const data = await result.json()
+    const the_letters = await data.letters
+    the_letters.forEach(element => {
     random_two_letters.push(element.the_letter);
   });}
 };
@@ -274,7 +291,7 @@ async function check_cycle_now_func () {
 
 sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
-  if (the_correct_choice[0] === sw05opt1.innerHTML) {
+  if (the_correct_choice[0] == sw05opt1.innerHTML) {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
     let y = the_correct_choice[0]
@@ -314,7 +331,7 @@ sw05opt1.addEventListener('click', (e) => {
 
 sw05opt2.addEventListener('click', (e) => {
   e.preventDefault();
-  if (the_correct_choice[0] === sw05opt2.innerHTML) {
+  if (the_correct_choice[0] == sw05opt2.innerHTML) {
     alert("YOU ARE CORRECT");
     let x = activeUserID[0]
     let y = the_correct_choice[0]
