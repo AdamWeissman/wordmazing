@@ -43,18 +43,13 @@ class Api::V1::WordsController < ApplicationController
           end
        
         else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
-          binding.pry
+          #binding.pry
           return ["THEEND"]
         end
       end  
 
-    #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
-    #(need a redirect to words index which will mimic under a certain score) 
     @words = under_a_certain_score(@words_cycling)
 
-    #IT SHOULD NOT EXIT TO "THEEND" UNLESS THERE ARE ALSO NO LETTERS... 
-    #SO BEFORE RETURNING "THEEND" IT SHOULD CHECK IF THERE ARE STILL LETTERS IN ROTATION
-    #IF THER ARE LETTERS STILL IN ROTATION, THEN IT SHOULD SEND LETTERS BACK FROM THIS CONTROLLER
 
     if (@words[0] == "THEEND") && (@letters_cycling.empty?)#destroy user and display congratulations
       @everything = {}
@@ -70,9 +65,6 @@ class Api::V1::WordsController < ApplicationController
 
   end
 
-  # def grab_words
-  #   #this will render two words that have scores LESS than X, can use similar code for scoring from phrase ninja
-  # end
 
   def update
     params.permit!
@@ -81,7 +73,6 @@ class Api::V1::WordsController < ApplicationController
     #binding.pry
 
     if word.the_word_score == 3 
-      #word.the_word_score = word.the_word_score
       word.the_word_score +=1
       word.cycle_now = false
       word.save

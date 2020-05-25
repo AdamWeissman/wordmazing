@@ -23,8 +23,7 @@ class Api::V1::LettersController < ApplicationController
         end
       end  
 
-    #NEED TO ALSO CHECK IF CYCLE_NOW is true for any words... if so, that word should enter rotation before all letters are finished, and be paired with a random word
-    #(need a redirect to words index which will mimic under a certain score) 
+    
     @letters = under_a_certain_score(@letters)
     if @letters[0] == "GOTOWORDS"
       redirect_to "/api/v1/users/#{@user.id}/words/"
@@ -32,7 +31,7 @@ class Api::V1::LettersController < ApplicationController
       @everything = {}
       @everything[:words] = @words
       @everything[:letters] = @letters
-      #if cycle_now (random render... json words OR json letters)
+      
       render json: @everything
     end
 
@@ -43,8 +42,6 @@ class Api::V1::LettersController < ApplicationController
     user = User.find(params[:user_id])
     letter = user.letters.find_by_the_letter(params[:id])
     if letter.the_letter_score == 3
-      #letter.the_letter_score = letter.the_letter_score
-      #letter.cycle_now = false
       letter.the_letter_score += 1
       letter.cycle_now = false
       letter.save
