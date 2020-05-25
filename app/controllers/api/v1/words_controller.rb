@@ -36,13 +36,14 @@ class Api::V1::WordsController < ApplicationController
             return these_ones.compact.shuffle[0..1]
           else #this is triggered if the other words are not yet active
             some_other_words = (@words_all.map {|i| i if i.cycle_now == false }).compact
-            binding.pry
+            #binding.pry
             a_random_word = (some_other_words[0] == these_ones[0])? some_other_words[1] : some_other_words[0] 
             these_ones << a_random_word
             return these_ones.compact.shuffle[0..1]
           end
        
         else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
+          binding.pry
           return ["THEEND"]
         end
       end  
@@ -77,7 +78,7 @@ class Api::V1::WordsController < ApplicationController
     params.permit!
     user = User.find(params[:user_id])
     word = user.words.find_by_the_word(params[:id])
-    binding.pry
+    #binding.pry
 
     if word.the_word_score == 3 
       #word.the_word_score = word.the_word_score
