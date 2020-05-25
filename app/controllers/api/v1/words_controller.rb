@@ -57,6 +57,7 @@ class Api::V1::WordsController < ApplicationController
       @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
       render json: @everything
     elsif (@words[0] == "THEEND") && (!@letters_cycling.empty?)#destroy user and display congratulations
+      binding.pry
       redirect_to "/api/v1/users/#{@user.id}/letters/"
     else
       @everything = {}
