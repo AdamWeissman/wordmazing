@@ -77,6 +77,7 @@ class Api::V1::WordsController < ApplicationController
     user = User.find(params[:user_id])
     word = user.words.find_by_the_word(params[:id])
     binding.pry
+    
     if word.the_word_score == 4 
       #word.the_word_score = word.the_word_score
       word.cycle_now = false
