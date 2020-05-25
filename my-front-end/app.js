@@ -194,8 +194,7 @@ async function random_two_words_func () {
   random_two_letters = [] //<--this is so a single completed word won't break the app
   let x = activeUserID[0];
   //alert("Return Random Two Letters With Low Scores");
-  
- 
+
   try {const result = await fetch(`${USERS_URL}/${x}/words`)
     const data = await result.json()
     const the_words = await data.words

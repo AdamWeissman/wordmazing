@@ -76,6 +76,7 @@ class Api::V1::WordsController < ApplicationController
     word = user.words.find_by_the_word(params[:id])
     if word.the_word_score > 3 
       word.the_word_score = word.the_word_score
+      word.cycle_now = false
       word.save
     else
       word.the_word_score += 1
