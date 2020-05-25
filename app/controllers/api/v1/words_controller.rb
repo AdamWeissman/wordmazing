@@ -36,6 +36,7 @@ class Api::V1::WordsController < ApplicationController
             return these_ones.compact.shuffle[0..1]
           else #this is triggered if the other words are not yet active
             some_other_words = (@words_all.map {|i| i if i.cycle_now == false }).compact
+            binding.pry
             a_random_word = (some_other_words[0] == these_ones[0])? some_other_words[1] : some_other_words[0] 
             these_ones << a_random_word
             return these_ones.compact.shuffle[0..1]
@@ -83,7 +84,7 @@ class Api::V1::WordsController < ApplicationController
       word.the_word_score +=1
       word.cycle_now = false
       word.save
-    elsif word.the_word_score > 4
+    elsif word.the_word_score > 3
       word.the_word_score = word.the_word_score
       word.cycle_now = false
       word.save
