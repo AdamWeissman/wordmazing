@@ -121,7 +121,8 @@ sw05.onclick = function () {
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
   const check_this = await check_cycle_now_func();
-  if (((check_this + "") === "letters") || ((check_this + "") === "words"))  { // I don't know why this works but it does, I feel like i caught a pokemon 
+  if (((check_this + "") === "letters") || ((check_this + "") === "words"))  
+  {  
     console.log("this is for letters OR for words")
   
     try {result = await random_two_letter_func_v2();
@@ -179,6 +180,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
 
 async function random_two_letter_func_v2 () {
   random_two_letters = []
+  random_two_words = []
   let x = activeUserID[0];
   //alert("Return Random Two Letters With Low Scores");
   const result = await fetch(`${USERS_URL}/${x}/letters`)
