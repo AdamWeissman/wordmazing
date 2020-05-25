@@ -26,19 +26,21 @@ class Api::V1::WordsController < ApplicationController
         if (the_words.map {|i| i if i.the_word_score <= 3}).compact.length >= 2 #more than 2 words with a score less than 3
           these_ones = the_words.map {|i| i if i.the_word_score <= 3}
           return these_ones.compact.shuffle[0..1]
+       
         elsif (the_words.map {|i| i if i.the_word_score <= 3}).compact.length == 1 #only word 1 with a score less than 3
           these_ones = (the_words.map {|i| i if i.the_word_score <= 3}).compact #necessarily ONE word with a score less than or equal to three
-          if (the_words.map {|i| i if i.the_word_score > 3 }).compact.length >= 1 #this is triggered if the reason is the other words are cycled out
+          if (the_words.map {|i| i if i.the_word_score > 3 }).compact.length >= 1 #this is triggered if the reason is the other words are cycled out by score
             some_old_words = (the_words.map {|i| i if i.the_word_score > 3 }).compact
             a_random_word = some_old_words.shuffle[0]
             these_ones << a_random_word
             return these_ones.compact.shuffle[0..1]
-          else
+          else #this is triggered if the other words are not yet active
             some_other_words = (@words_all.map {|i| i if i.cycle_now == false }).compact
-            a_random_word = some_other_words.shuffle[0]
+            a_random_word = (some_other_words[0] == these_ones[0])? some_other_words[1] : some_other_words[0] 
             these_ones << a_random_word
             return these_ones.compact.shuffle[0..1]
           end
+       
         else #(the_letters.map {|i| i if i.the_letter_score <= 3}).compact.empty
           return ["THEEND"]
         end
