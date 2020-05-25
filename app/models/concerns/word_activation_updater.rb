@@ -37,7 +37,7 @@ module WordActivationUpdater
     word_object.save
     #binding.pry
     if word_object.cycle_now == true
-       #do nothing 
+       #do nothing
     else 
       if word_object.word_activation_switch.match?(/4{#{word_object.word_activation_switch.length.to_i}}/)
         word_object.cycle_now = true
