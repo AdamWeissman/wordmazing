@@ -120,6 +120,7 @@ sw05.onclick = function () {
 
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
+
   const check_this = await check_cycle_now_func();
   if (((check_this + "") === "letters") || ((check_this + "") === "words"))  
   {  
@@ -146,7 +147,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       else
       {let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
       the_correct_choice.push(randomMatch)
-      if (randomMatch === "RESET!!!") {
+      if (randomMatch == "RESET!!!") {
         the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
         fetch(USERS_URL, {
           method: "DELETE"
@@ -164,9 +165,16 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       try {await random_two_letter_func_v2();{
       let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
       the_correct_choice.push(randomMatch)
+      if (randomMatch == "RESET!!!") {
+        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+        fetch(USERS_URL, {
+          method: "DELETE"
+        })
+      }
+      else{
       sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
       sw05opt1.innerHTML = `${random_two_letters[0]}`
-      sw05opt2.innerHTML = `${random_two_letters[1]}`}}
+      sw05opt2.innerHTML = `${random_two_letters[1]}`}}}
       catch {
         pickWords()
       }}
@@ -175,7 +183,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       try {await random_two_words_func();{
         let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
         the_correct_choice.push(randomMatch)
-        if (randomMatch === "RESET!!!") {
+        if (randomMatch == "RESET!!!") {
           the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
           fetch(USERS_URL, {
             method: "DELETE"

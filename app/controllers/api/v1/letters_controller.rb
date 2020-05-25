@@ -25,7 +25,11 @@ class Api::V1::LettersController < ApplicationController
 
     
     @letters = under_a_certain_score(@letters)
-    if @letters[0] == "GOTOWORDS"
+    if (@letters[0] == "GOTOWORDS") && (@words.empty?)
+      @everything = {}
+      @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
+      render json: @everything
+    elsif @letters[0] == "GOTOWORDS"
       redirect_to "/api/v1/users/#{@user.id}/words/"
     else
       @everything = {}
