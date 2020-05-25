@@ -232,13 +232,21 @@ async function check_cycle_now_func () {
     }
 
     catch {
-      (the_words.forEach(element => {
+      try {(the_words.forEach(element => {
       if (element.cycle_now === true) {words_and_or_letters.add("words")}
       }))
       
       x = Array.from(words_and_or_letters)
-      return x
+      return x}
+
+      catch {(the_letters.forEach(element => {
+        if (element.cycle_now === true) {words_and_or_letters.add("letters")}
+        }))
+        
+        x = Array.from(words_and_or_letters)
+        return x}
     }
+
 }
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
