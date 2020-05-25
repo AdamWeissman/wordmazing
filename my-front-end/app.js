@@ -191,14 +191,22 @@ async function random_two_letter_func_v2 () {
 
 async function random_two_words_func () {
   random_two_words = []
+  random_two_letters = [] //<--this is so a single completed word won't break the app
   let x = activeUserID[0];
   //alert("Return Random Two Letters With Low Scores");
   const result = await fetch(`${USERS_URL}/${x}/words`)
   const data = await result.json()
   const the_words = await data.words
-  const two_random_words = await the_words.forEach(element => {
+  try {await the_words.forEach(element => {
       random_two_words.push(element.the_word);
-      });
+      });}
+  catch {
+    const result = await fetch(`${USERS_URL}/${x}/letters`)
+    const letter_data = await result.json()
+    const the_letters = await letter_data.letters
+    await the_letters.forEach(element => {
+    random_two_letters.push(element.the_letter);
+    });}
 };
 
 async function check_cycle_now_func () {
