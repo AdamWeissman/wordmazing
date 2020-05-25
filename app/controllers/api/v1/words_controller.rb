@@ -56,6 +56,10 @@ class Api::V1::WordsController < ApplicationController
       @everything = {}
       @everything[:words] = [{the_word: "RESET!!!"}, {the_word: "RESET!!!"}]
       render json: @everything
+    elsif (@words[0] == "THEEND") && (!@letters_cycling.empty?)#destroy user and display congratulations
+      @everything = {}
+      @everything[:letters] = @letters_all
+      render json: @everything
     else
       @everything = {}
       @everything[:words] = @words
