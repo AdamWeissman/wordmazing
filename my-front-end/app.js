@@ -137,12 +137,19 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         result = await random_two_words_func();
         let randomMatch = random_two_words[Math.floor(Math.random() * random_two_words.length)];
         the_correct_choice.push(randomMatch) 
+        if (randomMatch == "RESET!!!") {
+          the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+          fetch(USERS_URL, {
+            method: "DELETE"
+          })
+        }
+        else{
         sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
         sw05opt1.innerHTML = `${random_two_words[0]}`
-        sw05opt2.innerHTML = `${random_two_words[1]}`}}
+        sw05opt2.innerHTML = `${random_two_words[1]}`}}}
     catch {result = await random_two_words_func();
       if (result === undefined) {
-        alert("incoming undefined 2")
+        alert("incoming undefined 2") //this was for debugging but never hit so far
       }
       else
       {let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
@@ -171,7 +178,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
           method: "DELETE"
         })
       }
-      else{
+      else {
       sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
       sw05opt1.innerHTML = `${random_two_letters[0]}`
       sw05opt2.innerHTML = `${random_two_letters[1]}`}}}
@@ -238,6 +245,12 @@ async function random_two_words_func () {
     const the_words = await data.words
     the_words.forEach(element => {
     random_two_words.push(element.the_word);
+    if (random_two_words == ["RESET!!!", "RESET!!!"]) {
+      the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+      fetch(USERS_URL, {
+        method: "DELETE"
+      })
+    }
   });}
 
   catch { const result = await fetch(`${USERS_URL}/${x}/letters`)
@@ -245,6 +258,12 @@ async function random_two_words_func () {
     const the_letters = await data.letters
     the_letters.forEach(element => {
     random_two_letters.push(element.the_letter);
+    if (random_two_letters == ["RESET!!!", "RESET!!!"]) {
+      the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+      fetch(USERS_URL, {
+        method: "DELETE"
+      })
+    }
   });}
 };
 
