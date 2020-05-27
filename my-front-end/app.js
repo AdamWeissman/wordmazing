@@ -47,6 +47,7 @@ const theUserData = {};
 const main = document.querySelector('main')
 const click2play = document.querySelector('click2play')
 const prettyMuchEverything = document.querySelector('prettyMuchEverything')
+// enter the words needs a query selector so it can disappear
 
 function onetime(node, type, callback) {
 	// create event
