@@ -60,15 +60,15 @@ function speak() {
 // this is to set a trigger to activate everything
 const main = document.querySelector('main')
 
-const make_it_talk = function () {
-    main.addEventListener('mousemove', e => {
-    eventCounter += 1;
-    grabTheText()
-    speak()}
-    );
-    }
+function shit () {
+ return "shit"
+}
+shit()
 
-make_it_talk()
+main.addEventListener('mousemove', e => {
+eventCounter += 1;
+grabTheText()
+speak()});
 
 // main.onmousemove = function (event) {
 //   event.preventDefault();
