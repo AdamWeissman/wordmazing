@@ -1,4 +1,7 @@
 
+
+
+
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
 const SESSIONS_URL = `${USERS_URL}/active_session`

@@ -1,8 +1,32 @@
+
+// this is to set a trigger to activate everything
+const main = document.querySelector('main')
+
+var enterEventCount = 0;
+
+main.addEventListener('mouseenter', e => {
+  if (enterEventCount == 2) {
+    void(0)
+  }
+  else {
+  enterEventCount+= 1;
+  }
+});
+
+main.onmouseenter = function () {
+  if (enterEventCount === 1) {
+  console.log("you're in main")}
+}
+
+
 var synth = window.speechSynthesis;
 
 var inputForm = document.querySelector('form');
 var inputTxt = document.getElementById('swb05matchThis').innerHTML;
 // var voiceSelect = document.querySelector('select');
+
+
+
 
 // var pitch = document.querySelector('#pitch');
 // var pitchValue = document.querySelector('.pitch-value');
