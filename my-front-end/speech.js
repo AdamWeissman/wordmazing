@@ -2,17 +2,22 @@
 var synth = window.speechSynthesis;
 //var inputTxt = "Hi there"
 //var inputForm = document.querySelector('form');
-
+let eventCounter = 0
 var textToSpeak = []
 
-async function grabTheText() {
+function grabTheText() {
   textToSpeak = [] //clear textToSpeak
   const inputTxt = document.getElementById('swb05matchThis').innerHTML;
-  textToSpeak.push(inputTxt)
-  return textToSpeak[0]
+  if (eventCounter <= 500){
+    textToSpeak[0] = "Hi I'm Wordmazing, what's your name?"
+    return textToSpeak[0]}
+  else {
+    textToSpeak.push(inputTxt)
+    return textToSpeak[0]
+  }
 }
 
-async function speak() {  
+function speak() {  
   if (synth.speaking) {
         console.error('speechSynthesis.speaking');
         return;
@@ -54,26 +59,25 @@ async function speak() {
 
 // this is to set a trigger to activate everything
 const main = document.querySelector('main')
-var enterEventCount = 0;
 
-main.addEventListener('mouseenter', e => {
-  if (enterEventCount == 5) {
+const make_it_talk = function () {
+    main.addEventListener('mousemove', e => {
+    eventCounter += 1;
     grabTheText()
-    void(0)
-  }
-  else {
-  grabTheText()
-  enterEventCount+= 1;
-  }
-});
+    speak()}
+    );
+    }
 
-main.onmouseenter = function (event) {
-  event.preventDefault();
+make_it_talk()
 
-  if (enterEventCount === 5) {
-    speak();
-  }
-}
+// main.onmousemove = function (event) {
+//   event.preventDefault();
+
+//   if (enterEventCount === 100) {
+//     if (console.log("yo")){
+//     speak();}
+//   }
+// }
 
 
 
