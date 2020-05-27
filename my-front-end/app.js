@@ -1,14 +1,15 @@
 var synth = window.speechSynthesis;
-var textToSpeak = []
+//var textToSpeak = []
+
 
 function speak() {  
   if (synth.speaking) {
         console.error('speechSynthesis.speaking');
         return;
     }
-    if (textToSpeak[0] !== '') {
+    if ([rightHere] !== '') {
     var voices = synth.getVoices();
-    var utterThis = new SpeechSynthesisUtterance(textToSpeak[0]) 
+    var utterThis = new SpeechSynthesisUtterance([rightHere]) 
     try {
       utterThis.pitch = 1.0;
       utterThis.rate = .9;
@@ -32,12 +33,6 @@ function speak() {
   }
 
 
-
-
-
-
-
-
 const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
 const SESSIONS_URL = `${USERS_URL}/active_session`
@@ -47,6 +42,39 @@ const SESSIONS_URL = `${USERS_URL}/active_session`
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');
 const theUserData = {};
+
+
+const main = document.querySelector('main')
+const click2play = document.querySelector('click2play')
+const prettyMuchEverything = document.querySelector('prettyMuchEverything')
+
+function onetime(node, type, callback) {
+	// create event
+	node.addEventListener('click', function(e) {
+    console.log("just once")
+		// remove event
+		node.removeEventListener(e.type, arguments.callee);
+		// call handler
+		return callback(e);
+	});
+}
+
+function greeting(e) {
+  speak(rightHere = "Hi, I'm Wordmazing.  What's your name?");
+  sw01.style.display = "block";
+  click2play.style.display = "none"
+  prettyMuchEverything.style.display = "block"
+}
+
+onetime(main, "click", greeting)
+
+
+// main.onclick = () => { 
+//   speak(rightHere = "Hi, I'm Wordmazing.  What's your name?")
+// };
+
+sw01.style.display = "none";
+prettyMuchEverything.style.display = "none"
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -64,7 +92,14 @@ sw01.addEventListener('submit', (e) => {
     })
   .then(response=>response.json())
   .then(data=>console.log(data))
-});
+  sw01.style.display = "none";
+  speak(rightHere="Nice to meet you" + (`${theUserData['name']}` + "Enter some words to play. When you're done, click finished."))
+}
+);
+
+
+
+
 
 //RETURN FAKE SESSION
 const sw02 = document.getElementById('switchboard02');
