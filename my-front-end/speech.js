@@ -12,7 +12,7 @@ async function grabTheText() {
   return textToSpeak[0]
 }
 
-function speak() {  
+async function speak() {  
   if (synth.speaking) {
         console.error('speechSynthesis.speaking');
         return;
@@ -39,6 +39,7 @@ function speak() {
     }
 
     synth.speak(utterThis);
+    console.log(utterThis)
   }
 
 
@@ -56,19 +57,20 @@ const main = document.querySelector('main')
 var enterEventCount = 0;
 
 main.addEventListener('mouseenter', e => {
-  if (enterEventCount == 2) {
+  if (enterEventCount == 5) {
+    grabTheText()
     void(0)
   }
   else {
+  grabTheText()
   enterEventCount+= 1;
   }
 });
 
 main.onmouseenter = function (event) {
-  grabTheText()
   event.preventDefault();
-  if (enterEventCount === 1) {
-    console.log("yo");
+
+  if (enterEventCount === 5) {
     speak();
   }
 }
