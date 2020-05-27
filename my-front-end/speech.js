@@ -1,7 +1,58 @@
+//below code is for setting the speech
+var synth = window.speechSynthesis;
+//var inputTxt = "Hi there"
+//var inputForm = document.querySelector('form');
+
+var textToSpeak = []
+
+async function grabTheText() {
+  textToSpeak = [] //clear textToSpeak
+  const inputTxt = document.getElementById('swb05matchThis').innerHTML;
+  textToSpeak.push(inputTxt)
+  return textToSpeak[0]
+}
+
+function speak() {  
+  if (synth.speaking) {
+        console.error('speechSynthesis.speaking');
+        return;
+    }
+    if (textToSpeak[0] !== '') {
+    var voices = synth.getVoices();
+    var utterThis = new SpeechSynthesisUtterance(textToSpeak[0]) 
+    try {
+      utterThis.pitch = 1.0;
+      utterThis.rate = .9;
+      utterThis.voice = voices[49]}
+    catch {
+      utterThis.pitch = 1.7;
+      utterThis.rate = .7;
+      utterThis.voice = voices[0]}
+      //leaves voice as default
+    }
+    utterThis.onend = function (event) {
+        console.log('SpeechSynthesisUtterance.onend');
+    } 
+    utterThis.onerror = function (event) {
+        console.error('SpeechSynthesisUtterance.onerror');
+        console.log(utterThis)
+    }
+
+    synth.speak(utterThis);
+  }
+
+
+// inputForm.onsubmit = function(event) {
+//   event.preventDefault();
+
+//   speak();
+
+//   //inputTxt.blur();
+// }
+
 
 // this is to set a trigger to activate everything
 const main = document.querySelector('main')
-
 var enterEventCount = 0;
 
 main.addEventListener('mouseenter', e => {
@@ -13,17 +64,30 @@ main.addEventListener('mouseenter', e => {
   }
 });
 
-main.onmouseenter = function () {
+main.onmouseenter = function (event) {
+  grabTheText()
+  event.preventDefault();
   if (enterEventCount === 1) {
-  console.log("you're in main")}
+    console.log("yo");
+    speak();
+  }
 }
 
 
-var synth = window.speechSynthesis;
 
-var inputForm = document.querySelector('form');
-var inputTxt = document.getElementById('swb05matchThis').innerHTML;
-// var voiceSelect = document.querySelector('select');
+// pitch.onchange = function() {
+//   pitchValue.textContent = pitch.value;
+// }
+
+// rate.onchange = function() {
+//   rateValue.textContent = rate.value;
+// }
+
+// voiceSelect.onchange = function(){
+//   speak();
+// }
+
+
 
 
 
@@ -66,50 +130,4 @@ var inputTxt = document.getElementById('swb05matchThis').innerHTML;
 // populateVoiceList();
 // if (speechSynthesis.onvoiceschanged !== undefined) {
 //   speechSynthesis.onvoiceschanged = populateVoiceList;
-// }
-
-function speak(){
-    if (synth.speaking) {
-        console.error('speechSynthesis.speaking');
-        return;
-    }
-    if (inputTxt.value !== '') {
-    var utterThis = new SpeechSynthesisUtterance(inputTxt);
-    utterThis.onend = function (event) {
-        console.log('SpeechSynthesisUtterance.onend');
-    }
-    utterThis.onerror = function (event) {
-        console.error('SpeechSynthesisUtterance.onerror');
-    }
-    // var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
-    // for(i = 0; i < voices.length ; i++) {
-    //   if(voices[i].name === selectedOption) {
-    //     utterThis.voice = voices[i];
-    //     break;
-    //   }
-    // }
-    //utterThis.pitch = pitch.value;
-    //utterThis.rate = rate.value;
-    synth.speak(utterThis);
-  }
-}
-
-inputForm.onsubmit = function(event) {
-  event.preventDefault();
-
-  speak();
-
-  //inputTxt.blur();
-}
-
-// pitch.onchange = function() {
-//   pitchValue.textContent = pitch.value;
-// }
-
-// rate.onchange = function() {
-//   rateValue.textContent = rate.value;
-// }
-
-// voiceSelect.onchange = function(){
-//   speak();
 // }
