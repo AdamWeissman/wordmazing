@@ -49,6 +49,7 @@ const click2play = document.querySelector('click2play')
 const prettyMuchEverything = document.querySelector('prettyMuchEverything')
 const letterselect = document.querySelector('letterselect')
 const wordmaker = document.querySelector('wordmaker')
+const active_and_delete_user = document.querySelector('active_and_delete_user')
 // enter the words needs a query selector so it can disappear
 
 function onetime(node, type, callback) {
@@ -70,6 +71,7 @@ function greeting(e) {
   sw01.style.display = "block";
   click2play.style.display = "none"
   prettyMuchEverything.style.display = "block"
+  active_and_delete_user.style.display = "none"
   letterselect.style.display = "none"
   wordmaker.style.display = "none"
 }
