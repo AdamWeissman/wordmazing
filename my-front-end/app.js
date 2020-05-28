@@ -426,10 +426,32 @@ async function check_cycle_now_func () {
 }
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
+  function wait(ms){
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
+
+ 
+
+
+
 sw05opt1.addEventListener('click', (e) => {
+  let good_job_choice = ["You got it right " + `${userName.value}`+"!", "Great job!" + `${userName.value}`+"!", "You got it perfect, amazing!", "WOW, I'm impressed" + `${userName.value}`+"!", "You're doing awesome. Great work!", "Wonderful job. You got it!", "You're doing excellent " + `${userName.value}`+"!"]
+  let goodJob = good_job_choice[Math.floor(Math.random() * good_job_choice.length)]; 
+ 
+ //speak(rightHere=`${goodJob}`);
+
+  let oops_choice = ["Oops, it was the other letter" + `${userName.value}`+"!", "Oops, it was actually the other one.", "OOPS. It's okay to make mistakes.", "OOPS, I would've made the same mistake" + `${userName.value}`+"!", "OOPS, You'll get it next time!", "OOPS, Next time you'll get the right answer!", "OOPS. Everyone makes mistakes " + `${userName.value}`+"!"]
+  let oopsies = oops_choice[Math.floor(Math.random() * oops_choice.length)]; 
+ 
+ //speak(rightHere=${oopsies}`);
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt1.innerHTML) {
-    alert("YOU ARE CORRECT");
+    speak(rightHere=`${goodJob}`);
+    wait(2900)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) {
@@ -461,15 +483,27 @@ sw05opt1.addEventListener('click', (e) => {
 
   }
   else {
-    alert("YOU ARE WRONG");
+    speak(rightHere=`${oopsies}`);
+    wait(2900);
     set_random_two_letters_or_words_v2();
   }
 });
 
 sw05opt2.addEventListener('click', (e) => {
+  let good_job_choice = ["You got it right " + `${userName.value}`+"!", "Great job!" + `${userName.value}`+"!", "You got it perfect, amazing!", "WOW, I'm impressed" + `${userName.value}`+"!", "You're doing awesome. Great work!", "Wonderful job. You got it!", "You're doing excellent " + `${userName.value}`+"!"]
+  let goodJob = good_job_choice[Math.floor(Math.random() * good_job_choice.length)]; 
+ 
+ //speak(rightHere=`${goodJob}`);
+
+  let oops_choice = ["Oops, it was the other letter" + `${userName.value}`+"!", "Whoops. It was actually the other one.", "Whoops. It's okay to make mistakes.", "Oops. I would've made the same mistake" + `${userName.value}`+"!", "Whoops. You'll get it next time!", "Ooops. Next time you'll get the right answer!", "Whoops. Everyone makes mistakes " + `${userName.value}`+"!"]
+  let oopsies = oops_choice[Math.floor(Math.random() * oops_choice.length)]; 
+ 
+ //speak(rightHere=${oopsies}`);
+
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt2.innerHTML) {
-    alert("YOU ARE CORRECT");
+    speak(rightHere=`${goodJob}`);
+    wait(2900)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) { 
@@ -500,7 +534,8 @@ sw05opt2.addEventListener('click', (e) => {
 
   }
   else {
-    alert("YOU ARE WRONG");
+    speak(rightHere=`${oopsies}`);
+    wait(2900);
     set_random_two_letters_or_words_v2();
   }
 });
