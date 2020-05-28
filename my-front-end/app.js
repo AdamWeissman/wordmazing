@@ -47,12 +47,14 @@ const theUserData = {};
 const main = document.querySelector('main')
 const click2play = document.querySelector('click2play')
 const prettyMuchEverything = document.querySelector('prettyMuchEverything')
+const letterselect = document.querySelector('letterselect')
+const wordmaker = document.querySelector('wordmaker')
 // enter the words needs a query selector so it can disappear
 
 function onetime(node, type, callback) {
 	// create event
 	node.addEventListener('click', function(e) {
-    console.log("just once")
+    console.log("just once test")
 		// remove event
 		node.removeEventListener(e.type, arguments.callee);
 		// call handler
@@ -65,6 +67,8 @@ function greeting(e) {
   sw01.style.display = "block";
   click2play.style.display = "none"
   prettyMuchEverything.style.display = "block"
+  letterselect.style.display = "none"
+  wordmaker.style.display = "none"
 }
 
 onetime(main, "click", greeting)
@@ -79,7 +83,7 @@ prettyMuchEverything.style.display = "none"
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
-  alert(userName.value + ' submitted the form');
+  //alert(userName.value + ' submitted the form');
   theUserData['name'] = userName.value
   console.log(theUserData['name'])
   fetch(USERS_URL, {
@@ -94,7 +98,8 @@ sw01.addEventListener('submit', (e) => {
   .then(response=>response.json())
   .then(data=>console.log(data))
   sw01.style.display = "none";
-  speak(rightHere="Nice to meet you" + (`${theUserData['name']}.` + "    Enter some words to play. When you're done, click finished."))
+  speak(rightHere="Nice to meet you" + (`${theUserData['name']}. ` + "Enter some words to play. When you're done, click finished."))
+  wordmaker.style.display = "block"
 }
 );
 
