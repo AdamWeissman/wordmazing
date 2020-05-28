@@ -223,12 +223,14 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       if (randomMatch !== undefined) {
         the_correct_choice.push(randomMatch) 
         sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+        speak(rightHere="click the letter " + `${the_correct_choice[0]}`)
         sw05opt1.innerHTML = `${random_two_letters[0]}`
         sw05opt2.innerHTML = `${random_two_letters[1]}`}
       else {
         result = await random_two_words_func();
         let randomMatch = random_two_words[Math.floor(Math.random() * random_two_words.length)];
         the_correct_choice.push(randomMatch) 
+        speak(rightHere=`${the_correct_choice[0]}`)
         if (randomMatch == "RESET!!!") {
           the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
           fetch(USERS_URL, {
@@ -237,6 +239,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         }
         else{
         sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+        speak(rightHere="click the word match for" + `${the_correct_choice[0]}`)
         sw05opt1.innerHTML = `${random_two_words[0]}`
         sw05opt2.innerHTML = `${random_two_words[1]}`}}}
     catch {result = await random_two_words_func();
