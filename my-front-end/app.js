@@ -55,6 +55,9 @@ function onetime(node, type, callback) {
 	// create event
 	node.addEventListener('click', function(e) {
     console.log("just once test")
+    fetch(USERS_URL, {
+      method: "DELETE"
+    })
 		// remove event
 		node.removeEventListener(e.type, arguments.callee);
 		// call handler
@@ -196,6 +199,8 @@ const the_whole_thing = document.body
 
 sw05.onclick = function () {
     set_random_two_letters_or_words_v2();
+    wordmaker.style.display = "none"
+    letterselect.style.display = "block"
 }
 
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
