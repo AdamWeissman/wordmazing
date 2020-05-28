@@ -451,7 +451,7 @@ sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt1.innerHTML) {
     speak(rightHere=`${goodJob}`);
-    wait(2900)
+    //wait(2900)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) {
@@ -484,7 +484,7 @@ sw05opt1.addEventListener('click', (e) => {
   }
   else {
     speak(rightHere=`${oopsies}`);
-    wait(2900);
+    //wait(2900);
     set_random_two_letters_or_words_v2();
   }
 });
@@ -503,7 +503,7 @@ sw05opt2.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt2.innerHTML) {
     speak(rightHere=`${goodJob}`);
-    wait(2900)
+    //wait(2900)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) { 
@@ -535,7 +535,7 @@ sw05opt2.addEventListener('click', (e) => {
   }
   else {
     speak(rightHere=`${oopsies}`);
-    wait(2900);
+    //wait(2900);
     set_random_two_letters_or_words_v2();
   }
 });
