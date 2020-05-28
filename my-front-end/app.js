@@ -44,12 +44,17 @@ const userName = document.querySelector('#sw01name');
 const theUserData = {};
 
 
+
+
+
+
 const main = document.querySelector('main')
 const click2play = document.querySelector('click2play')
 const prettyMuchEverything = document.querySelector('prettyMuchEverything')
 const letterselect = document.querySelector('letterselect')
 const wordmaker = document.querySelector('wordmaker')
 const active_and_delete_user = document.querySelector('active_and_delete_user')
+
 // enter the words needs a query selector so it can disappear
 
 function onetime(node, type, callback) {
@@ -163,9 +168,9 @@ sw03.addEventListener('submit', (e) => {
   
   let x = activeUserID[0];
  
-  let random_word_choice_praise = [" is a great choice " + `${userName.value}`+"!", " is an awesome pick!", " is just what I was thinking!", " will be a fun word to learn! " + `${userName.value}`+"!", " sounds good to me!", " sounds like a plan", " is an excellent choice " + `${userName.value}`+"!"]
+  let random_word_choice_praise = [" is a great choice " + `${userName.value}`+"!", " is an awesome pick!", " is just what I was thinking!", " will be a fun word to learn " + `${userName.value}`+"!", " sounds good to me!", " sounds like a plan", " is an excellent choice " + `${userName.value}`+"!"]
   let randomPraise = random_word_choice_praise[Math.floor(Math.random() * random_word_choice_praise.length)]; 
- 
+  
   speak(rightHere=`${word.value}` + `${randomPraise}`);
 
   theWordData['the_word'] = word.value.toUpperCase();
@@ -200,6 +205,14 @@ const sw05opt1 = document.getElementById('swb05option1')
 const sw05opt2 = document.getElementById('swb05option2')
 const the_whole_thing = document.body
 
+
+sw05matchMe.addEventListener('click', (e) => {
+  speak(rightHere=`${sw05matchMe.innerHTML}`)
+})
+
+function clickMatchMe() {
+  sw05matchMe.click()
+}
 // let random_two_letters = [] //dont delete this
 // let the_correct_letter = [] //this line an the one below are used for the clicking events
 // let the_correct_word = []
@@ -223,14 +236,13 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       if (randomMatch !== undefined) {
         the_correct_choice.push(randomMatch) 
         sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
-        speak(rightHere="click the letter " + `${the_correct_choice[0]}`)
+        clickMatchMe()
         sw05opt1.innerHTML = `${random_two_letters[0]}`
         sw05opt2.innerHTML = `${random_two_letters[1]}`}
       else {
         result = await random_two_words_func();
         let randomMatch = random_two_words[Math.floor(Math.random() * random_two_words.length)];
         the_correct_choice.push(randomMatch) 
-        speak(rightHere=`${the_correct_choice[0]}`)
         if (randomMatch == "RESET!!!") {
           the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
           fetch(USERS_URL, {
@@ -239,7 +251,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         }
         else{
         sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
-        speak(rightHere="click the word match for" + `${the_correct_choice[0]}`)
+        clickMatchMe()
         sw05opt1.innerHTML = `${random_two_words[0]}`
         sw05opt2.innerHTML = `${random_two_words[1]}`}}}
     catch {result = await random_two_words_func();
@@ -257,6 +269,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       }
       else {
       sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+      clickMatchMe()
       sw05opt1.innerHTML = `${random_two_words[0]}`
       sw05opt2.innerHTML = `${random_two_words[1]}`}}}
   }
@@ -275,6 +288,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       }
       else {
       sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`
+      clickMatchMe()
       sw05opt1.innerHTML = `${random_two_letters[0]}`
       sw05opt2.innerHTML = `${random_two_letters[1]}`}}}
       catch {
@@ -293,6 +307,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         }
         else {
         sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
+        clickMatchMe()
         sw05opt1.innerHTML = `${random_two_words[0]}`
         sw05opt2.innerHTML = `${random_two_words[1]}`}}
       }
@@ -489,6 +504,8 @@ sw05opt2.addEventListener('click', (e) => {
     set_random_two_letters_or_words_v2();
   }
 });
+
+
 
 
 //......................................................................................
