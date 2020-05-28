@@ -103,7 +103,7 @@ sw01.addEventListener('submit', (e) => {
   .then(response=>response.json())
   .then(data=>console.log(data))
   sw01.style.display = "none";
-  speak(rightHere="Nice to meet you" + (`${theUserData['name']}. ` + "Enter some words to play. When you're done, click finished."))
+  speak(rightHere="Nice to meet you " + (`${theUserData['name']}. ` + "Enter some words to play. When you're done, click finished."))
   wordmaker.style.display = "block"
 }
 );
@@ -162,7 +162,12 @@ sw03.addEventListener('submit', (e) => {
   e.preventDefault(); 
   
   let x = activeUserID[0];
-  alert(word.value + ' has been submitted');
+ 
+  let random_word_choice_praise = [" is a great choice " + `${userName.value}`+"!", " is an awesome pick!", " is just what I was thinking!", " will be a fun word to learn! " + `${userName.value}`+"!", " sounds good to me!", " sounds like a plan", " is an excellent choice " + `${userName.value}`+"!"]
+  let randomPraise = random_word_choice_praise[Math.floor(Math.random() * random_word_choice_praise.length)]; 
+ 
+  speak(rightHere=`${word.value}` + `${randomPraise}`);
+
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])
   
