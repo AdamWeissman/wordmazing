@@ -9,12 +9,12 @@ class Api::V1::LettersController < ApplicationController
     #may want to rewrite this code so that it will check to see if any word or any letters is marked as cycle now
 
       def under_a_certain_score(the_letters)
-        if (the_letters.map {|i| i if i.the_letter_score <= 2}).compact.length >= 2
-          these_ones = the_letters.map {|i| i if i.the_letter_score <= 2}
+        if (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.length >= 2
+          these_ones = the_letters.map {|i| i if i.the_letter_score <= 3}
           return these_ones.compact.shuffle[0..1]
-        elsif (the_letters.map {|i| i if i.the_letter_score <= 2}).compact.length == 1
-          these_ones = (the_letters.map {|i| i if i.the_letter_score <= 2}).compact  
-          some_old_letters = (the_letters.map {|i| i if i.the_letter_score > 2 }).compact
+        elsif (the_letters.map {|i| i if i.the_letter_score <= 3}).compact.length == 1
+          these_ones = (the_letters.map {|i| i if i.the_letter_score <= 3}).compact  
+          some_old_letters = (the_letters.map {|i| i if i.the_letter_score > 3 }).compact
           a_random_letter = some_old_letters.shuffle[0]
           these_ones << a_random_letter
           return these_ones.compact.shuffle[0..1]
@@ -45,11 +45,11 @@ class Api::V1::LettersController < ApplicationController
     params.permit!
     user = User.find(params[:user_id])
     letter = user.letters.find_by_the_letter(params[:id])
-    if letter.the_letter_score == 2
+    if letter.the_letter_score == 3
       letter.the_letter_score += 1
       letter.cycle_now = false
       letter.save
-    elsif letter.the_letter_score > 2
+    elsif letter.the_letter_score > 3
       letter.the_letter_score = letter.the_letter_score
       letter.cycle_now = false
       letter.save

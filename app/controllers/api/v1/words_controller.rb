@@ -8,7 +8,7 @@ class Api::V1::WordsController < ApplicationController
     word.the_word_score = 0
     word.word_activation_switch = word.make_activation_switch(word.the_word)
     if word.save
-      word.make_letters 
+      word.make_letters
       render json: word
     else
       render json: {errors: word.errors.full_messages}, status: :unprocessible_entity
@@ -23,14 +23,14 @@ class Api::V1::WordsController < ApplicationController
     @words_cycling = @words_all.map {|i| i if i.cycle_now == true}.compact
 
       def under_a_certain_score(the_words) #assuming cycle_now is true
-        if (the_words.map {|i| i if i.the_word_score <= 2}).compact.length >= 2 #more than 2 words with a score less than 3
-          these_ones = the_words.map {|i| i if i.the_word_score <= 2}
+        if (the_words.map {|i| i if i.the_word_score <= 3}).compact.length >= 2 #more than 2 words with a score less than 3
+          these_ones = the_words.map {|i| i if i.the_word_score <= 3}
           return these_ones.compact.shuffle[0..1]
        
-        elsif (the_words.map {|i| i if i.the_word_score <= 2}).compact.length == 1 #only word 1 with a score less than 3
-          these_ones = (the_words.map {|i| i if i.the_word_score <= 2}).compact #necessarily ONE word with a score less than or equal to three
-          if (the_words.map {|i| i if i.the_word_score > 2 }).compact.length >= 1 #this is triggered if the reason is the other words are cycled out by score
-            some_old_words = (the_words.map {|i| i if i.the_word_score > 2 }).compact
+        elsif (the_words.map {|i| i if i.the_word_score <= 3}).compact.length == 1 #only word 1 with a score less than 3
+          these_ones = (the_words.map {|i| i if i.the_word_score <= 3}).compact #necessarily ONE word with a score less than or equal to three
+          if (the_words.map {|i| i if i.the_word_score > 3 }).compact.length >= 1 #this is triggered if the reason is the other words are cycled out by score
+            some_old_words = (the_words.map {|i| i if i.the_word_score > 3 }).compact
             a_random_word = some_old_words.shuffle[0]
             these_ones << a_random_word
             return these_ones.compact.shuffle[0..1]
@@ -72,11 +72,11 @@ class Api::V1::WordsController < ApplicationController
     word = user.words.find_by_the_word(params[:id])
     #binding.pry
 
-    if word.the_word_score == 2 
+    if word.the_word_score == 3 
       word.the_word_score +=1
       word.cycle_now = false
       word.save
-    elsif word.the_word_score > 2
+    elsif word.the_word_score > 3
       word.the_word_score = word.the_word_score
       word.cycle_now = false
       word.save
