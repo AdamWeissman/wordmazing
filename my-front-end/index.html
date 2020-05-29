@@ -11,34 +11,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="app.css">
     <script type="text/javascript" src="app.js" async defer></script> <!--this line was formerly in the body tag-->
+    <!-- <script type="text/javascript" src="speech.js" async defer></script> -->
   </head>
+  <main>
   <body>
+    <center>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     
-    <center>
-      <h1>SWITCHBOARD ... <br>NOTE THIS IS INCOMPLETE FUNCTIONALITY</h1>
-        
-       
 
-        THESE WORK, BUT ONLY FOR A SINGLE USER ONLINE AT A TIME.
+    <!-- <select id="voiceSelect"></select>
+    USE KAREN (en-AU), or Samantha (en-US)... Karen doesn't get XYZ correct rate 0.7, pitch 1.7
+   
+
+
+      <h1>Speech synthesiser</h1>
+
+      <p>Enter some text in the input below and press return  or the "play" button to hear it. change voices using the dropdown menu.</p>
+      
+      <form>
+      <input type="text" class="txt">
+      <div>
+        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate">
+        <div class="rate-value">1</div>
+        <div class="clearfix"></div>
+      </div>
+      <div>
+        <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch">
+        <div class="pitch-value">1</div>
+        <div class="clearfix"></div>
+      </div>
+      <select>
+  
+      </select>
+      <div class="controls">
+        <button id="play" type="submit">Play</button>
+      </div>
+      </form>
+  
+    </body> -->
+
+    <click2play>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <h1 style="height:100vh;width:100vw;">CLICK ANYWHERE TO BEGIN</h1>
+    </click2play>
+       
+      <prettyMuchEverything>
+
         <form id="switchboard01">
-          <input name="name" type="text" placeholder="What is your name?" id="sw01name">
-          <input type="submit">
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <input name="name" type="text" placeholder="ENTER YOUR NAME HERE" id="sw01name">
+          <input type="submit" value="SUBMIT">
         </form><br>
 
         <!-- <button id="switchboard01a">Create a Session from Last User</button><br><br> -->
 
-        <button id="switchboard02">Return User in Session</button><br><br>
+        
 
-        <button id="switchboard02a">Delete The User in Session</button><br><br>
-
-        WORDS ARE ENTERED AND PARSED INTO LETTERS IN THE DATABASE<br>
+      <wordmaker> 
       <form id="switchboard03">
-        <input name="name" type="text" placeholder="Enter a Word?" id="sw03word">
-        <input type="submit">
-      </form><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <input name="name" type="text" placeholder="ENTER A WORD" id="sw03word">
+        <input type="submit" value="ADD THE WORD!">
+      </form><br><br>
+      <button id="switchboard05">FINISH</button><br>
+      </wordmaker>
 
         <!-- THIS RETURNS TWO RANDOM LETTERS FROM THE DATABASE<br>
         <button id="switchboard04">Return Random Two Letters from Active User</button><br>
@@ -52,9 +90,10 @@
         </center> -->
         <br>
         <!-- WILL ULTIMATELY COMBINE THE ABOVE METHOD WITH THIS ONE TO DRY UP CODE<br> -->
+        <letterselect>
         
-        <button id="switchboard05">ASK FOR THE CORRECT LETTER, IF CORRECT IS SELECTED, UPDATE LETTER SCORE BY 1 AND CORRESPONDING ACTIVATION SWITCH</button><br>
         <center>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           <table>
             <th id="swb05matchThis" colspan="2">select the box that matches this letter</th>
             <tr>
@@ -62,9 +101,16 @@
               <td id="swb05option2" style="text-align:center"> OPTION 1 </td>
            </tr>
           </table>
-
+        </letterselect>
         </center>
-
+        <active_and_delete_user>
+        <center>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <button id="switchboard02">Return User in Session</button><br><br>
+          <button id="switchboard02a">Delete The User in Session</button><br><br>
+        </center>
+        </active_and_delete_user>
+      </prettyMuchEverything>
         <!-- 
         <br><br>
         TESTING THIS NEXT
@@ -96,4 +142,6 @@
 
     </center>
   </body>
+  </main>
+
 </html>
