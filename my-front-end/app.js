@@ -311,7 +311,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
           let randomR = r_letters[Math.floor(Math.random() * r_letters.length)];
           sw05matchMe.innerHTML = `${randomMatch} is for ${randomR}. Click ${randomMatch}`}
         else if (randomMatch == "S") {
-          let s_letters = ["silver", "sauce", "sheep", "sad"]
+          let s_letters = ["silver", "sauce", "sheep", "sad", "silly"]
           let randomS = s_letters[Math.floor(Math.random() * s_letters.length)];
           sw05matchMe.innerHTML = `${randomMatch} is for ${randomS}. Click ${randomMatch}`}
         else if (randomMatch == "T") {
@@ -476,7 +476,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
             let randomR = r_letters[Math.floor(Math.random() * r_letters.length)];
             sw05matchMe.innerHTML = `${randomMatch} is for ${randomR}. Click ${randomMatch}`}
           else if (randomMatch == "S") {
-            let s_letters = ["silver", "sauce", "sheep", "sad"]
+            let s_letters = ["silver", "sauce", "sheep", "sad", "silly"]
             let randomS = s_letters[Math.floor(Math.random() * s_letters.length)];
             sw05matchMe.innerHTML = `${randomMatch} is for ${randomS}. Click ${randomMatch}`}
           else if (randomMatch == "T") {
