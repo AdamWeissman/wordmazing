@@ -2,7 +2,6 @@ const BASE_URL = "http://localhost:3000"
 const USERS_URL = `${BASE_URL}/api/v1/users`
 const SESSIONS_URL = `${USERS_URL}/active_session`
 
-
 //CREATE A USER 
 const sw01 = document.getElementById('switchboard01');
 const userName = document.querySelector('#sw01name');

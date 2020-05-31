@@ -1,31 +1,3 @@
-function onetime(node, type, callback) {
-	// create event
-	node.addEventListener('click', function(e) {
-    console.log("just once test")
-    fetch(USERS_URL, {
-      method: "DELETE"
-    })
-		// remove event
-		node.removeEventListener(e.type, arguments.callee);
-		// call handler
-		return callback(e);
-	});
-}
-
-function greeting(e) {
-  speak(rightHere = "Hi, I'm Wordmazing.  What's your name?");
-  sw01.style.display = "block";
-  click2play.style.display = "none"
-  prettyMuchEverything.style.display = "block"
-  active_and_delete_user.style.display = "none"
-  letterselect.style.display = "none"
-  wordmaker.style.display = "none"
-}
-
-onetime(main, "click", greeting)
-
-
-
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
   //alert(userName.value + ' submitted the form');
@@ -49,34 +21,32 @@ sw01.addEventListener('submit', (e) => {
 );
 
 
-
-
-
+// sw02 and sw02a were used for testing but no longer relevant
 //RETURN FAKE SESSION
 //const sw02 = document.getElementById('switchboard02');
 
-sw02.onclick = () => {
-  fetch(SESSIONS_URL)
-    .then((response) => {
-      response.json()
-    .then((data) => {alert(data["id"])});
-  });
-}
+// sw02.onclick = () => {
+//   fetch(SESSIONS_URL)
+//     .then((response) => {
+//       response.json()
+//     .then((data) => {alert(data["id"])});
+//   });
+// }
       
 //DESTROY THE SESSION USER ... should destroy the session.
 
-sw02a.onclick = () => {
-  activeUserID = [];
-  fetch(SESSIONS_URL)
-    .then((response) => {
-      response.json()
-    .then((data) => {alert("Destroying user " + data["name"])});
-  })
+// sw02a.onclick = () => {
+//   activeUserID = [];
+//   fetch(SESSIONS_URL)
+//     .then((response) => {
+//       response.json()
+//     .then((data) => {alert("Destroying user " + data["name"])});
+//   })
 
-  fetch(USERS_URL, {
-    method: "DELETE"
-  })
-}
+//   fetch(USERS_URL, {
+//     method: "DELETE"
+//   })
+// }
 
 //ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER, LETTERS ARE ALSO GENERATED WITH MAKE_LETTERS METHOD FROM THE WORD MODEL
 
