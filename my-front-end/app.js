@@ -1,59 +1,25 @@
-var synth = window.speechSynthesis;
-//var textToSpeak = []
-
-
-function speak() {  
-  if (synth.speaking) {
-        console.error('speechSynthesis.speaking');
-        return;
-    }
-    if ([rightHere] !== '') {
-    var voices = synth.getVoices();
-    var utterThis = new SpeechSynthesisUtterance([rightHere]) 
-    try {
-      utterThis.pitch = 1.0;
-      utterThis.rate = .9;
-      utterThis.voice = voices[49]}
-    catch {
-      utterThis.pitch = 1.7;
-      utterThis.rate = .7;
-      utterThis.voice = voices[0]}
-      //leaves voice as default
-    }
-    utterThis.onend = function (event) {
-        console.log('SpeechSynthesisUtterance.onend');
-    } 
-    utterThis.onerror = function (event) {
-        console.error('SpeechSynthesisUtterance.onerror');
-        console.log(utterThis)
-    }
-
-    synth.speak(utterThis);
-    console.log(utterThis)
-  }
-
-
-const BASE_URL = "http://localhost:3000"
-const USERS_URL = `${BASE_URL}/api/v1/users`
-const SESSIONS_URL = `${USERS_URL}/active_session`
-
-
-//CREATE A USER 
-const sw01 = document.getElementById('switchboard01');
-const userName = document.querySelector('#sw01name');
-const theUserData = {};
 
 
 
 
 
+// const BASE_URL = "http://localhost:3000"
+// const USERS_URL = `${BASE_URL}/api/v1/users`
+// const SESSIONS_URL = `${USERS_URL}/active_session`
 
-const main = document.querySelector('main')
-const click2play = document.querySelector('click2play')
-const prettyMuchEverything = document.querySelector('prettyMuchEverything')
-const letterselect = document.querySelector('letterselect')
-const wordmaker = document.querySelector('wordmaker')
-const active_and_delete_user = document.querySelector('active_and_delete_user')
+
+// //CREATE A USER 
+// const sw01 = document.getElementById('switchboard01');
+// const userName = document.querySelector('#sw01name');
+// const theUserData = {};
+
+
+// const main = document.querySelector('main')
+// const click2play = document.querySelector('click2play')
+// const prettyMuchEverything = document.querySelector('prettyMuchEverything')
+// const letterselect = document.querySelector('letterselect')
+// const wordmaker = document.querySelector('wordmaker')
+// const active_and_delete_user = document.querySelector('active_and_delete_user')
 
 // enter the words needs a query selector so it can disappear
 
@@ -88,8 +54,8 @@ onetime(main, "click", greeting)
 //   speak(rightHere = "Hi, I'm Wordmazing.  What's your name?")
 // };
 
-sw01.style.display = "none";
-prettyMuchEverything.style.display = "none"
+// sw01.style.display = "none";
+// prettyMuchEverything.style.display = "none"
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -118,7 +84,7 @@ sw01.addEventListener('submit', (e) => {
 
 
 //RETURN FAKE SESSION
-const sw02 = document.getElementById('switchboard02');
+//const sw02 = document.getElementById('switchboard02');
 
 sw02.onclick = () => {
   fetch(SESSIONS_URL)
@@ -146,10 +112,10 @@ sw02a.onclick = () => {
 
 //ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER, LETTERS ARE ALSO GENERATED WITH MAKE_LETTERS METHOD FROM THE WORD MODEL
 
-const sw03 = document.getElementById('switchboard03')
-const word = document.querySelector('#sw03word');
-const theWordData = {};
-let activeUserID = []; //this is used here and will be used elsewhere
+// const sw03 = document.getElementById('switchboard03')
+// const word = document.querySelector('#sw03word');
+// const theWordData = {};
+// let activeUserID = []; //this is used here and will be used elsewhere
 
 async function activeUser () {
   const result = await fetch(SESSIONS_URL);
@@ -199,11 +165,11 @@ sw03.addEventListener('submit', (e) => {
 
 //TESTING
 
-const sw05 = document.getElementById('switchboard05')
-const sw05matchMe = document.getElementById('swb05matchThis')
-const sw05opt1 = document.getElementById('swb05option1')
-const sw05opt2 = document.getElementById('swb05option2')
-const the_whole_thing = document.body
+// const sw05 = document.getElementById('switchboard05')
+// const sw05matchMe = document.getElementById('swb05matchThis')
+// const sw05opt1 = document.getElementById('swb05option1')
+// const sw05opt2 = document.getElementById('swb05option2')
+// const the_whole_thing = document.body
 
 
 sw05matchMe.addEventListener('click', (e) => {
