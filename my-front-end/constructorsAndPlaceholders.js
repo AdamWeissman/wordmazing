@@ -20,6 +20,7 @@ sw01.style.display = "none";
 prettyMuchEverything.style.display = "none"
 
 const sw02 = document.getElementById('switchboard02');
+const sw02a = document.getElementById('switchboard02a');
 
 const sw03 = document.getElementById('switchboard03')
 const word = document.querySelector('#sw03word');

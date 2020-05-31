@@ -1,28 +1,3 @@
-
-
-
-
-
-// const BASE_URL = "http://localhost:3000"
-// const USERS_URL = `${BASE_URL}/api/v1/users`
-// const SESSIONS_URL = `${USERS_URL}/active_session`
-
-
-// //CREATE A USER 
-// const sw01 = document.getElementById('switchboard01');
-// const userName = document.querySelector('#sw01name');
-// const theUserData = {};
-
-
-// const main = document.querySelector('main')
-// const click2play = document.querySelector('click2play')
-// const prettyMuchEverything = document.querySelector('prettyMuchEverything')
-// const letterselect = document.querySelector('letterselect')
-// const wordmaker = document.querySelector('wordmaker')
-// const active_and_delete_user = document.querySelector('active_and_delete_user')
-
-// enter the words needs a query selector so it can disappear
-
 function onetime(node, type, callback) {
 	// create event
 	node.addEventListener('click', function(e) {
@@ -50,12 +25,6 @@ function greeting(e) {
 onetime(main, "click", greeting)
 
 
-// main.onclick = () => { 
-//   speak(rightHere = "Hi, I'm Wordmazing.  What's your name?")
-// };
-
-// sw01.style.display = "none";
-// prettyMuchEverything.style.display = "none"
 
 sw01.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -95,7 +64,6 @@ sw02.onclick = () => {
 }
       
 //DESTROY THE SESSION USER ... should destroy the session.
-const sw02a = document.getElementById('switchboard02a');
 
 sw02a.onclick = () => {
   activeUserID = [];
@@ -112,10 +80,6 @@ sw02a.onclick = () => {
 
 //ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER, LETTERS ARE ALSO GENERATED WITH MAKE_LETTERS METHOD FROM THE WORD MODEL
 
-// const sw03 = document.getElementById('switchboard03')
-// const word = document.querySelector('#sw03word');
-// const theWordData = {};
-// let activeUserID = []; //this is used here and will be used elsewhere
 
 async function activeUser () {
   const result = await fetch(SESSIONS_URL);
@@ -157,21 +121,6 @@ sw03.addEventListener('submit', (e) => {
 });
 
 
-//
-//ABOVE THIS LINE IS WORKING
-//
-//
-//
-
-//TESTING
-
-// const sw05 = document.getElementById('switchboard05')
-// const sw05matchMe = document.getElementById('swb05matchThis')
-// const sw05opt1 = document.getElementById('swb05option1')
-// const sw05opt2 = document.getElementById('swb05option2')
-// const the_whole_thing = document.body
-
-
 sw05matchMe.addEventListener('click', (e) => {
   speak(rightHere=`${sw05matchMe.innerHTML}`)
 })
@@ -179,9 +128,7 @@ sw05matchMe.addEventListener('click', (e) => {
 function clickMatchMe() {
   sw05matchMe.click()
 }
-// let random_two_letters = [] //dont delete this
-// let the_correct_letter = [] //this line an the one below are used for the clicking events
-// let the_correct_word = []
+
 
 sw05.onclick = function () {
     set_random_two_letters_or_words_v2();
@@ -309,8 +256,6 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
           let randomZ = z_letters[Math.floor(Math.random() * z_letters.length)];
           sw05matchMe.innerHTML = `${randomMatch} is for ${randomZ}. Click ${randomMatch}`}
 
-
-
         else {
         sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`}
         clickMatchMe()
@@ -379,100 +324,98 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
           let c_letters = ["car", "cat", "castle"]
           let randomC = c_letters[Math.floor(Math.random() * c_letters.length)];
           sw05matchMe.innerHTML = `${randomMatch} is for ${randomC}. Click ${randomMatch}`}
-
-
-          else if (randomMatch == "D") {
-            let d_letters = ["dog", "duck", "doll"]
-            let randomD = d_letters[Math.floor(Math.random() * d_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomD}. Click ${randomMatch}`}
-          else if (randomMatch == "E") {
-            let e_letters = ["ear", "elephant", "eggs"]
-            let randomE = e_letters[Math.floor(Math.random() * e_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomE}. Click ${randomMatch}`}
-          else if (randomMatch == "F") {
-            let f_letters = ["fox", "ferry", "fun", "face", "friend"]
-            let randomF = f_letters[Math.floor(Math.random() * f_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomF}. Click ${randomMatch}`}
-          else if (randomMatch == "G") {
-            let g_letters = ["gorilla", "giggle", "goose", "giraffe"]
-            let randomG = g_letters[Math.floor(Math.random() * g_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomG}. Click ${randomMatch}`}
-          else if (randomMatch == "H") {
-            let h_letters = ["house", "hat", "hen", "happy"]
-            let randomH = h_letters[Math.floor(Math.random() * h_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomH}. Click ${randomMatch}`}
-          else if (randomMatch == "I") {
-            let i_letters = ["iguana", "igloo", "ice"]
-            let randomI = i_letters[Math.floor(Math.random() * i_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomI}. Click ${randomMatch}`}
-          else if (randomMatch == "J") {
-            let j_letters = ["jack", "jungle", "jellybean"]
-            let randomJ = j_letters[Math.floor(Math.random() * j_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomJ}. Click ${randomMatch}`}
-          else if (randomMatch == "K") {
-            let k_letters = ["kangaroo", "kelp", "koala"]
-            let randomK = k_letters[Math.floor(Math.random() * k_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomK}. Click ${randomMatch}`}
-          else if (randomMatch == "L") {
-            let l_letters = ["letters", "learn", "lion"]
-            let randomL = l_letters[Math.floor(Math.random() * l_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomL}. Click ${randomMatch}`}
-          else if (randomMatch == "M") {
-            let m_letters = ["monkey", "money", "moose"]
-            let randomM = m_letters[Math.floor(Math.random() * m_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomM}. Click ${randomMatch}`}
-          else if (randomMatch == "N") {
-            let n_letters = ["narwhal", "nest", "nose"]
-            let randomN = n_letters[Math.floor(Math.random() * n_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomN}. Click ${randomMatch}`}
-          else if (randomMatch == "O") {
-            let o_letters = ["oval", "origami", "outside", "oatmeal"]
-            let randomO = o_letters[Math.floor(Math.random() * o_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomO}. Click ${randomMatch}`}
-          else if (randomMatch == "P") {
-            let p_letters = ["puppy", "pig", "poop"]
-            let randomP = p_letters[Math.floor(Math.random() * p_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomP}. Click ${randomMatch}`}
-          else if (randomMatch == "Q") {
-            let q_letters = ["quest", "quickly", "quack"]
-            let randomQ = q_letters[Math.floor(Math.random() * q_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomQ}. Click ${randomMatch}`}
-          else if (randomMatch == "R") {
-            let r_letters = ["rhinocerous", "rooster", "rabbit"]
-            let randomR = r_letters[Math.floor(Math.random() * r_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomR}. Click ${randomMatch}`}
-          else if (randomMatch == "S") {
-            let s_letters = ["silver", "sauce", "sheep", "sad", "silly"]
-            let randomS = s_letters[Math.floor(Math.random() * s_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomS}. Click ${randomMatch}`}
-          else if (randomMatch == "T") {
-            let t_letters = ["toad", "toes", "toast", "tiger"]
-            let randomT = t_letters[Math.floor(Math.random() * t_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomT}. Click ${randomMatch}`}
-          else if (randomMatch == "U") {
-            let u_letters = ["under", "up", "Uber"]
-            let randomU = u_letters[Math.floor(Math.random() * u_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomU}. Click ${randomMatch}`}
-          else if (randomMatch == "V") {
-            let v_letters = ["vase", "vulture", "Volvo"]
-            let randomV = v_letters[Math.floor(Math.random() * v_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomV}. Click ${randomMatch}`}
-          else if (randomMatch == "W") {
-            let w_letters = ["water", "waffles", "words"]
-            let randomW = w_letters[Math.floor(Math.random() * w_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomW}. Click ${randomMatch}`}
-          else if (randomMatch == "X") {
-            let x_letters = ["xylophone", "Xerox", "x-ray"]
-            let randomX = x_letters[Math.floor(Math.random() * x_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomX}. Click ${randomMatch}`}
-          else if (randomMatch == "Y") {
-            let y_letters = ["yak", "yes", "yellow", "yell"]
-            let randomY = y_letters[Math.floor(Math.random() * y_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomY}. Click ${randomMatch}`}
-          else if (randomMatch == "Z") {
-            let z_letters = ["zebra", "zero", "zoom"]
-            let randomZ = z_letters[Math.floor(Math.random() * z_letters.length)];
-            sw05matchMe.innerHTML = `${randomMatch} is for ${randomZ}. Click ${randomMatch}`}
+        else if (randomMatch == "D") {
+          let d_letters = ["dog", "duck", "doll"]
+          let randomD = d_letters[Math.floor(Math.random() * d_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomD}. Click ${randomMatch}`}
+        else if (randomMatch == "E") {
+          let e_letters = ["ear", "elephant", "eggs"]
+          let randomE = e_letters[Math.floor(Math.random() * e_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomE}. Click ${randomMatch}`}
+        else if (randomMatch == "F") {
+          let f_letters = ["fox", "ferry", "fun", "face", "friend"]
+          let randomF = f_letters[Math.floor(Math.random() * f_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomF}. Click ${randomMatch}`}
+        else if (randomMatch == "G") {
+          let g_letters = ["gorilla", "giggle", "goose", "giraffe"]
+          let randomG = g_letters[Math.floor(Math.random() * g_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomG}. Click ${randomMatch}`}
+        else if (randomMatch == "H") {
+          let h_letters = ["house", "hat", "hen", "happy"]
+          let randomH = h_letters[Math.floor(Math.random() * h_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomH}. Click ${randomMatch}`}
+        else if (randomMatch == "I") {
+          let i_letters = ["iguana", "igloo", "ice"]
+          let randomI = i_letters[Math.floor(Math.random() * i_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomI}. Click ${randomMatch}`}
+        else if (randomMatch == "J") {
+          let j_letters = ["jack", "jungle", "jellybean"]
+          let randomJ = j_letters[Math.floor(Math.random() * j_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomJ}. Click ${randomMatch}`}
+        else if (randomMatch == "K") {
+          let k_letters = ["kangaroo", "kelp", "koala"]
+          let randomK = k_letters[Math.floor(Math.random() * k_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomK}. Click ${randomMatch}`}
+        else if (randomMatch == "L") {
+          let l_letters = ["letters", "learn", "lion"]
+          let randomL = l_letters[Math.floor(Math.random() * l_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomL}. Click ${randomMatch}`}
+        else if (randomMatch == "M") {
+          let m_letters = ["monkey", "money", "moose"]
+          let randomM = m_letters[Math.floor(Math.random() * m_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomM}. Click ${randomMatch}`}
+        else if (randomMatch == "N") {
+          let n_letters = ["narwhal", "nest", "nose"]
+          let randomN = n_letters[Math.floor(Math.random() * n_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomN}. Click ${randomMatch}`}
+        else if (randomMatch == "O") {
+          let o_letters = ["oval", "origami", "outside", "oatmeal"]
+          let randomO = o_letters[Math.floor(Math.random() * o_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomO}. Click ${randomMatch}`}
+        else if (randomMatch == "P") {
+          let p_letters = ["puppy", "pig", "poop"]
+          let randomP = p_letters[Math.floor(Math.random() * p_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomP}. Click ${randomMatch}`}
+        else if (randomMatch == "Q") {
+          let q_letters = ["quest", "quickly", "quack"]
+          let randomQ = q_letters[Math.floor(Math.random() * q_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomQ}. Click ${randomMatch}`}
+        else if (randomMatch == "R") {
+          let r_letters = ["rhinocerous", "rooster", "rabbit"]
+          let randomR = r_letters[Math.floor(Math.random() * r_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomR}. Click ${randomMatch}`}
+        else if (randomMatch == "S") {
+          let s_letters = ["silver", "sauce", "sheep", "sad", "silly"]
+          let randomS = s_letters[Math.floor(Math.random() * s_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomS}. Click ${randomMatch}`}
+        else if (randomMatch == "T") {
+          let t_letters = ["toad", "toes", "toast", "tiger"]
+          let randomT = t_letters[Math.floor(Math.random() * t_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomT}. Click ${randomMatch}`}
+        else if (randomMatch == "U") {
+          let u_letters = ["under", "up", "Uber"]
+          let randomU = u_letters[Math.floor(Math.random() * u_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomU}. Click ${randomMatch}`}
+        else if (randomMatch == "V") {
+          let v_letters = ["vase", "vulture", "Volvo"]
+          let randomV = v_letters[Math.floor(Math.random() * v_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomV}. Click ${randomMatch}`}
+        else if (randomMatch == "W") {
+          let w_letters = ["water", "waffles", "words"]
+          let randomW = w_letters[Math.floor(Math.random() * w_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomW}. Click ${randomMatch}`}
+        else if (randomMatch == "X") {
+          let x_letters = ["xylophone", "Xerox", "x-ray"]
+          let randomX = x_letters[Math.floor(Math.random() * x_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomX}. Click ${randomMatch}`}
+        else if (randomMatch == "Y") {
+          let y_letters = ["yak", "yes", "yellow", "yell"]
+          let randomY = y_letters[Math.floor(Math.random() * y_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomY}. Click ${randomMatch}`}
+        else if (randomMatch == "Z") {
+          let z_letters = ["zebra", "zero", "zoom"]
+          let randomZ = z_letters[Math.floor(Math.random() * z_letters.length)];
+          sw05matchMe.innerHTML = `${randomMatch} is for ${randomZ}. Click ${randomMatch}`}
 
 
         else {
@@ -574,10 +517,6 @@ async function check_cycle_now_func () {
   let x = activeUserID[0];
   const result = await fetch(`${USERS_URL}/${x}/letters`)
   const data = await result.json()
-  // const data = await result.json()
-  // const the_letters = await data.letters
-  // const the_words = await data.words
-  //const what_is_cycling = 
     try {
       const the_letters = await data.letters
       const the_words = await data.words
@@ -625,9 +564,6 @@ async function check_cycle_now_func () {
       end = new Date().getTime();
    }
  }
-
- 
-
 
 
 sw05opt1.addEventListener('click', (e) => {
@@ -731,88 +667,3 @@ sw05opt2.addEventListener('click', (e) => {
     set_random_two_letters_or_words_v2();
   }
 });
-
-
-
-
-//......................................................................................
-//
-
-
-// const sw11 = document.getElementById('switchboard11')
-// sw11.onclick = function () {
-//   alert("admin Login for Session...autopopulate for now")
-// }
-
-// const sw12 = document.getElementById('switchboard12')
-// sw12.onclick = function () {
-//   alert("admin Logout for Session")
-// }
-
-// const sw13 = document.getElementById('switchboard13')
-// sw13.onclick = function () {
-//   alert("admin sees readymades index")
-// }
-
-// const sw14 = document.getElementById('switchboard14')
-// sw14.onclick = function () {
-//   prompt("admin creates a readymade")
-// }
-
-// const sw15 = document.getElementById('switchboard15')
-// sw15.onclick = function () {
-//   prompt("admin updates a readymade")
-// }
-
-// const sw16 = document.getElementById('switchboard16')
-// sw16.onclick = function () {
-//   alert("admin deletes a readymade")
-// }
-
-// const sw17 = document.getElementById('switchboard17')
-// sw17.onclick = function () {
-//   alert("admin sees spokenmessages index")
-// }
-
-// const sw18 = document.getElementById('switchboard18')
-// sw18.onclick = function () {
-//   alert("admin creates a spokenmessage")
-// }
-
-// const sw19 = document.getElementById('switchboard19')
-// sw19.onclick = function () {
-//   alert("admin updates a spokenmessage")
-// }
-
-// const sw20 = document.getElementById('switchboard20')
-// sw20.onclick = function () {
-//   alert("admin deletes a spokenmessage")
-// }
-
-
-// ALL THIS CODE IS REDUNDANT, ABOVE SOLUTIONS ENCOMPASSED THESE TESTS
-// NOT YET TESTING BELOW THIS LINE
-// const sw06 = document.getElementById('switchboard06')
-// sw06.onclick = function () {
-//   alert("Return a Random Two Words if a Word is Activated... or Random Two Letters")
-// }
-
-// const sw07 = document.getElementById('switchboard07')
-// sw07.onclick = function () {
-//   alert("Increment Score of a Random Word by 9")
-// }
-
-// const sw08 = document.getElementById('switchboard08')
-// sw08.onclick = function () {
-//   alert("If only one letter left, Return Random Letter with Last Letter in DB")
-// }
-
-// const sw09 = document.getElementById('switchboard09')
-// sw09.onclick = function () {
-//   alert("If all letters scored out, Return a Word")
-// }
-
-// const sw10 = document.getElementById('switchboard10')
-// sw10.onclick = function () {
-//   alert("If all words scored out... Return Congratulations and delete user")
-// }
