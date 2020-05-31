@@ -1,96 +1,3 @@
-sw01.addEventListener('submit', (e) => {
-  e.preventDefault();
-  //alert(userName.value + ' submitted the form');
-  theUserData['name'] = userName.value
-  console.log(theUserData['name'])
-  fetch(USERS_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", 
-      "Accept": "application/json"},
-    body: JSON.stringify({
-      "name": theUserData['name']
-      })
-    })
-  .then(response=>response.json())
-  .then(data=>console.log(data))
-  sw01.style.display = "none";
-  speak(rightHere="Nice to meet you " + (`${theUserData['name']}. ` + "Enter some words to play. When you're done, click finished."))
-  wordmaker.style.display = "block"
-}
-);
-
-
-// sw02 and sw02a were used for testing but no longer relevant
-//RETURN FAKE SESSION
-//const sw02 = document.getElementById('switchboard02');
-
-// sw02.onclick = () => {
-//   fetch(SESSIONS_URL)
-//     .then((response) => {
-//       response.json()
-//     .then((data) => {alert(data["id"])});
-//   });
-// }
-      
-//DESTROY THE SESSION USER ... should destroy the session.
-
-// sw02a.onclick = () => {
-//   activeUserID = [];
-//   fetch(SESSIONS_URL)
-//     .then((response) => {
-//       response.json()
-//     .then((data) => {alert("Destroying user " + data["name"])});
-//   })
-
-//   fetch(USERS_URL, {
-//     method: "DELETE"
-//   })
-// }
-
-//ADD A WORD AND ROUTE TO WORDS CREATE CONTROLLER, LETTERS ARE ALSO GENERATED WITH MAKE_LETTERS METHOD FROM THE WORD MODEL
-
-
-async function activeUser () {
-  const result = await fetch(SESSIONS_URL);
-  const data = await result.json();
-  console.log(data["id"]); // this line is irrelvant, just here for testing
-  activeUserID = []
-  activeUserID.push(data["id"]);
-}
-
-sw03.addEventListener('click', (e) => { //this is such a screwed up fix, but seems to work ... otherwise, the activeUser would not interpolate to the URL unless clicked twice
-  activeUser();
-});
-
-sw03.addEventListener('submit', (e) => {  
-  e.preventDefault(); 
-  
-  let x = activeUserID[0];
- 
-  let random_word_choice_praise = [" is a great choice " + `${userName.value}`+"!", " is an awesome pick!", " is just what I was thinking!", " will be a fun word to learn " + `${userName.value}`+"!", " sounds good to me!", " sounds like a plan", " is an excellent choice " + `${userName.value}`+"!"]
-  let randomPraise = random_word_choice_praise[Math.floor(Math.random() * random_word_choice_praise.length)]; 
-  
-  speak(rightHere=`${word.value}` + `${randomPraise}`);
-
-  theWordData['the_word'] = word.value.toUpperCase();
-  console.log(theWordData['the_word'])
-  
- 
-  fetch(`${USERS_URL}/${x}/words`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", 
-      "Accept": "application/json"},
-    body: JSON.stringify({
-      "the_word": theWordData['the_word']
-      })
-    })
-  .then(response=>response.json())
-  .then(data=>console.log(data))
-});
-
-
 sw05matchMe.addEventListener('click', (e) => {
   speak(rightHere=`${sw05matchMe.innerHTML}`)
 })
@@ -637,3 +544,31 @@ sw05opt2.addEventListener('click', (e) => {
     set_random_two_letters_or_words_v2();
   }
 });
+
+
+// sw02 and sw02a were used for testing but no longer relevant
+//RETURN FAKE SESSION
+//const sw02 = document.getElementById('switchboard02');
+
+// sw02.onclick = () => {
+//   fetch(SESSIONS_URL)
+//     .then((response) => {
+//       response.json()
+//     .then((data) => {alert(data["id"])});
+//   });
+// }
+      
+//DESTROY THE SESSION USER ... should destroy the session.
+
+// sw02a.onclick = () => {
+//   activeUserID = [];
+//   fetch(SESSIONS_URL)
+//     .then((response) => {
+//       response.json()
+//     .then((data) => {alert("Destroying user " + data["name"])});
+//   })
+
+//   fetch(USERS_URL, {
+//     method: "DELETE"
+//   })
+// }
