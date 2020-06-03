@@ -1,17 +1,17 @@
-sw05matchMe.addEventListener('click', (e) => {
-  speak(rightHere=`${sw05matchMe.innerHTML}`)
-})
+// sw05matchMe.addEventListener('click', (e) => {
+//   speak(rightHere=`${sw05matchMe.innerHTML}`)
+// })
 
-function clickMatchMe() {
-  sw05matchMe.click()
-}
+// function clickMatchMe() {
+//   sw05matchMe.click()
+// }
 
 
-sw05.onclick = function () {
-    set_random_two_letters_or_words_v2();
-    wordmaker.style.display = "none"
-    letterselect.style.display = "block"
-}
+// sw05.onclick = function () {
+//     set_random_two_letters_or_words_v2();
+//     wordmaker.style.display = "none"
+//     letterselect.style.display = "block"
+// }
 
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
@@ -495,12 +495,12 @@ sw05opt1.addEventListener('click', (e) => {
 });
 
 sw05opt2.addEventListener('click', (e) => {
-  let good_job_choice = ["Nice!", "Great!", "Wow!"]
+  let good_job_choice = ["Nice!", "Great!", "Wow!", "Good!", "Yay!"]
   let goodJob = good_job_choice[Math.floor(Math.random() * good_job_choice.length)]; 
  
  //speak(rightHere=`${goodJob}`);
 
-  let oops_choice = ["Oops!", "Whoops!", "Baah!"]
+  let oops_choice = ["Oops!", "Whoops!", "Baah!", "Naah!"]
   let oopsies = oops_choice[Math.floor(Math.random() * oops_choice.length)]; 
  
  //speak(rightHere=${oopsies}`);
