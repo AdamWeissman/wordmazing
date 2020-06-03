@@ -1,83 +1,48 @@
 
 
-// async function random_two_words_func () {
-//   random_two_words = []
-//   random_two_letters = [] //<--this is so a single completed word won't break the app
+// async function check_cycle_now_func () {
+//   words_and_or_letters = new Set()
 //   let x = activeUserID[0];
-//   //alert("Return Random Two Letters With Low Scores");
+//   const result = await fetch(`${USERS_URL}/${x}/letters`)
+//   const data = await result.json()
+//     try {
+//       const the_letters = await data.letters
+//       const the_words = await data.words
+//       the_words.forEach(element => {
+//         if (element.cycle_now === true) {words_and_or_letters.add("words")}
+//       }),
 
-//   try {const result = await fetch(`${USERS_URL}/${x}/words`)
-//     const data = await result.json()
-//     const the_words = await data.words
-//     the_words.forEach(element => {
-//     random_two_words.push(element.the_word);
-//     if (random_two_words == ["RESET!!!", "RESET!!!"]) {
-//       the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-//       speak(rightHere="Great job " + `${userName.value}`, " you did it!")
-//       fetch(USERS_URL, {
-//         method: "DELETE"
-//       })
-//     }
-//   });}
-
-//   catch { const result = await fetch(`${USERS_URL}/${x}/letters`)
-//     const data = await result.json()
-//     const the_letters = await data.letters
-//     the_letters.forEach(element => {
-//     random_two_letters.push(element.the_letter);
-//     if (random_two_letters == ["RESET!!!", "RESET!!!"]) {
-//       the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-//       speak(rightHere="Great job " + `${userName.value}`, " you did it!")
-//       fetch(USERS_URL, {
-//         method: "DELETE"
-//       })
-//     }
-//   });}
-// };
-
-async function check_cycle_now_func () {
-  words_and_or_letters = new Set()
-  let x = activeUserID[0];
-  const result = await fetch(`${USERS_URL}/${x}/letters`)
-  const data = await result.json()
-    try {
-      const the_letters = await data.letters
-      const the_words = await data.words
-      the_words.forEach(element => {
-        if (element.cycle_now === true) {words_and_or_letters.add("words")}
-      }),
-
-      the_letters.forEach(element => {
-        if (element.cycle_now === true) {words_and_or_letters.add("letters")}
-      });
+//       the_letters.forEach(element => {
+//         if (element.cycle_now === true) {words_and_or_letters.add("letters")}
+//       });
       
-      x = Array.from(words_and_or_letters)
-      return x
-    }
+//       x = Array.from(words_and_or_letters)
+//       return x
+//     }
 
-    catch {            
-      try {
-        const the_words = await data.words
-        the_words.forEach(element => {
-        if (element.cycle_now === true) {words_and_or_letters.add("words")}
-        });
+//     catch {            
+//       try {
+//         const the_words = await data.words
+//         the_words.forEach(element => {
+//         if (element.cycle_now === true) {words_and_or_letters.add("words")}
+//         });
       
-      x = Array.from(words_and_or_letters)
-      return x
-      }
+//       x = Array.from(words_and_or_letters)
+//       return x
+//       }
 
-      catch {
-        const the_letters = await data.letters
-        the_letters.forEach(element => {
-        if (element.cycle_now === true) {words_and_or_letters.add("letters")}
-        });
+//       catch {
+//         const the_letters = await data.letters
+//         the_letters.forEach(element => {
+//         if (element.cycle_now === true) {words_and_or_letters.add("letters")}
+//         });
         
-        x = Array.from(words_and_or_letters)
-        return x
-      }
-    }
+//         x = Array.from(words_and_or_letters)
+//         return x
+//       }
+//     }
 
-}
+// }
   //this is basically a clone of the random_two_letters_func_v2, rewritten for letters
 
   function wait(ms){
