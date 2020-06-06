@@ -16,6 +16,6 @@ userButtons.sw01.addEventListener('submit', (e) => {
   .then(data=>console.log(data))
   userButtons.sw01.style.display = "none";
   talker.speak("Nice to meet you " + (`${userButtons.theUserData['name']}. ` + "Enter some words to play. When you're done, click finished."))
-  wordmaker.style.display = "block"
+  switchboard.wordmaker.style.display = "block"
 }
 );

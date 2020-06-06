@@ -15,7 +15,7 @@ sw03.addEventListener('submit', (e) => {
   
   let x = activeUserID[0];
  
-  let random_word_choice_praise = [" is a great choice " + `${userName.value}`+"!", " is an awesome pick!", " is just what I was thinking!", " will be a fun word to learn " + `${userName.value}`+"!", " sounds good to me!", " sounds like a plan", " is an excellent choice " + `${userName.value}`+"!"]
+  let random_word_choice_praise = [" is a great choice " + `${userButtons.userName.value}`+"!", " is an awesome pick!", " is just what I was thinking!", " will be a fun word to learn " + `${userButtons.userName.value}`+"!", " sounds good to me!", " sounds like a plan", " is an excellent choice " + `${userButtons.userName.value}`+"!"]
   let randomPraise = random_word_choice_praise[Math.floor(Math.random() * random_word_choice_praise.length)]; 
   
   talker.speak(`${word.value}` + `${randomPraise}`);

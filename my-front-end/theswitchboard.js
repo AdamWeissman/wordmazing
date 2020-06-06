@@ -3,12 +3,17 @@ class SwitchBoard {
     this.BASE_URL = "http://localhost:3000"
     this.USERS_URL = `${this.BASE_URL}/api/v1/users`
     this.SESSIONS_URL = `${this.USERS_URL}/active_session`
-  }
 
+    this.main = document.querySelector('main')
+    this.click2play = document.querySelector('click2play')
+    this.prettyMuchEverything = document.querySelector('prettyMuchEverything')
+    this.letterselect = document.querySelector('letterselect')
+    this.wordmaker = document.querySelector('wordmaker')
+    this.active_and_delete_user = document.querySelector('active_and_delete_user')
+  }
 }
 
 const switchboard = new SwitchBoard()
-
 
 class UserButtons {
   constructor () {
@@ -30,15 +35,15 @@ const userButtons = new UserButtons()
 // const theUserData = {};
 
 //PREP STUFF, CLICK TO PLAY SCREEN, WHAT SHOULD AND SHOULDN'T APPEAR PRIOR TO MAIN GAME LOOP
-const main = document.querySelector('main')
-const click2play = document.querySelector('click2play')
-const prettyMuchEverything = document.querySelector('prettyMuchEverything')
-const letterselect = document.querySelector('letterselect')
-const wordmaker = document.querySelector('wordmaker')
-const active_and_delete_user = document.querySelector('active_and_delete_user')
+// const main = document.querySelector('main')
+// const click2play = document.querySelector('click2play')
+// const prettyMuchEverything = document.querySelector('prettyMuchEverything')
+// const letterselect = document.querySelector('letterselect')
+// const wordmaker = document.querySelector('wordmaker')
+// const active_and_delete_user = document.querySelector('active_and_delete_user')
 
-sw01.style.display = "none";
-prettyMuchEverything.style.display = "none"
+userButtons.sw01.style.display = "none";
+switchboard.prettyMuchEverything.style.display = "none"
 
 const sw02 = document.getElementById('switchboard02');
 const sw02a = document.getElementById('switchboard02a');

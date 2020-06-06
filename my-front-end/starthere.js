@@ -1,5 +1,4 @@
 
-
 function onetime(node, type, callback) {
 	// create event
 	node.addEventListener('click', function(e) {
@@ -17,11 +16,11 @@ function onetime(node, type, callback) {
 function greeting(e) {
   talker.speak("Hi, I'm Wordmazing.  What's your name?");
   userButtons.sw01.style.display = "block";
-  click2play.style.display = "none"
-  prettyMuchEverything.style.display = "block"
-  active_and_delete_user.style.display = "none"
-  letterselect.style.display = "none"
-  wordmaker.style.display = "none"
+  switchboard.click2play.style.display = "none"
+  switchboard.prettyMuchEverything.style.display = "block"
+  switchboard.active_and_delete_user.style.display = "none"
+  switchboard.letterselect.style.display = "none"
+  switchboard.wordmaker.style.display = "none"
 }
 
-onetime(main, "click", greeting)
+onetime(switchboard.main, "click", greeting)
