@@ -1,3 +1,5 @@
+// this file isn't fully active yet, there's much to refactor after starthere.js
+
 const switchboard = new SwitchBoard()
 const userButtons = new UserButtons()
 const fetchDoggy = new fetchAdapter() //this is from adapters.js
