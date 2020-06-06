@@ -3,14 +3,30 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+  <head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="app.css">
-    <script type="text/javascript" src="app.js" async defer></script> <!--this line was formerly in the body tag-->
+    <!-- the order below is correct, beware not to alter order lest something might break -->
+    <script type="text/javascript" src="adapters.js" defer></script>
+    <script type="text/javascript" src="talker.js" defer></script>
+    <script type="text/javascript" src="theswitchboard.js" defer></script>
+    <script type="text/javascript" src="starthere.js" defer></script>
+    <script type="text/javascript" src="submitNameNiceToMeetYou.js" defer></script>
+    <script type="text/javascript" src="addWords.js" defer></script>
+    <script type="text/javascript" src="gameBegins.js" defer></script>
+    <script type="text/javascript" src="setRandom2LettersOrWords.js" defer></script>
+    <script type="text/javascript" src="random2letterFunc.js" defer></script>
+    <script type="text/javascript" src="random2wordsFunc.js" defer></script>
+    <script type="text/javascript" src="checkCycle.js" defer></script>
+    <!-- <script type="text/javascript" src="wait.js" defer></script> REFACTORED THIS INTO TALKER CLASS, no longer needed here-->
+    <script type="text/javascript" src="rightOrWrong.js" defer></script> -->
+    <!-- <script type="text/javascript" src="testing.js" async defer></script> -->
+    
+    
     <!-- <script type="text/javascript" src="speech.js" async defer></script> -->
   </head>
   <main>
