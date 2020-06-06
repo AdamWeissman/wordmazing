@@ -39,6 +39,11 @@ class UserButtons {
 
 const userButtons = new UserButtons()
 
+
+userButtons.sw01.style.display = "none";
+switchboard.prettyMuchEverything.style.display = "none"
+
+
 // const BASE_URL = "http://localhost:3000"
 // const USERS_URL = `${BASE_URL}/api/v1/users`
 // const SESSIONS_URL = `${USERS_URL}/active_session`
@@ -55,9 +60,6 @@ const userButtons = new UserButtons()
 // const letterselect = document.querySelector('letterselect')
 // const wordmaker = document.querySelector('wordmaker')
 // const active_and_delete_user = document.querySelector('active_and_delete_user')
-
-userButtons.sw01.style.display = "none";
-switchboard.prettyMuchEverything.style.display = "none"
 
 // const sw02 = document.getElementById('switchboard02');
 // const sw02a = document.getElementById('switchboard02a');
