@@ -13,7 +13,7 @@ function onetime(node, type, callback) {
 }
 
 function greeting(e) {
-  speak(rightHere = "Hi, I'm Wordmazing.  What's your name?");
+  talker.speak("Hi, I'm Wordmazing.  What's your name?");
   sw01.style.display = "block";
   click2play.style.display = "none"
   prettyMuchEverything.style.display = "block"

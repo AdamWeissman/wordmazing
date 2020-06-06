@@ -18,7 +18,7 @@ sw03.addEventListener('submit', (e) => {
   let random_word_choice_praise = [" is a great choice " + `${userName.value}`+"!", " is an awesome pick!", " is just what I was thinking!", " will be a fun word to learn " + `${userName.value}`+"!", " sounds good to me!", " sounds like a plan", " is an excellent choice " + `${userName.value}`+"!"]
   let randomPraise = random_word_choice_praise[Math.floor(Math.random() * random_word_choice_praise.length)]; 
   
-  speak(rightHere=`${word.value}` + `${randomPraise}`);
+  talker.speak(`${word.value}` + `${randomPraise}`);
 
   theWordData['the_word'] = word.value.toUpperCase();
   console.log(theWordData['the_word'])

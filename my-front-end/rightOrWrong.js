@@ -10,7 +10,7 @@ sw05opt1.addEventListener('click', (e) => {
  //speak(rightHere=${oopsies}`);
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt1.innerHTML) {
-    speak(rightHere=`${goodJob}`);
+    talker.speak(`${goodJob}`);
     wait(1000)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
@@ -43,7 +43,7 @@ sw05opt1.addEventListener('click', (e) => {
 
   }
   else {
-    speak(rightHere=`${oopsies}`);
+    talker.speak(`${oopsies}`);
     wait(1000);
     set_random_two_letters_or_words_v2();
   }
@@ -62,7 +62,7 @@ sw05opt2.addEventListener('click', (e) => {
 
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt2.innerHTML) {
-    speak(rightHere=`${goodJob}`);
+    talker.speak(`${goodJob}`);
     wait(1000)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
@@ -94,7 +94,7 @@ sw05opt2.addEventListener('click', (e) => {
 
   }
   else {
-    speak(rightHere=`${oopsies}`);
+    talker.speak(`${oopsies}`);
     wait(1000);
     set_random_two_letters_or_words_v2();
   }

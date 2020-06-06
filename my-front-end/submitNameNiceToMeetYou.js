@@ -15,7 +15,7 @@ sw01.addEventListener('submit', (e) => {
   .then(response=>response.json())
   .then(data=>console.log(data))
   sw01.style.display = "none";
-  speak(rightHere="Nice to meet you " + (`${theUserData['name']}. ` + "Enter some words to play. When you're done, click finished."))
+  talker.speak("Nice to meet you " + (`${theUserData['name']}. ` + "Enter some words to play. When you're done, click finished."))
   wordmaker.style.display = "block"
 }
 );

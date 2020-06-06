@@ -5,7 +5,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
   if (((check_this + "") === "letters") || ((check_this + "") === "words"))  
   {  
     console.log("this is for letters OR for words")
-  
+    // TODO: Refactor into switch statement or map letters to arrays
     try {result = await random_two_letter_func_v2();
       let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
       if (randomMatch !== undefined) {
@@ -166,7 +166,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       the_correct_choice.push(randomMatch)
       if (randomMatch == "RESET!!!") {
         the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-        speak(rightHere="Great job " + `${userName.value}`, " you did it!")
+        talker.speak("Great job " + `${userName.value}`, " you did it!")
         fetch(USERS_URL, {
           method: "DELETE"
         })
@@ -295,7 +295,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         the_correct_choice.push(randomMatch)
         if (randomMatch == "RESET!!!") {
           the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-          speak(rightHere="Great job " + `${userName.value}`, " you did it!")
+          talker.speak("Great job " + `${userName.value}`, " you did it!")
           fetch(USERS_URL, {
             method: "DELETE"
           })

@@ -11,7 +11,7 @@ async function random_two_words_func () {
     random_two_words.push(element.the_word);
     if (random_two_words == ["RESET!!!", "RESET!!!"]) {
       the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-      speak(rightHere="Great job " + `${userName.value}`, " you did it!")
+      talker.speak("Great job " + `${userName.value}`, " you did it!")
       fetch(USERS_URL, {
         method: "DELETE"
       })
@@ -25,7 +25,7 @@ async function random_two_words_func () {
     random_two_letters.push(element.the_letter);
     if (random_two_letters == ["RESET!!!", "RESET!!!"]) {
       the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-      speak(rightHere="Great job " + `${userName.value}`, " you did it!")
+      talker.speak("Great job " + `${userName.value}`, " you did it!")
       fetch(USERS_URL, {
         method: "DELETE"
       })

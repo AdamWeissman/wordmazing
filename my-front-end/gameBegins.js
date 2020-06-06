@@ -1,5 +1,5 @@
 sw05matchMe.addEventListener('click', (e) => {
-  speak(rightHere=`${sw05matchMe.innerHTML}`)
+  talker.speak(`${sw05matchMe.innerHTML}`)
 })
 
 function clickMatchMe() {
