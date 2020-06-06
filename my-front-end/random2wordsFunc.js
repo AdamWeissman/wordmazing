@@ -4,7 +4,7 @@ async function random_two_words_func () {
   let x = activeUserID[0];
   //alert("Return Random Two Letters With Low Scores");
 
-  try {const result = await fetch(`${USERS_URL}/${x}/words`)
+  try {const result = await fetch(`${switchboard.USERS_URL}/${x}/words`)
     const data = await result.json()
     const the_words = await data.words
     the_words.forEach(element => {
@@ -18,7 +18,7 @@ async function random_two_words_func () {
     }
   });}
 
-  catch { const result = await fetch(`${USERS_URL}/${x}/letters`)
+  catch { const result = await fetch(`${switchboard.USERS_URL}/${x}/letters`)
     const data = await result.json()
     const the_letters = await data.letters
     the_letters.forEach(element => {

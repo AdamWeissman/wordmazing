@@ -1,5 +1,5 @@
 async function activeUser () {
-  const result = await fetch(SESSIONS_URL);
+  const result = await fetch(switchboard.SESSIONS_URL);
   const data = await result.json();
   console.log(data["id"]); // this line is irrelvant, just here for testing
   activeUserID = []
