@@ -129,7 +129,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         the_correct_choice.push(randomMatch) 
         if (randomMatch == "RESET!!!") {
           the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-          fetch(USERS_URL, {
+          fetch(switchboard.USERS_URL, {
             method: "DELETE"
           })
         }
@@ -147,7 +147,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       the_correct_choice.push(randomMatch)
       if (randomMatch == "RESET!!!") {
         the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-        fetch(USERS_URL, {
+        fetch(switchboard.USERS_URL, {
           method: "DELETE"
         })
       }
@@ -167,7 +167,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       if (randomMatch == "RESET!!!") {
         the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
         talker.speak("Great job " + `${userName.value}`, " you did it!")
-        fetch(USERS_URL, {
+        fetch(switchboard.USERS_URL, {
           method: "DELETE"
         })
       }
@@ -296,7 +296,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         if (randomMatch == "RESET!!!") {
           the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
           talker.speak("Great job " + `${userName.value}`, " you did it!")
-          fetch(USERS_URL, {
+          fetch(switchboard.USERS_URL, {
             method: "DELETE"
           })
         }

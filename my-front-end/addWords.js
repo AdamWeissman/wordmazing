@@ -24,7 +24,7 @@ sw03.addEventListener('submit', (e) => {
   console.log(theWordData['the_word'])
   
  
-  fetch(`${USERS_URL}/${x}/words`, {
+  fetch(`${switchboard.USERS_URL}/${x}/words`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 

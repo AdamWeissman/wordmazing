@@ -15,7 +15,7 @@ sw05opt1.addEventListener('click', (e) => {
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) {
-    fetch(`${USERS_URL}/${x}/letters/${y}`, {
+    fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -29,7 +29,7 @@ sw05opt1.addEventListener('click', (e) => {
     set_random_two_letters_or_words_v2();}
 
     else {
-      fetch(`${USERS_URL}/${x}/words/${y}`, {
+      fetch(`${switchboard.USERS_URL}/${x}/words/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -67,7 +67,7 @@ sw05opt2.addEventListener('click', (e) => {
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) { 
-      fetch(`${USERS_URL}/${x}/letters/${y}`, {
+      fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 
@@ -80,7 +80,7 @@ sw05opt2.addEventListener('click', (e) => {
     //.then(data=>console.log(data))
     set_random_two_letters_or_words_v2();
     }
-    else {fetch(`${USERS_URL}/${x}/words/${y}`, {
+    else {fetch(`${switchboard.USERS_URL}/${x}/words/${y}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json", 

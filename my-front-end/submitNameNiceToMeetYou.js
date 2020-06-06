@@ -3,7 +3,7 @@ sw01.addEventListener('submit', (e) => {
   //alert(userName.value + ' submitted the form');
   theUserData['name'] = userName.value
   console.log(theUserData['name'])
-  fetch(USERS_URL, {
+  fetch(switchboard.USERS_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json", 

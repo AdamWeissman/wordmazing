@@ -12,7 +12,7 @@ async function random_two_words_func () {
     if (random_two_words == ["RESET!!!", "RESET!!!"]) {
       the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
       talker.speak("Great job " + `${userName.value}`, " you did it!")
-      fetch(USERS_URL, {
+      fetch(switchboard.USERS_URL, {
         method: "DELETE"
       })
     }
@@ -26,7 +26,7 @@ async function random_two_words_func () {
     if (random_two_letters == ["RESET!!!", "RESET!!!"]) {
       the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
       talker.speak("Great job " + `${userName.value}`, " you did it!")
-      fetch(USERS_URL, {
+      fetch(switchboard.USERS_URL, {
         method: "DELETE"
       })
     }
