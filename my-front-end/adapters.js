@@ -33,6 +33,14 @@ class fetchAdapter {
         })
     }
 
+    getFetchLetters (x) {
+      return fetch(`${switchboard.USERS_URL}/${x}/letters`)
+    }
+
+    getFetchWords (x) {
+      return fetch(`${switchboard.USERS_URL}/${x}/words`)
+    }
+
 
 }
 

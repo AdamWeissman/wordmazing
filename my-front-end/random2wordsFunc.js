@@ -4,7 +4,7 @@ async function random_two_words_func () {
   let x = userButtons.activeUserID[0];
   //alert("Return Random Two Letters With Low Scores");
 
-  try {const result = await fetch(`${switchboard.USERS_URL}/${x}/words`)
+  try {const result = await fetchDoggy.getFetchWords(x)//fetch(`${switchboard.USERS_URL}/${x}/words`)
     const data = await result.json()
     const the_words = await data.words
     the_words.forEach(element => {
@@ -12,13 +12,14 @@ async function random_two_words_func () {
     if (random_two_words == ["RESET!!!", "RESET!!!"]) {
       switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
       talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
-      fetch(switchboard.USERS_URL, {
-        method: "DELETE"
-      })
+      fetchDoggy.deleteFetch()
+      // fetch(switchboard.USERS_URL, {
+      //   method: "DELETE"
+      // })
     }
   });}
 
-  catch { const result = await fetch(`${switchboard.USERS_URL}/${x}/letters`)
+  catch { const result = await fetchDoggy.getFetchLetters(x) //fetch(`${switchboard.USERS_URL}/${x}/letters`)
     const data = await result.json()
     const the_letters = await data.letters
     the_letters.forEach(element => {
@@ -26,9 +27,10 @@ async function random_two_words_func () {
     if (random_two_letters == ["RESET!!!", "RESET!!!"]) {
       switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
       talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
-      fetch(switchboard.USERS_URL, {
-        method: "DELETE"
-      })
+      fetchDoggy.deleteFetch()
+      // fetch(switchboard.USERS_URL, {
+      //   method: "DELETE"
+      // })
     }
   });}
 };
