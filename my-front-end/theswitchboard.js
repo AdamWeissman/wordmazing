@@ -10,6 +10,12 @@ class SwitchBoard {
     this.letterselect = document.querySelector('letterselect')
     this.wordmaker = document.querySelector('wordmaker')
     this.active_and_delete_user = document.querySelector('active_and_delete_user')
+
+    this.sw02 = document.getElementById('switchboard02');
+    this.sw02a = document.getElementById('switchboard02a');
+
+    this.sw03 = document.getElementById('switchboard03')
+    this.word = document.querySelector('#sw03word');
   }
 }
 
@@ -45,11 +51,11 @@ const userButtons = new UserButtons()
 userButtons.sw01.style.display = "none";
 switchboard.prettyMuchEverything.style.display = "none"
 
-const sw02 = document.getElementById('switchboard02');
-const sw02a = document.getElementById('switchboard02a');
+// const sw02 = document.getElementById('switchboard02');
+// const sw02a = document.getElementById('switchboard02a');
 
-const sw03 = document.getElementById('switchboard03')
-const word = document.querySelector('#sw03word');
+// const sw03 = document.getElementById('switchboard03')
+// const word = document.querySelector('#sw03word');
 const theWordData = {};
 let activeUserID = []; 
 
