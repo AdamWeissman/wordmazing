@@ -1,5 +1,5 @@
 async function activeUser () {
-  const result = await fetch(switchboard.SESSIONS_URL);
+  const result = await fetchDoggy.getSessionsFetch() //fetch(switchboard.SESSIONS_URL);
   const data = await result.json();
   console.log(data["id"]); // this line is irrelvant, just here for testing
   userButtons.activeUserID = []
@@ -23,16 +23,16 @@ switchboard.sw03.addEventListener('submit', (e) => {
   userButtons.theWordData['the_word'] = switchboard.word.value.toUpperCase();
   console.log(userButtons.theWordData['the_word'])
   
- 
-  fetch(`${switchboard.USERS_URL}/${x}/words`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", 
-      "Accept": "application/json"},
-    body: JSON.stringify({
-      "the_word": userButtons.theWordData['the_word']
-      })
-    })
+  fetchDoggy.postFetchWords(x)
+  // fetch(`${switchboard.USERS_URL}/${x}/words`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json", 
+  //     "Accept": "application/json"},
+  //   body: JSON.stringify({
+  //     "the_word": userButtons.theWordData['the_word']
+  //     })
+  //   })
   .then(response=>response.json())
   .then(data=>console.log(data))
 });

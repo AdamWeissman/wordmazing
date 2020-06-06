@@ -21,6 +21,18 @@ class fetchAdapter {
       return fetch(switchboard.SESSIONS_URL)
     }
 
+    postFetchWords (x) {
+      return fetch(`${switchboard.USERS_URL}/${x}/words`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", 
+          "Accept": "application/json"},
+        body: JSON.stringify({
+          "the_word": userButtons.theWordData['the_word']
+          })
+        })
+    }
+
 
 }
 
