@@ -41,7 +41,30 @@ class fetchAdapter {
       return fetch(`${switchboard.USERS_URL}/${x}/words`)
     }
 
+    patchFetchLetters(x,y) {
+      return fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json", 
+          "Accept": "application/json"},
+        body: JSON.stringify({
+          "the_letter": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
+          })
+        });
+    }
 
-}
+    patchFetchWords(x,y) {
+      return fetch(`${switchboard.USERS_URL}/${x}/words/${y}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json", 
+          "Accept": "application/json"},
+        body: JSON.stringify({
+          "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
+          })
+        });
+      }
+  }
+
 
 const fetchDoggy = new fetchAdapter()

@@ -15,29 +15,31 @@ switchboard.sw05opt1.addEventListener('click', (e) => {
     let x = userButtons.activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) {
-    fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json", 
-        "Accept": "application/json"},
-      body: JSON.stringify({
-        "the_letter": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
-        })
-      });
+      fetchDoggy.patchFetchLetters(x,y)
+    // fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json", 
+    //     "Accept": "application/json"},
+    //   body: JSON.stringify({
+    //     "the_letter": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
+    //     })
+    //   });
     //.then(response=>response.json())
     //.then(data=>console.log(data))
     set_random_two_letters_or_words_v2();}
 
     else {
-      fetch(`${switchboard.USERS_URL}/${x}/words/${y}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json", 
-        "Accept": "application/json"},
-      body: JSON.stringify({
-        "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
-        })
-      });
+      fetchDoggy.patchFetchWords(x,y)
+      // fetch(`${switchboard.USERS_URL}/${x}/words/${y}`, {
+      // method: "PATCH",
+      // headers: {
+      //   "Content-Type": "application/json", 
+      //   "Accept": "application/json"},
+      // body: JSON.stringify({
+      //   "the_word": `${y}` //this line is actually irrelevant because I can use the id from the fetch request
+      //   })
+      // });
     set_random_two_letters_or_words_v2();
     }
 
