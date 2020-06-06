@@ -3,9 +3,10 @@ function onetime(node, type, callback) {
 	// create event
 	node.addEventListener('click', function(e) {
     console.log("just once test")
-    fetch(switchboard.USERS_URL, {
-      method: "DELETE"
-    })
+    fetchDoggy.deleteFetch()
+    // fetch(switchboard.USERS_URL, {
+    //   method: "DELETE"
+    // })
 		// remove event
 		node.removeEventListener(e.type, arguments.callee);
 		// call handler

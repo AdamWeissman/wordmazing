@@ -1,5 +1,6 @@
 const switchboard = new SwitchBoard()
 const userButtons = new UserButtons()
+const fetchDoggy = new fetchAdapter() //this is from adapters.js
 
 userButtons.sw01.style.display = "none";
 switchboard.prettyMuchEverything.style.display = "none"
