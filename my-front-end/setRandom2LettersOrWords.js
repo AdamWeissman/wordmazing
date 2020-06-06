@@ -128,7 +128,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         let randomMatch = random_two_words[Math.floor(Math.random() * random_two_words.length)];
         the_correct_choice.push(randomMatch) 
         if (randomMatch == "RESET!!!") {
-          the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+          the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
           fetch(switchboard.USERS_URL, {
             method: "DELETE"
           })
@@ -146,7 +146,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       {let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
       the_correct_choice.push(randomMatch)
       if (randomMatch == "RESET!!!") {
-        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
+        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
         fetch(switchboard.USERS_URL, {
           method: "DELETE"
         })
@@ -165,8 +165,8 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       let randomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
       the_correct_choice.push(randomMatch)
       if (randomMatch == "RESET!!!") {
-        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-        talker.speak("Great job " + `${userName.value}`, " you did it!")
+        the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
+        talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
         fetch(switchboard.USERS_URL, {
           method: "DELETE"
         })
@@ -294,8 +294,8 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
         the_correct_choice.push(randomMatch)
         if (randomMatch == "RESET!!!") {
-          the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userName.value}</h1></center>`
-          talker.speak("Great job " + `${userName.value}`, " you did it!")
+          the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
+          talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
           fetch(switchboard.USERS_URL, {
             method: "DELETE"
           })

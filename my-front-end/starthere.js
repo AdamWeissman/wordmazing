@@ -16,7 +16,7 @@ function onetime(node, type, callback) {
 
 function greeting(e) {
   talker.speak("Hi, I'm Wordmazing.  What's your name?");
-  sw01.style.display = "block";
+  userButtons.sw01.style.display = "block";
   click2play.style.display = "none"
   prettyMuchEverything.style.display = "block"
   active_and_delete_user.style.display = "none"

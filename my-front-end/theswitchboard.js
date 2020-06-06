@@ -10,14 +10,24 @@ class SwitchBoard {
 const switchboard = new SwitchBoard()
 
 
+class UserButtons {
+  constructor () {
+    this.sw01 = document.getElementById('switchboard01');
+    this.userName = document.querySelector('#sw01name');
+    this.theUserData = {};
+  }
+}
+
+const userButtons = new UserButtons()
+
 // const BASE_URL = "http://localhost:3000"
 // const USERS_URL = `${BASE_URL}/api/v1/users`
 // const SESSIONS_URL = `${USERS_URL}/active_session`
 
 //CREATE A USER 
-const sw01 = document.getElementById('switchboard01');
-const userName = document.querySelector('#sw01name');
-const theUserData = {};
+// const sw01 = document.getElementById('switchboard01');
+// const userName = document.querySelector('#sw01name');
+// const theUserData = {};
 
 //PREP STUFF, CLICK TO PLAY SCREEN, WHAT SHOULD AND SHOULDN'T APPEAR PRIOR TO MAIN GAME LOOP
 const main = document.querySelector('main')
