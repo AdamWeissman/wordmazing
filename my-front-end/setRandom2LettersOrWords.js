@@ -129,9 +129,10 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         the_correct_choice.push(randomMatch) 
         if (randomMatch == "RESET!!!") {
           switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
-          fetch(switchboard.USERS_URL, {
-            method: "DELETE"
-          })
+          fetchDoggy.deleteFetch()
+          // fetch(switchboard.USERS_URL, {
+          //   method: "DELETE"
+          // })
         }
         else{
         switchboard.sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
@@ -147,9 +148,10 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       the_correct_choice.push(randomMatch)
       if (randomMatch == "RESET!!!") {
         switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
-        fetch(switchboard.USERS_URL, {
-          method: "DELETE"
-        })
+        fetchDoggy.deleteFetch()
+        // fetch(switchboard.USERS_URL, {
+        //   method: "DELETE"
+        // })
       }
       else {
       switchboard.sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
@@ -167,9 +169,10 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       if (randomMatch == "RESET!!!") {
         switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
         talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
-        fetch(switchboard.USERS_URL, {
-          method: "DELETE"
-        })
+        fetchDoggy.deleteFetch()
+        // fetch(switchboard.USERS_URL, {
+        //   method: "DELETE"
+        // })
       }
       else {
         if (randomMatch == "A") {
@@ -296,9 +299,10 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         if (randomMatch == "RESET!!!") {
           switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
           talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
-          fetch(switchboard.USERS_URL, {
-            method: "DELETE"
-          })
+          fetchDoggy.deleteFetch()
+          // fetch(switchboard.USERS_URL, {
+          //   method: "DELETE"
+          // })
         }
         else {
         switchboard.sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
