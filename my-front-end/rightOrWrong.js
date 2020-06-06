@@ -1,4 +1,4 @@
-sw05opt1.addEventListener('click', (e) => {
+switchboard.sw05opt1.addEventListener('click', (e) => {
   let good_job_choice = ["Nice!", "Great job! " + userButtons.userName.value, "Wow!"]
   let goodJob = good_job_choice[Math.floor(Math.random() * good_job_choice.length)]; 
  
@@ -9,10 +9,10 @@ sw05opt1.addEventListener('click', (e) => {
  
  //speak(rightHere=${oopsies}`);
   e.preventDefault();
-  if (the_correct_choice[0] == sw05opt1.innerHTML) {
+  if (the_correct_choice[0] == switchboard.sw05opt1.innerHTML) {
     talker.speak(`${goodJob}`);
     talker.wait(2000)
-    let x = activeUserID[0]
+    let x = userButtons.activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) {
     fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {
@@ -49,7 +49,7 @@ sw05opt1.addEventListener('click', (e) => {
   }
 });
 
-sw05opt2.addEventListener('click', (e) => {
+switchboard.sw05opt2.addEventListener('click', (e) => {
   let good_job_choice = ["Nice job!" + userButtons.userName.value, "Great job!" + userButtons.userName.value, "Wow!" + userButtons.userName.value, "Good!", "Yay!"]
   let goodJob = good_job_choice[Math.floor(Math.random() * good_job_choice.length)]; 
  
@@ -61,10 +61,10 @@ sw05opt2.addEventListener('click', (e) => {
  //speak(rightHere=${oopsies}`);
 
   e.preventDefault();
-  if (the_correct_choice[0] == sw05opt2.innerHTML) {
+  if (the_correct_choice[0] == switchboard.sw05opt2.innerHTML) {
     talker.speak(`${goodJob}`);
     talker.wait(2000)
-    let x = activeUserID[0]
+    let x = userButtons.activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) { 
       fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {

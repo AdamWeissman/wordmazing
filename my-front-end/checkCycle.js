@@ -1,7 +1,7 @@
 
 async function check_cycle_now_func () {
   words_and_or_letters = new Set()
-  let x = activeUserID[0];
+  let x = userButtons.activeUserID[0];
   const result = await fetch(`${switchboard.USERS_URL}/${x}/letters`) //if this redirects to words, could that be causing a subtle problem elsewhere?
   const data = await result.json()
     try {

@@ -1,7 +1,7 @@
 async function random_two_letter_func_v2 () {
   random_two_letters = []
   random_two_words = []
-  let x = activeUserID[0];
+  let x = userButtons.activeUserID[0];
   //alert("Return Random Two Letters With Low Scores");
  
   try {

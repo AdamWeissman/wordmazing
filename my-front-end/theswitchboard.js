@@ -16,6 +16,12 @@ class SwitchBoard {
 
     this.sw03 = document.getElementById('switchboard03')
     this.word = document.querySelector('#sw03word');
+
+    this.sw05 = document.getElementById('switchboard05')
+    this.sw05matchMe = document.getElementById('swb05matchThis')
+    this.sw05opt1 = document.getElementById('swb05option1')
+    this.sw05opt2 = document.getElementById('swb05option2')
+    this.the_whole_thing = document.body
   }
 }
 
@@ -26,6 +32,8 @@ class UserButtons {
     this.sw01 = document.getElementById('switchboard01');
     this.userName = document.querySelector('#sw01name');
     this.theUserData = {};
+    this.theWordData = {};
+    this.activeUserID = []; 
   }
 }
 
@@ -56,11 +64,11 @@ switchboard.prettyMuchEverything.style.display = "none"
 
 // const sw03 = document.getElementById('switchboard03')
 // const word = document.querySelector('#sw03word');
-const theWordData = {};
-let activeUserID = []; 
+// const theWordData = {};
+// let activeUserID = []; 
 
-const sw05 = document.getElementById('switchboard05')
-const sw05matchMe = document.getElementById('swb05matchThis')
-const sw05opt1 = document.getElementById('swb05option1')
-const sw05opt2 = document.getElementById('swb05option2')
-const the_whole_thing = document.body
+// const sw05 = document.getElementById('switchboard05')
+// const sw05matchMe = document.getElementById('swb05matchThis')
+// const sw05opt1 = document.getElementById('swb05option1')
+// const sw05opt2 = document.getElementById('swb05option2')
+// const the_whole_thing = document.body
