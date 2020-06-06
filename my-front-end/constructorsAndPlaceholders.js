@@ -1,6 +1,18 @@
-const BASE_URL = "http://localhost:3000"
-const USERS_URL = `${BASE_URL}/api/v1/users`
-const SESSIONS_URL = `${USERS_URL}/active_session`
+class SwitchBoard {
+  constructor () {
+    this.BASE_URL = "http://localhost:3000"
+    this.USERS_URL = `${this.BASE_URL}/api/v1/users`
+    this.SESSIONS_URL = `${this.USERS_URL}/active_session`
+  }
+
+}
+
+const switchboard = new SwitchBoard()
+
+
+// const BASE_URL = "http://localhost:3000"
+// const USERS_URL = `${BASE_URL}/api/v1/users`
+// const SESSIONS_URL = `${USERS_URL}/active_session`
 
 //CREATE A USER 
 const sw01 = document.getElementById('switchboard01');
