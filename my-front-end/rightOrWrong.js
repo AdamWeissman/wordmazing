@@ -1,5 +1,5 @@
 sw05opt1.addEventListener('click', (e) => {
-  let good_job_choice = ["Nice!", "Great!", "Wow!"]
+  let good_job_choice = ["Nice!", "Great job! " + userName.value, "Wow!"]
   let goodJob = good_job_choice[Math.floor(Math.random() * good_job_choice.length)]; 
  
  //speak(rightHere=`${goodJob}`);
@@ -11,7 +11,7 @@ sw05opt1.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt1.innerHTML) {
     talker.speak(`${goodJob}`);
-    wait(1000)
+    talker.wait(2000)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) {
@@ -44,13 +44,13 @@ sw05opt1.addEventListener('click', (e) => {
   }
   else {
     talker.speak(`${oopsies}`);
-    wait(1000);
+    talker.wait(2000);
     set_random_two_letters_or_words_v2();
   }
 });
 
 sw05opt2.addEventListener('click', (e) => {
-  let good_job_choice = ["Nice!", "Great!", "Wow!", "Good!", "Yay!"]
+  let good_job_choice = ["Nice job!" + userName.value, "Great job!" + userName.value, "Wow!" + userName.value, "Good!", "Yay!"]
   let goodJob = good_job_choice[Math.floor(Math.random() * good_job_choice.length)]; 
  
  //speak(rightHere=`${goodJob}`);
@@ -63,7 +63,7 @@ sw05opt2.addEventListener('click', (e) => {
   e.preventDefault();
   if (the_correct_choice[0] == sw05opt2.innerHTML) {
     talker.speak(`${goodJob}`);
-    wait(1000)
+    talker.wait(2000)
     let x = activeUserID[0]
     let y = the_correct_choice[0]
     if (the_correct_choice[0].length === 1) { 
@@ -95,7 +95,7 @@ sw05opt2.addEventListener('click', (e) => {
   }
   else {
     talker.speak(`${oopsies}`);
-    wait(1000);
+    talker.wait(2000);
     set_random_two_letters_or_words_v2();
   }
 });

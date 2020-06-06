@@ -35,6 +35,14 @@ class Talker {
       console.log(utterThis)
     }
 
+    wait(ms) {
+      let start = new Date().getTime();
+      let end = start;
+      while(end < start + ms) {
+        end = new Date().getTime();
+     }
+   }
+
 }
 
 const talker = new Talker()
