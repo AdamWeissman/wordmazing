@@ -17,6 +17,10 @@ class fetchAdapter {
       })
     })}
 
+    getSessionsFetch () {
+      return fetch(switchboard.SESSIONS_URL)
+    }
+
 
 }
 
