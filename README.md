@@ -1,24 +1,17 @@
-# README
+# Wordmazing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Wordmazing is a JS/Rails App for helping kids learn letters and words.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Fork/Clone this lab.  You must have the current version (as of June 2020) of Rails installed  Likewise for JavaScript.
 
-* System dependencies
+## Usage
 
-* Configuration
+If you intend to run this locally, then after cloning this project onto your computer, you will need to `cd` into wordmazing, and then `cd` in to `my-front-end`. Once you're in the `my-front-end` directory, you will type `open index.html`.  In the primary directory (`wordmazing`) you will need to type `rails s`  
 
-* Database creation
+## Contributing
+Am not seeking contributions on this project at this time
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
