@@ -4,7 +4,7 @@ Wordmazing is a JS/Rails App for helping kids learn letters and words.
 
 ## Installation
 
-Fork/Clone this lab.  You must have the current version (as of June 2020) of Rails installed  Likewise for JavaScript.
+Fork/Clone this lab.  You must have the current version (as of June 2020) of Rails installed.  Likewise for JavaScript.
 
 ## Usage
 
