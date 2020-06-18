@@ -6,7 +6,7 @@ async function activeUser () {
   userButtons.activeUserID.push(data["id"]);
 }
 
-switchboard.sw03.addEventListener('click', (e) => { //this is such a screwed up fix, but seems to work ... otherwise, the activeUser would not interpolate to the URL unless clicked twice
+switchboard.sw03.addEventListener('click', () => { //this is such a screwed up fix, but seems to work ... otherwise, the activeUser would not interpolate to the URL unless clicked twice
   activeUser();
 });
 
