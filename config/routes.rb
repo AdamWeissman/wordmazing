@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   delete "/api/v1/users" => 'api/v1/users#destroy' #custom delete route... will probably need to be replaced with sessions.
   get "/api/v1/users/active_session" => 'api/v1/users#the_session'
+  get "/api/v1/users/#{:user_id}/flatiron" => 'api/v1/users#flatiron'
   #post "/api/v1/users/#{:id}/words" => 'api/v1/words#create'
 
 end

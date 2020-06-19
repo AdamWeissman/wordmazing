@@ -1,5 +1,9 @@
-switchboard.sw05matchMe.addEventListener('click', (e) => {
+switchboard.sw05matchMe.addEventListener('click', async () => {
+  let x = userButtons.activeUserID[0]
   talker.speak(`${switchboard.sw05matchMe.innerHTML}`)
+  let response = await fetchDoggy.getFetchWordsForFlatiron(x)
+  let data = await response.json()
+  console.log(data)
 })
 
 function clickMatchMe() {

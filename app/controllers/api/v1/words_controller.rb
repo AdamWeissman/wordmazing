@@ -1,5 +1,6 @@
 class Api::V1::WordsController < ApplicationController
 
+
   def create
     params.permit!
     @user = User.find(params[:user_id])
