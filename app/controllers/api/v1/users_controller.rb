@@ -4,13 +4,6 @@ class Api::V1::UsersController < ApplicationController
   @@fake_session = {}
 
 
-  def flatiron
-    binding.pry
-    # @user = User.find(params[:user_id])
-    # @words_all = @user.words.all
-    # render json: @words_all
-  end
-
   def destroy
 
     #the code below is semi redundant, destroying the user will also destroy the session, but in case I want to split the functionality, both lines of code are included below
