@@ -3,6 +3,7 @@ class Api::V1::UsersController < ApplicationController
 
   @@fake_session = {}
 
+
   def destroy
 
     #the code below is semi redundant, destroying the user will also destroy the session, but in case I want to split the functionality, both lines of code are included below

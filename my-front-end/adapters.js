@@ -37,9 +37,14 @@ class fetchAdapter {
       return fetch(`${switchboard.USERS_URL}/${x}/letters`)
     }
 
+    getFetchWordsForFlatiron(x) {
+      return fetch(`${switchboard.USERS_URL}/${x}/words/flatiron`)
+    }
+
     getFetchWords (x) {
       return fetch(`${switchboard.USERS_URL}/${x}/words`)
     }
+
 
     patchFetchLetters(x,y) {
       return fetch(`${switchboard.USERS_URL}/${x}/letters/${y}`, {

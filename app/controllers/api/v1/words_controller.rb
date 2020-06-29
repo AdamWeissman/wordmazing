@@ -1,5 +1,13 @@
 class Api::V1::WordsController < ApplicationController
 
+  def flatiron
+    @user = User.find(params[:user_id])
+    @words_all = @user.words.all
+    @words = []
+    @words_all.each {|x| @words << x.the_word}
+    render json: @words
+  end
+
   def create
     params.permit!
     @user = User.find(params[:user_id])
