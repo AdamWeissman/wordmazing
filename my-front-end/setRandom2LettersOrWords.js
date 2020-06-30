@@ -14,7 +14,31 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
     
     const monsterLetters = {
       A: ["apple", "animal", "apartment"],
-      B: ["baseball", "buffalo", "bingo"]
+      B: ["baseball", "buffalo", "bingo"],
+      C: ["car", "cat", "castle"],
+      D: ["dog", "duck", "doll"],
+      E: ["ear", "elephant", "eggs"],
+      F: ["fox", "ferry", "fun", "face", "friend"],
+      G: ["gorilla", "giggle", "goose", "giraffe"],
+      H: ["house", "hat", "hen", "happy"],
+      I: ["iguana", "igloo", "ice"],
+      J: ["jack", "jungle", "jellybean"],
+      K: ["kangaroo", "kelp", "koala"],
+      L: ["letters", "learn", "lion"],
+      M: ["monkey", "money", "moose"],
+      N: ["narwhal", "nest", "nose"],
+      O: ["oval", "origami", "outside", "oatmeal"],
+      P: ["puppy", "pig", "poop"],
+      Q: ["quest", "quickly", "quack"],
+      R: ["rhinocerous", "rooster", "rabbit"],
+      S: ["silver", "sauce", "sheep", "sad"],
+      T: ["toad", "toes", "toast", "tiger"],
+      U: ["under", "up", "Uber"],
+      V: ["vase", "vulture", "Volvo"],
+      W: ["water", "waffles", "words"],
+      X: ["xylophone", "Xerox", "x-ray"],
+      Y: ["yak", "yes", "yellow", "yell"],
+      Z: ["zebra", "zero", "zoom"],
       //ADD ALL THE LETTERS...
     } 
 
