@@ -1,3 +1,41 @@
+function randomizer (someArray) {
+  return someArray[Math.floor(Math.random() * someArray.length)]
+}
+
+function letterSetter(letter) {
+  let theWord = randomizer(monsterLetters[letter])
+    switchboard.sw05matchMe.innerHTML = `${letter} is for ${theWord}. Click ${letter}`
+}
+
+const monsterLetters = {
+  A: ["apple", "animal", "apartment"],
+  B: ["baseball", "buffalo", "bingo"],
+  C: ["car", "cat", "castle"],
+  D: ["dog", "duck", "doll"],
+  E: ["ear", "elephant", "eggs"],
+  F: ["fox", "ferry", "fun", "face", "friend"],
+  G: ["gorilla", "giggle", "goose", "giraffe"],
+  H: ["house", "hat", "hen", "happy"],
+  I: ["iguana", "igloo", "ice"],
+  J: ["jack", "jungle", "jellybean"],
+  K: ["kangaroo", "kelp", "koala"],
+  L: ["letters", "learn", "lion"],
+  M: ["monkey", "money", "moose"],
+  N: ["narwhal", "nest", "nose"],
+  O: ["oval", "origami", "outside", "oatmeal"],
+  P: ["puppy", "pig", "poop"],
+  Q: ["quest", "quickly", "quack"],
+  R: ["rhinocerous", "rooster", "rabbit"],
+  S: ["silver", "sauce", "sheep", "sad"],
+  T: ["toad", "toes", "toast", "tiger"],
+  U: ["under", "up", "Uber"],
+  V: ["vase", "vulture", "Volvo"],
+  W: ["water", "waffles", "words"],
+  X: ["xylophone", "Xerox", "x-ray"],
+  Y: ["yak", "yes", "yellow", "yell"],
+  Z: ["zebra", "zero", "zoom"],
+} 
+
 async function set_random_two_letters_or_words_v2 () { //this function should be renamed since its for letters and words
   the_correct_choice = []
 
@@ -5,58 +43,14 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
   if (((check_this + "") === "letters") || ((check_this + "") === "words"))  
   {  
     console.log("this is for letters OR for words")
-    // TODO: Refactor into switch statement or map letters to arrays
-    
-    
-    function randomizer (someArray) {
-      return someArray[Math.floor(Math.random() * someArray.length)]
-    }
-    
-    const monsterLetters = {
-      A: ["apple", "animal", "apartment"],
-      B: ["baseball", "buffalo", "bingo"],
-      C: ["car", "cat", "castle"],
-      D: ["dog", "duck", "doll"],
-      E: ["ear", "elephant", "eggs"],
-      F: ["fox", "ferry", "fun", "face", "friend"],
-      G: ["gorilla", "giggle", "goose", "giraffe"],
-      H: ["house", "hat", "hen", "happy"],
-      I: ["iguana", "igloo", "ice"],
-      J: ["jack", "jungle", "jellybean"],
-      K: ["kangaroo", "kelp", "koala"],
-      L: ["letters", "learn", "lion"],
-      M: ["monkey", "money", "moose"],
-      N: ["narwhal", "nest", "nose"],
-      O: ["oval", "origami", "outside", "oatmeal"],
-      P: ["puppy", "pig", "poop"],
-      Q: ["quest", "quickly", "quack"],
-      R: ["rhinocerous", "rooster", "rabbit"],
-      S: ["silver", "sauce", "sheep", "sad"],
-      T: ["toad", "toes", "toast", "tiger"],
-      U: ["under", "up", "Uber"],
-      V: ["vase", "vulture", "Volvo"],
-      W: ["water", "waffles", "words"],
-      X: ["xylophone", "Xerox", "x-ray"],
-      Y: ["yak", "yes", "yellow", "yell"],
-      Z: ["zebra", "zero", "zoom"],
-      //ADD ALL THE LETTERS...
-    } 
-
-    function letterSetter(letter) {
-      let theWord = randomizer(monsterLetters[letter])
-        switchboard.sw05matchMe.innerHTML = `${letter} is for ${theWord}. Click ${letter}`
-    }
-    
-    //if rarandomMatch = random_two_letters[Math.floor(Math.random() * random_two_letters.length)];
-    
+      
+  
     try {result = await random_two_letter_func_v2();
       let randomMatch = randomizer(random_two_letters)
       if (randomMatch !== undefined) {
         the_correct_choice.push(randomMatch)
-        letterSetter(randomMatch)
+        this.letterSetter(randomMatch)
 
-        // else {
-        //   switchboard.sw05matchMe.innerHTML = `click the letter match for ${randomMatch}`}
         clickMatchMe()
     
         switchboard.sw05opt1.innerHTML = `${random_two_letters[0]}`
@@ -68,9 +62,6 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         if (randomMatch == "RESET!!!") {
           switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
           fetchDoggy.deleteFetch()
-          // fetch(switchboard.USERS_URL, {
-          //   method: "DELETE"
-          // })
         }
         else{
         switchboard.sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
@@ -79,7 +70,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         switchboard.sw05opt2.innerHTML = `${random_two_words[1]}`}}}
     catch {result = await random_two_words_func();
       if (result === undefined) {
-        alert("incoming undefined 2") //this was for debugging but never hit so far
+        alert("incoming undefined 2") 
       }
       else
       {let randomMatch = random_two_words[Math.floor(Math.random() * random_two_letters.length)];
@@ -87,9 +78,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
       if (randomMatch == "RESET!!!") {
         switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
         fetchDoggy.deleteFetch()
-        // fetch(switchboard.USERS_URL, {
-        //   method: "DELETE"
-        // })
+ 
       }
       else {
       switchboard.sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
@@ -108,12 +97,9 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
         switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
         talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
         fetchDoggy.deleteFetch()
-        // fetch(switchboard.USERS_URL, {
-        //   method: "DELETE"
-        // })
       }
       else {
-          letterSetter(randomMatch)  
+          this.letterSetter(randomMatch)  
         
           clickMatchMe()
           switchboard.sw05opt1.innerHTML = `${random_two_letters[0]}`
@@ -130,9 +116,7 @@ async function set_random_two_letters_or_words_v2 () { //this function should be
           switchboard.the_whole_thing.innerHTML = `<center><h1>GREAT JOB ${userButtons.userName.value}</h1></center>`
           talker.speak("Great job " + `${userButtons.userName.value}`, " you did it!")
           fetchDoggy.deleteFetch()
-          // fetch(switchboard.USERS_URL, {
-          //   method: "DELETE"
-          // })
+
         }
         else {
         switchboard.sw05matchMe.innerHTML = `click the word match for ${randomMatch}`
